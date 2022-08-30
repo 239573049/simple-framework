@@ -1,4 +1,5 @@
-using Simple.Application;
+using Simple.HttpApi.Host;
+using Token.Module.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,10 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddEndpointsApiExplorer()
-    .AddSwaggerGen()
-    .AddSimpleApplication();
-
+builder.Services.AddModuleApplication<SimpleHttpApiHostModule>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,9 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.InitializeApplication();
 
 app.MapControllers();
 

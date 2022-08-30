@@ -2,10 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Simple.Application.Contract;
 using Simple.Domain.Users;
 
-namespace Test.Simple.EntityFramework.Controllers;
+namespace Simple.HttpApi.Host.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+// [DisabledUnitOfWork]
 public class UserInfoController : ControllerBase
 {
     private readonly ILogger<UserInfoController> _logger;

@@ -1,7 +1,7 @@
-﻿
-using EfCoreEntityFrameworkCore.DbMigrations;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Simple.DbMigrations;
+using Token.Module.Extensions;
 
 IHostBuilder host = Host.CreateDefaultBuilder(args)
     .ConfigureAppConfiguration((configure) =>
@@ -10,7 +10,8 @@ IHostBuilder host = Host.CreateDefaultBuilder(args)
     })
     .ConfigureServices(((context, services) =>
     {
-        services.AddEfCoreEntityFrameworkCoreDbMigrations();
+        services.AddModuleApplication<SimpleDbMigrationsModule>();
+        
     }));
 
 host.RunConsoleAsync();

@@ -1,10 +1,11 @@
 ﻿using EfCoreEntityFrameworkCore.Core;
+using EfCoreEntityFrameworkCore.Middlewares;
 using EfCoreEntityFrameworkCore.Options;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Token.EntityFrameworkCore.Core;
 
 namespace EfCoreEntityFrameworkCore
 {
@@ -23,7 +24,8 @@ namespace EfCoreEntityFrameworkCore
             ConfigureDbContext<TDbContext>(services);
             
             // 注入工作单元
-            services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+            services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork<TDbContext>));
+            
             return services;
         }
 
@@ -50,6 +52,25 @@ namespace EfCoreEntityFrameworkCore
         {
             var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
             services.Configure<SimpleDbContextOptions>(configuration.GetSection(SimpleDbContextOptions.Name));
+        }
+
+        /// <summary>
+        /// 使用自动工作单元中间件
+        /// </summary>
+        /// <param name="app"></param>
+        public static void UseUnitOfWorkMiddleware(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<UnitOfWorkMiddleware>();
+        }
+
+        /// <summary>
+        /// 注入工作单元中间件
+        /// </summary>
+        /// <param name="services"></param>
+        public static IServiceCollection AddUnitOfWorkMiddleware(this IServiceCollection services)
+        {
+            services.AddTransient<UnitOfWorkMiddleware>();
+            return services;
         }
     }
 }

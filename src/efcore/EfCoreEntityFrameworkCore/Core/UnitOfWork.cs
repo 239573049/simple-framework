@@ -6,47 +6,58 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
 using Simple.Domain.Base;
-using Token.EntityFrameworkCore.Core;
 
 namespace EfCoreEntityFrameworkCore.Core
 {
-    public class UnitOfWork<TDbContext> : IUnitOfWork<TDbContext> where TDbContext : MasterDbContext
+    public sealed class UnitOfWork<TDbContext> : IUnitOfWork where TDbContext : MasterDbContext, IDisposable
     {
+        public bool IsDisposed { get; private set; }
+
+        public bool IsCompleted { get; private set; }
+
         private readonly TDbContext _dbContext;
+
         public UnitOfWork(TDbContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"db context nameof{nameof(dbContext)} is null");
         }
 
-        public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
-            return _dbContext.Database.BeginTransactionAsync(cancellationToken);
+            IsCompleted = false;
+            return await _dbContext.Database.BeginTransactionAsync(cancellationToken);
         }
 
         public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
         {
+            if (IsCompleted)
+            {
+                return;
+            }
+
+            IsCompleted = true;
             ApplyChangeConventions();
             try
             {
-                await _dbContext.SaveChangesAsync(cancellationToken);
-                await _dbContext.Database.CommitTransactionAsync(cancellationToken);
+                await _dbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+                await _dbContext.Database.CommitTransactionAsync(cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
-                await _dbContext.Database.RollbackTransactionAsync(cancellationToken);
+                await _dbContext.Database.RollbackTransactionAsync(cancellationToken).ConfigureAwait(false);
                 throw;
             }
         }
 
         public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
         {
-            await _dbContext.Database.RollbackTransactionAsync(cancellationToken);
+            await _dbContext.Database.RollbackTransactionAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             ApplyChangeConventions();
-            return await _dbContext.SaveChangesAsync(cancellationToken);
+            return await _dbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
         }
 
         private void ApplyChangeConventions()
@@ -70,9 +81,10 @@ namespace EfCoreEntityFrameworkCore.Core
                 }
             }
         }
+
         private static void SetModified(EntityEntry entry)
         {
-            if (entry.Entity is  IHasModificationTime entity)
+            if (entry.Entity is IHasModificationTime entity)
             {
                 entity.LastModificationTime = DateTime.Now;
             }
@@ -80,7 +92,7 @@ namespace EfCoreEntityFrameworkCore.Core
 
         private static void SetCreation(EntityEntry entry)
         {
-            if (entry.Entity is  IHasCreationTime entity)
+            if (entry.Entity is IHasCreationTime entity)
             {
                 entity.CreationTime = DateTime.Now;
             }
@@ -88,11 +100,20 @@ namespace EfCoreEntityFrameworkCore.Core
 
         private static void SetDelete(EntityEntry entry)
         {
-            if (entry.Entity is  ISoftDelete entity)
+            if (entry.Entity is ISoftDelete entity)
             {
                 entity.IsDeleted = true;
             }
+        }
 
+        public void Disponse()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+
+            this.IsDisposed = true;
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using EfCoreEntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Token.EntityFrameworkCore.Core
+namespace EfCoreEntityFrameworkCore.Core
 {
-    public interface IUnitOfWork<TDbContext> where TDbContext : MasterDbContext
+    public interface IUnitOfWork
     {
         /// <summary>
         /// 开始事务

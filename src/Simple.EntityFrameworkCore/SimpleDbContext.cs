@@ -7,7 +7,7 @@ namespace Simple.EntityFrameworkCore;
 
 public class SimpleDbContext : MasterDbContext
 {
-    public DbSet<UserInfo> UserInfo { get; set; }
+    public DbSet<UserInfo>? UserInfo { get; set; }
     
     public SimpleDbContext(DbContextOptions options) : base(options)
     {
@@ -18,6 +18,7 @@ public class SimpleDbContext : MasterDbContext
         base.OnModelCreating(builder);
         
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
         builder.ConfigureSimple();
     }
 }
