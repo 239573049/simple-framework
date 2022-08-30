@@ -17,5 +17,10 @@ dotnet ef migrations remove -f --project ../efcore/EfCoreEntityFrameworkCore.DbM
 
 # 生成本次迁移的幂等SQL脚本（适合生产环境）
 # 参考： https://docs.microsoft.com/zh-cn/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli#idempotent-sql-scripts
-#dotnet ef migrations script --idempotent --project ../efcore/EfCoreEntityFrameworkCore.DbMigrations
+
+```shell
+dotnet ef migrations script --idempotent --project ../efcore/EfCoreEntityFrameworkCore.DbMigrations
+
 dotnet ef migrations script ScriptName --project ../efcore/EfCoreEntityFrameworkCore.DbMigrations
+
+```
