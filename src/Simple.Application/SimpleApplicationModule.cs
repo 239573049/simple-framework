@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Simple.Application.Contract;
+using Simple.Application.Contract.User;
+using Simple.Application.User;
 using Simple.EntityFrameworkCore;
 using Token.Module;
 using Token.Module.Attributes;
@@ -12,6 +13,8 @@ namespace Simple.Application
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserInfoService, UserInfoService>();
+
+            services.AddAutoMapper(typeof(SimpleApplicationModule));
         }
     }
 }

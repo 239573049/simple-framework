@@ -22,10 +22,10 @@ namespace EfCoreEntityFrameworkCore.Core
             _dbContext = dbContext ?? throw new ArgumentNullException($"db context nameof{nameof(dbContext)} is null");
         }
 
-        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
             IsCompleted = false;
-            return await _dbContext.Database.BeginTransactionAsync(cancellationToken);
+            await _dbContext.Database.BeginTransactionAsync(cancellationToken);
         }
 
         public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)

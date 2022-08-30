@@ -1,12 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using Simple.Application.Contract;
-using Simple.Domain.Users;
+using Simple.Application.Contract.User;
+using Simple.Application.Contract.User.Views;
 
 namespace Simple.HttpApi.Host.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-// [DisabledUnitOfWork]
+[Route("api/[controller]")]
 public class UserInfoController : ControllerBase
 {
     private readonly ILogger<UserInfoController> _logger;
@@ -17,11 +16,26 @@ public class UserInfoController : ControllerBase
         _userInfoService = userInfoService;
     }
 
+    /// <summary>
+    /// 创建用户
+    /// </summary>
+    /// <param name="userInfo"></param>
+    /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(UserInfo userInfo)
+    public async Task<IActionResult> CreateAsync(CreateUserInfoDto userInfo)
     {
-        var data = await _userInfoService.CreateAsync(userInfo);
+        await _userInfoService.CreateAsync(userInfo);
 
-        return new OkObjectResult(data);
+        return new OkResult();
+    }
+
+    /// <summary>
+    /// 获取所有用户
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    public async Task<List<UserInfoDto>> GetListAsync()
+    {
+        return await _userInfoService.GetListAsync();
     }
 }

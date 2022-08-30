@@ -1,8 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage;
-
-namespace EfCoreEntityFrameworkCore.Core
+﻿namespace Simple.Domain.Base
 {
     public interface IUnitOfWork
     {
@@ -11,7 +7,7 @@ namespace EfCoreEntityFrameworkCore.Core
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
+        Task BeginTransactionAsync(CancellationToken cancellationToken = default);
         
         /// <summary>
         /// 保存更改

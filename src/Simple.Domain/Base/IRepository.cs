@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
-using Simple.Domain.Base;
+﻿using System.Linq.Expressions;
 
-namespace EfCoreEntityFrameworkCore.Core;
+namespace Simple.Domain.Base;
 
 public interface IRepository<TEntity,TKey>
     where TEntity : Entity<TKey>

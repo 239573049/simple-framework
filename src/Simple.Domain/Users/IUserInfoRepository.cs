@@ -1,6 +1,8 @@
-﻿namespace Simple.Domain.Users;
+﻿using Simple.Domain.Base;
 
-public interface IUserInfoRepository
+namespace Simple.Domain.Users;
+
+public interface IUserInfoRepository : IRepository<UserInfo,Guid>
 {
     Task<UserInfo> CreateAsync(UserInfo userInfo);
 }

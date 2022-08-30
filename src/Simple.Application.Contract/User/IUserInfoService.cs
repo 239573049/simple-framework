@@ -1,7 +1,8 @@
-﻿using System.Threading.Tasks;
-using Simple.Domain.Users;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Simple.Application.Contract.User.Views;
 
-namespace Simple.Application.Contract
+namespace Simple.Application.Contract.User
 {
     public interface IUserInfoService
     {
@@ -10,6 +11,12 @@ namespace Simple.Application.Contract
         /// </summary>
         /// <param name="userInfo"></param>
         /// <returns></returns>
-        Task<UserInfo> CreateAsync(UserInfo userInfo);
+        Task CreateAsync(CreateUserInfoDto userInfo);
+
+        /// <summary>
+        /// 获取所有用户
+        /// </summary>
+        /// <returns></returns>
+        Task<List<UserInfoDto>> GetListAsync();
     }
 }

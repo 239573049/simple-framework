@@ -1,20 +1,35 @@
-﻿using System.Threading.Tasks;
-using Simple.Application.Contract;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Simple.Application.Contract.User;
+using Simple.Application.Contract.User.Views;
 using Simple.Domain.Users;
 
-namespace Simple.Application
+namespace Simple.Application.User
 {
     public class UserInfoService : IUserInfoService
     {
         private readonly IUserInfoRepository _userInfoRepository;
-        public UserInfoService(IUserInfoRepository userInfoRepository)
+        private readonly IMapper _mapper;
+
+        public UserInfoService(IUserInfoRepository userInfoRepository, IMapper mapper)
         {
             _userInfoRepository = userInfoRepository;
+            _mapper = mapper;
         }
 
-        public async Task<UserInfo> CreateAsync(UserInfo userInfo)
+        public async Task CreateAsync(CreateUserInfoDto userInfo)
         {
-            return await _userInfoRepository.CreateAsync(userInfo);
+            var data = _mapper.Map<UserInfo>(userInfo);
+
+            await _userInfoRepository.CreateAsync(data);
+        }
+
+        public async Task<List<UserInfoDto>> GetListAsync()
+        {
+            var result = await _userInfoRepository.GetListAsync(x => true);
+
+            return _mapper.Map<List<UserInfoDto>>(result);
         }
     }
 }
