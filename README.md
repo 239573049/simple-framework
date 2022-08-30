@@ -18,6 +18,6 @@
 
  --./src/efcore                              // 框架的一些EfCore封装
 
-     --./src/efcore/EfCoreEntityFrameworkCore                // EfCore封装
+ --./src/efcore/EfCoreEntityFrameworkCore                // EfCore封装
 
-     --./src/efcore/EfCoreEntityFrameworkCore.DbMigrations   // 项目所有EfCore迁移文件存放
+ --./src/efcore/EfCoreEntityFrameworkCore.DbMigrations   // 项目所有EfCore迁移文件存放
