@@ -41,8 +41,8 @@ namespace EfCoreEntityFrameworkCore
             var simpleDbContextOptions =
                 services.BuildServiceProvider().GetRequiredService<IOptions<SimpleDbContextOptions>>().Value;
 
-            services.AddDbContext<TDbContext>(
-                options => options.UseSqlServer(simpleDbContextOptions.Default));
+            services.AddDbContextFactory<TDbContext>(
+                options => options.UseSqlServer(simpleDbContextOptions.Default),ServiceLifetime.Scoped);
         }
 
         /// <summary>

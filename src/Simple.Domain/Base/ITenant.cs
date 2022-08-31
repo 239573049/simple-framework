@@ -5,5 +5,5 @@ public interface ITenant
     /// <summary>
     /// 租户Id
     /// </summary>
-    public Guid? TenantId { get; set; }
+    Guid? TenantId { get; set; }
 }

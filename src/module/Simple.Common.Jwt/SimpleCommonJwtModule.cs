@@ -5,10 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Token.Module;
+using Token.Module.Attributes;
 using Token.Module.Extensions;
 
 namespace Simple.Common.Jwt;
 
+[RunOrder(-1)]
 public class SimpleCommonJwtModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)

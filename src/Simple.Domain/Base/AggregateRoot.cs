@@ -1,7 +1,7 @@
 ﻿namespace Simple.Domain.Base;
 
 public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IModificationAuditedObject, ISoftDelete,
-    IMayHaveCreator
+    IMayHaveCreator,IHasDeleteCreator
 {
     public DateTime CreationTime { get; set; }
 
@@ -34,4 +34,8 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
         IsDeleted = isDeleted;
         CreatorId = creatorId;
     }
+
+    public Guid? DeleteCreatorId { get; set; }
+    
+    public DateTime? DeleteTime { get; set; }
 }

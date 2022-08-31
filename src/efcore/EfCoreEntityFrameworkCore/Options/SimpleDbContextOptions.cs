@@ -11,4 +11,14 @@ public class SimpleDbContextOptions
     /// </summary>
     [Required(ErrorMessage = "连接字符串是必须的")]
     public string Default { get; set; }
+
+    /// <summary>
+    /// 是否启用租户
+    /// </summary>
+    public bool Tenant { get; set; } = true;
+
+    /// <summary>
+    /// 是否启用软删过滤器
+    /// </summary>
+    public bool SoftDelete { get; set; } = true;
 }

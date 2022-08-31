@@ -12,9 +12,11 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+		<PackageReference Include="Token.Module" Version="1.2.3" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
 	  <ProjectReference Include="..\..\Simple.Domain\Simple.Domain.csproj" />
 	</ItemGroup>
 

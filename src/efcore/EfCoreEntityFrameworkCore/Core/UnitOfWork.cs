@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Storage;
+using Simple.Common.Jwt;
 using Simple.Domain.Base;
 
 namespace EfCoreEntityFrameworkCore.Core
@@ -16,10 +15,12 @@ namespace EfCoreEntityFrameworkCore.Core
         public bool IsCompleted { get; private set; }
 
         private readonly TDbContext _dbContext;
+        private readonly ICurrentManage _currentManage;
 
-        public UnitOfWork(TDbContext dbContext)
+        public UnitOfWork(TDbContext dbContext, ICurrentManage currentManage)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"db context nameof{nameof(dbContext)} is null");
+            _currentManage = currentManage;
         }
 
         public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
@@ -82,28 +83,50 @@ namespace EfCoreEntityFrameworkCore.Core
             }
         }
 
-        private static void SetModified(EntityEntry entry)
+        private  void SetModified(EntityEntry entry)
         {
-            if (entry.Entity is IHasModificationTime entity)
+            switch (entry.Entity)
             {
-                entity.LastModificationTime = DateTime.Now;
+                case IModificationAuditedObject modificationAuditedObject:
+                    modificationAuditedObject.LastModifierId = _currentManage.UserId();
+                    modificationAuditedObject.LastModificationTime = DateTime.Now;
+                    break;
+                case IHasModificationTime entity:
+                    entity.LastModificationTime = DateTime.Now;
+                    break;
             }
         }
 
-        private static void SetCreation(EntityEntry entry)
+        private void SetCreation(EntityEntry entry)
         {
-            if (entry.Entity is IHasCreationTime entity)
+            if (entry.Entity is IMayHaveCreator creator)
             {
-                entity.CreationTime = DateTime.Now;
+                creator.CreatorId = _currentManage.UserId();
+            }
+
+            switch (entry.Entity)
+            {
+                case IHasCreationTime creationTime:
+                    creationTime.CreationTime = DateTime.Now;
+                    break;
+                case ITenant { TenantId: null } tenant:
+                    tenant.TenantId = _currentManage.GetTenantId();
+                    break;
             }
         }
 
-        private static void SetDelete(EntityEntry entry)
+        private  void SetDelete(EntityEntry entry)
         {
             if (entry.Entity is ISoftDelete entity)
             {
                 entity.IsDeleted = true;
             }
+
+            if (entry.Entity is not IHasDeleteCreator deleteCreator) return;
+            
+            deleteCreator.DeleteTime = DateTime.Now;
+            deleteCreator.DeleteCreatorId = _currentManage.UserId();
+
         }
 
         public void Disponse()
