@@ -23,18 +23,6 @@ public class CurrentManage : ICurrentManage, ITransientDependency
     }
 
     /// <inheritdoc />
-    public Guid? GetTenantId()
-    {
-        // 获取租户Id
-        var tenantId = _httpContextAccessor.HttpContext?.Request.Headers[Constant.TenantId].FirstOrDefault();
-
-        if (string.IsNullOrEmpty(tenantId))
-            return default;
-
-        return Guid.Parse(tenantId);
-    }
-
-    /// <inheritdoc />
     public bool? IsAuthenticated()
     {
         return _httpContextAccessor.HttpContext?.User.Identity?.IsAuthenticated;

@@ -5,12 +5,6 @@ namespace Simple.Common.Jwt;
 public interface ICurrentManage
 {
     /// <summary>
-    /// 获取租户Id
-    /// </summary>
-    /// <returns></returns>
-    Guid? GetTenantId();
-
-    /// <summary>
     /// 是否授权
     /// </summary>
     /// <returns></returns>

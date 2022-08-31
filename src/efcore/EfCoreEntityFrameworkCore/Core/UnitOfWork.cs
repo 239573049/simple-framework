@@ -16,11 +16,12 @@ namespace EfCoreEntityFrameworkCore.Core
 
         private readonly TDbContext _dbContext;
         private readonly ICurrentManage _currentManage;
-
-        public UnitOfWork(TDbContext dbContext, ICurrentManage currentManage)
+        private readonly ITenantManager _tenantManager;
+        public UnitOfWork(TDbContext dbContext, ICurrentManage currentManage, ITenantManager tenantManager)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"db context nameof{nameof(dbContext)} is null");
             _currentManage = currentManage;
+            _tenantManager = tenantManager;
         }
 
         public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
@@ -109,9 +110,11 @@ namespace EfCoreEntityFrameworkCore.Core
                 case IHasCreationTime creationTime:
                     creationTime.CreationTime = DateTime.Now;
                     break;
-                case ITenant { TenantId: null } tenant:
-                    tenant.TenantId = _currentManage.GetTenantId();
-                    break;
+            }
+
+            if (entry.Entity is ITenant tenant)
+            {
+                tenant.TenantId = _tenantManager.GetTenantId();
             }
         }
 

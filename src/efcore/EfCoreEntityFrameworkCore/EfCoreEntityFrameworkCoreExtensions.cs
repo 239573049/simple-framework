@@ -23,10 +23,10 @@ namespace EfCoreEntityFrameworkCore
         {
             ConfigureOptions(services);
             ConfigureDbContext<TDbContext>(services);
-            
+
             // 注入工作单元
             services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork<TDbContext>));
-            
+
             return services;
         }
 
@@ -41,8 +41,9 @@ namespace EfCoreEntityFrameworkCore
             var simpleDbContextOptions =
                 services.BuildServiceProvider().GetRequiredService<IOptions<SimpleDbContextOptions>>().Value;
 
-            services.AddDbContext<TDbContext>(
-                options => options.UseSqlServer(simpleDbContextOptions.Default));
+            services.AddDbContextFactory<TDbContext>(
+                options => options.UseSqlServer(simpleDbContextOptions.Default), ServiceLifetime.Scoped);
+            
         }
 
         /// <summary>

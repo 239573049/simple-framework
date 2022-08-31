@@ -27,7 +27,7 @@ public class UnitOfWorkMiddleware : IMiddleware
             await next(context).ConfigureAwait(false);
         }
 
-        var unitOfWorkAttribute = context.Features.Get<IEndpointFeature>().Endpoint.Metadata
+        var unitOfWorkAttribute = context.Features.Get<IEndpointFeature>()?.Endpoint?.Metadata
             .GetMetadata<DisabledUnitOfWorkAttribute>();
 
         if (unitOfWorkAttribute?.Disabled == true)
