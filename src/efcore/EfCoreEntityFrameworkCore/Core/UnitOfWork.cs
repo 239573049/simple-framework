@@ -8,7 +8,7 @@ using Simple.Domain.Base;
 
 namespace EfCoreEntityFrameworkCore.Core
 {
-    public sealed class UnitOfWork<TDbContext> : IUnitOfWork where TDbContext : MasterDbContext, IDisposable
+    public sealed class UnitOfWork<TDbContext> : IUnitOfWork where TDbContext : DbContext, IDisposable
     {
         public bool IsDisposed { get; private set; }
 
@@ -131,12 +131,12 @@ namespace EfCoreEntityFrameworkCore.Core
 
         public void Disponse()
         {
-            if (this.IsDisposed)
+            if (IsDisposed)
             {
                 return;
             }
 
-            this.IsDisposed = true;
+            IsDisposed = true;
         }
     }
 }

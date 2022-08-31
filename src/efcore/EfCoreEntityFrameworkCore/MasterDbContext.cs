@@ -3,18 +3,22 @@ using System.Linq.Expressions;
 using System.Reflection;
 using EfCoreEntityFrameworkCore.Options;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Simple.Common.Jwt;
 using Simple.Domain.Base;
+using Token.Module.Helpers;
 
 namespace EfCoreEntityFrameworkCore
 {
-    public abstract class MasterDbContext : DbContext
+    public abstract class MasterDbContext<TDbContext> : DbContext
+        where TDbContext : DbContext
     {
-        protected MasterDbContext(DbContextOptions options) : base(options)
+        private readonly SimpleDbContextOptions _simpleDbContextOptions;
+        protected MasterDbContext(DbContextOptions<TDbContext> options) : base(options)
         {
+            _simpleDbContextOptions = ServiceProviderHelper.ServiceProvider
+                .GetService<IOptions<SimpleDbContextOptions>>().Value;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -25,7 +29,6 @@ namespace EfCoreEntityFrameworkCore
             // 显示更详细的异常日志
             optionsBuilder.EnableDetailedErrors();
 #endif
-            
         }
 
 
@@ -35,23 +38,21 @@ namespace EfCoreEntityFrameworkCore
             // 扫描配置
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            var dbContextOptions = ((IInfrastructure<IServiceProvider>)this).Instance
-                .GetService<IOptions<SimpleDbContextOptions>>()?.Value;
+            ConfigureSoftDelete(builder);
 
-            ConfigureSoftDelete(builder, dbContextOptions);
-            ConfigureTenant(builder, dbContextOptions);
+            ConfigureTenant(builder);
         }
 
         /// <summary>
         /// 过滤器增加软删除过滤
         /// </summary>
         /// <param name="builder"></param>
-        /// <param name="simpleDbContextOptions"></param>
-        private static void ConfigureSoftDelete(ModelBuilder builder, SimpleDbContextOptions? simpleDbContextOptions)
+        private void ConfigureSoftDelete(ModelBuilder builder)
         {
-            if (simpleDbContextOptions?.SoftDelete == false)
+            
+            if(!_simpleDbContextOptions.SoftDelete)
                 return;
-
+            
             foreach (var entityType in builder.Model.GetEntityTypes())
             {
                 //判断是否继承了软删除类
@@ -71,59 +72,34 @@ namespace EfCoreEntityFrameworkCore
             }
         }
         
-        private void ConfigureTenant(ModelBuilder builder, SimpleDbContextOptions? simpleDbContextOptions)
+        
+    private void ConfigureTenant(ModelBuilder builder)
+    {
+        if(!_simpleDbContextOptions.Tenant)
+            return;
+        
+        var tenant = ServiceProviderHelper.ServiceProvider.GetRequiredService<ITenantManager>();
+
+        const string tenanted = nameof(ITenant.TenantId);
+
+        foreach (var entityType in builder.Model.GetEntityTypes())
         {
-            if (simpleDbContextOptions?.Tenant == false)
-            {
-                return;
-            }
+            // 是否继承租户基础类
+            if (!typeof(ITenant).IsAssignableFrom(entityType.ClrType)) continue;
 
-            var tenant = ((IInfrastructure<IServiceProvider>)this).Instance.GetService<ICurrentManage>();
+            builder.Entity(entityType.ClrType).Property<Guid?>(tenanted);
 
-            const string tenantid = nameof(ITenant.TenantId);
+            var parameter = Expression.Parameter(entityType.ClrType, tenanted);
 
-            // 如果租户id为空获取租户id为空的数据
-            if (tenant.GetTenantId() == null)
-            {
-                foreach (var entityType in builder.Model.GetEntityTypes())
-                {
-                    //判断是否继承了软删除类
-                    if (!typeof(ITenant).IsAssignableFrom(entityType.ClrType)) continue;
+            // 添加租户过滤器
+            var body = Expression.Equal(
+                Expression.Call(typeof(EF), nameof(EF.Property), new[] { typeof(Guid?) }, parameter,
+                    Expression.Constant(tenanted)),
+                Expression.Constant(tenant.GetTenantId()));
 
-
-                    builder.Entity(entityType.ClrType).Property<Guid?>(tenantid);
-
-                    var parameter = Expression.Parameter(entityType.ClrType, tenantid);
-
-                    // 添加过滤器
-                    var body = Expression.Equal(
-                        Expression.Call(typeof(EF), nameof(EF.Property), new[] { typeof(Guid?) }, parameter,
-                            Expression.Constant(null)),
-                        Expression.Constant(null));
-
-                    builder.Entity(entityType.ClrType).HasQueryFilter(Expression.Lambda(body, parameter));
-                }
-
-                return;
-            }
-
-            foreach (var entityType in builder.Model.GetEntityTypes())
-            {
-                //判断是否继承了软删除类
-                if (!typeof(ITenant).IsAssignableFrom(entityType.ClrType)) continue;
-
-                builder.Entity(entityType.ClrType).Property<Guid?>(tenantid);
-
-                var parameter = Expression.Parameter(entityType.ClrType, tenantid);
-
-                // 添加过滤器
-                var body = Expression.Equal(
-                    Expression.Call(typeof(EF), nameof(EF.Property), new[] { typeof(Guid) }, parameter,
-                        Expression.Constant(tenant.GetTenantId())),
-                    Expression.Constant(tenant.GetTenantId()));
-
-                builder.Entity(entityType.ClrType).HasQueryFilter(Expression.Lambda(body, parameter));
-            }
+            builder.Entity(entityType.ClrType).HasQueryFilter(Expression.Lambda(body, parameter));
         }
+    }
+
     }
 }

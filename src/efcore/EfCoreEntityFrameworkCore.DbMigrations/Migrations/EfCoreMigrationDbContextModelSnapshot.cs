@@ -37,6 +37,12 @@ namespace EfCoreEntityFrameworkCore.DbMigrations.Migrations
                     b.Property<Guid?>("CreatorId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("DeleteCreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeleteTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -54,6 +60,9 @@ namespace EfCoreEntityFrameworkCore.DbMigrations.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");

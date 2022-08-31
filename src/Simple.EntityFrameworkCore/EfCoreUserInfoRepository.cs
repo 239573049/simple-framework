@@ -1,9 +1,13 @@
 ﻿using EfCoreEntityFrameworkCore.Core;
 using Simple.Domain.Users;
+using Token.Module.Attributes;
+using Token.Module.Dependencys;
 
 namespace Simple.EntityFrameworkCore;
 
-public class EfCoreUserInfoRepository : Repository<SimpleDbContext, UserInfo, Guid>, IUserInfoRepository
+[ExposeServices(typeof(IUserInfoRepository))]
+public class EfCoreUserInfoRepository : Repository<SimpleDbContext, UserInfo, Guid>, IUserInfoRepository,
+    ITransientDependency
 {
     public EfCoreUserInfoRepository(SimpleDbContext dbContext) :
         base(dbContext)

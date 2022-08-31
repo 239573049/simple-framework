@@ -19,7 +19,7 @@ namespace EfCoreEntityFrameworkCore
         /// <typeparam name="TDbContext"></typeparam>
         /// <returns></returns>
         public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services)
-            where TDbContext : MasterDbContext
+            where TDbContext : DbContext
         {
             ConfigureOptions(services);
             ConfigureDbContext<TDbContext>(services);
@@ -36,13 +36,13 @@ namespace EfCoreEntityFrameworkCore
         /// <param name="services"></param>
         /// <typeparam name="TDbContext"></typeparam>
         private static void ConfigureDbContext<TDbContext>(IServiceCollection services)
-            where TDbContext : MasterDbContext
+            where TDbContext : DbContext
         {
             var simpleDbContextOptions =
                 services.BuildServiceProvider().GetRequiredService<IOptions<SimpleDbContextOptions>>().Value;
 
-            services.AddDbContextFactory<TDbContext>(
-                options => options.UseSqlServer(simpleDbContextOptions.Default),ServiceLifetime.Scoped);
+            services.AddDbContext<TDbContext>(
+                options => options.UseSqlServer(simpleDbContextOptions.Default));
         }
 
         /// <summary>

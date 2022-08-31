@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreEntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(EfCoreMigrationDbContext))]
-    [Migration("20220830111631_init")]
-    partial class init
+    [Migration("20220831135553_tenantid")]
+    partial class tenantid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,12 @@ namespace EfCoreEntityFrameworkCore.DbMigrations.Migrations
                     b.Property<Guid?>("CreatorId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("DeleteCreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeleteTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -56,6 +62,9 @@ namespace EfCoreEntityFrameworkCore.DbMigrations.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");

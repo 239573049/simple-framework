@@ -5,14 +5,14 @@ using Simple.Domain.Users;
 
 namespace Simple.EntityFrameworkCore;
 
-public class SimpleDbContext : MasterDbContext
+public class SimpleDbContext : MasterDbContext<SimpleDbContext>
 {
     public DbSet<UserInfo>? UserInfo { get; set; }
-    
-    public SimpleDbContext(DbContextOptions options) : base(options)
+
+    public SimpleDbContext(DbContextOptions<SimpleDbContext> options) : base(options)
     {
     }
-
+    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -21,4 +21,5 @@ public class SimpleDbContext : MasterDbContext
         
         builder.ConfigureSimple();
     }
+
 }

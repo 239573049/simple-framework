@@ -21,7 +21,6 @@ public class SimpleHttpApiHostModule : TokenModule
 
         app.UseAuthorization();
 
-
         app.UseUnitOfWorkMiddleware();
     }
 }

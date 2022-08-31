@@ -10,8 +10,8 @@ using Simple.Domain.Base;
 namespace EfCoreEntityFrameworkCore.Core;
 
 public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey>
-    where TEntity : Entity<TKey>
-    where TDbContext : MasterDbContext
+    where TEntity : Entity<TKey> 
+    where TDbContext : DbContext
 {
     protected readonly TDbContext _dbContext;
     protected  readonly DbSet<TEntity> _dbSet;

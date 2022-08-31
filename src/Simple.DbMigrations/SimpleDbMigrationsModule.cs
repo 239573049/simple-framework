@@ -11,6 +11,5 @@ public class SimpleDbMigrationsModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        
     }
 }

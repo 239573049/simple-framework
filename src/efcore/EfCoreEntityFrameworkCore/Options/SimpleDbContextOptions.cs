@@ -13,12 +13,12 @@ public class SimpleDbContextOptions
     public string Default { get; set; }
 
     /// <summary>
-    /// 是否启用租户
-    /// </summary>
-    public bool Tenant { get; set; } = true;
-
-    /// <summary>
     /// 是否启用软删过滤器
     /// </summary>
     public bool SoftDelete { get; set; } = true;
+
+    /// <summary>
+    /// 是否启用租户
+    /// </summary>
+    public bool Tenant { get; set; } = false;
 }
