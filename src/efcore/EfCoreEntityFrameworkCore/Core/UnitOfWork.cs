@@ -41,12 +41,14 @@ namespace EfCoreEntityFrameworkCore.Core
             ApplyChangeConventions();
             try
             {
+                // 提交事务
                 await _dbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
                 await _dbContext.Database.CommitTransactionAsync(cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
-                await _dbContext.Database.RollbackTransactionAsync(cancellationToken).ConfigureAwait(false);
+                // 发生异常回滚事务
+                await RollbackTransactionAsync(cancellationToken).ConfigureAwait(false);
                 throw;
             }
         }

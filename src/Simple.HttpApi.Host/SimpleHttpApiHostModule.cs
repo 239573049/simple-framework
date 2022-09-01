@@ -11,6 +11,7 @@ public class SimpleHttpApiHostModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
+        services.AddControllers();
         services.AddEndpointsApiExplorer()
             .AddSwaggerGen()
             .AddUnitOfWorkMiddleware();
@@ -25,10 +26,20 @@ public class SimpleHttpApiHostModule : TokenModule
 
     public override void OnApplicationShutdown(IApplicationBuilder app)
     {
+        var evn = app.ApplicationServices.GetService<IWebHostEnvironment>();
+        // 只有在 Development 才运行Swagger UI
+        if (evn.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+        
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
 
+        // 注册自动工作单元中间件
         app.UseUnitOfWorkMiddleware();
     }
 }
