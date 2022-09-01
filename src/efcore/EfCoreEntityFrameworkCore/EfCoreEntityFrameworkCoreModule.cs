@@ -10,7 +10,6 @@ public class EfCoreEntityFrameworkCoreModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddTransient<ITenantManager,TenantManager>();
         
     }
 }

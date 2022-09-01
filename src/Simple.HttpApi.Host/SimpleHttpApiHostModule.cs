@@ -1,5 +1,6 @@
 using EfCoreEntityFrameworkCore;
 using Simple.Application;
+using Simple.HttpApi.Host.Filters;
 using Token.Module;
 using Token.Module.Attributes;
 
@@ -13,6 +14,13 @@ public class SimpleHttpApiHostModule : TokenModule
         services.AddEndpointsApiExplorer()
             .AddSwaggerGen()
             .AddUnitOfWorkMiddleware();
+
+        // 添加过滤器
+        services.AddMvcCore(options =>
+        {
+            options.Filters.Add<ResponseFilter>();
+            options.Filters.Add<ExceptionFilter>();
+        });
     }
 
     public override void OnApplicationShutdown(IApplicationBuilder app)

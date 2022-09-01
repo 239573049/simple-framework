@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Http;
 using Simple.Domain.Shared;
+using Token.Module.Dependencys;
 
 namespace Simple.Common.Jwt;
 
-public class TenantManager : ITenantManager
+public class TenantManager : ITenantManager , ITransientDependency
 {
     private readonly IHttpContextAccessor _accessor;
 
