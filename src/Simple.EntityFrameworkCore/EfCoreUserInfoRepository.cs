@@ -16,7 +16,7 @@ public class EfCoreUserInfoRepository : Repository<SimpleDbContext, UserInfo, Gu
 
     public async Task<UserInfo> CreateAsync(UserInfo userInfo)
     {
-        var result = await _dbSet.AddAsync(userInfo);
+        var result = await DbSet.AddAsync(userInfo);
 
         return result.Entity;
     }

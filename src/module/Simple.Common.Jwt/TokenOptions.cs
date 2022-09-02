@@ -26,5 +26,5 @@ public class TokenOptions
     /// Signalr的url
     /// 如果不设置的话无法在signalr拿到token
     /// </summary>
-    public List<string> SignalrUrl { get; set; } = new List<string>();
+    public List<string> SignalrUrl { get; set; } = new();
 }

@@ -15,7 +15,6 @@ public class TenantManager : ITenantManager , ITransientDependency
 
     public Guid? GetTenantId()
     {
-        
         var tenant =  _accessor.HttpContext?.Request.Headers[Constant.TenantId].ToString();
 
         if (string.IsNullOrEmpty(tenant))
