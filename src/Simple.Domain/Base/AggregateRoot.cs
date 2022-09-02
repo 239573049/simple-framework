@@ -1,7 +1,7 @@
 ﻿namespace Simple.Domain.Base;
 
 public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IModificationAuditedObject, ISoftDelete,
-    IMayHaveCreator,IHasDeleteCreator
+    IMayHaveCreator, IHasDeleteCreator
 {
     public DateTime CreationTime { get; set; }
 
@@ -13,11 +13,12 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
 
     public Guid? CreatorId { get; set; }
 
-    protected  AggregateRoot()
+    protected AggregateRoot()
     {
     }
 
-    protected  AggregateRoot(TKey id, DateTime creationTime, DateTime? lastModificationTime, Guid? lastModifierId, bool isDeleted, Guid? creatorId) : base(id)
+    protected AggregateRoot(TKey id, DateTime creationTime, DateTime? lastModificationTime, Guid? lastModifierId,
+        bool isDeleted, Guid? creatorId) : base(id)
     {
         CreationTime = creationTime;
         LastModificationTime = lastModificationTime;
@@ -26,7 +27,8 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
         CreatorId = creatorId;
     }
 
-    protected  AggregateRoot(DateTime creationTime, DateTime? lastModificationTime, Guid? lastModifierId, bool isDeleted, Guid? creatorId)
+    protected AggregateRoot(DateTime creationTime, DateTime? lastModificationTime, Guid? lastModifierId, bool isDeleted,
+        Guid? creatorId)
     {
         CreationTime = creationTime;
         LastModificationTime = lastModificationTime;
@@ -36,6 +38,6 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
     }
 
     public Guid? DeleteCreatorId { get; set; }
-    
+
     public DateTime? DeleteTime { get; set; }
 }

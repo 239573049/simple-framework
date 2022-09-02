@@ -10,3 +10,17 @@ public abstract class Entity<TKey> : IEntity<TKey>
 
     public TKey Id { get; protected set; }
 }
+
+public abstract class Entity : IEntity
+{
+    protected Entity(Guid id)
+    {
+        Id = id;
+    }
+
+    protected Entity()
+    {
+    }
+
+    public Guid Id { get; }
+}
