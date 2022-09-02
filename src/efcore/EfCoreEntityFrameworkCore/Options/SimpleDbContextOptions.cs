@@ -20,5 +20,5 @@ public class SimpleDbContextOptions
     /// <summary>
     /// 是否启用租户
     /// </summary>
-    public bool Tenant { get; set; } = true;
+    public bool Tenant { get; set; } 
 }
