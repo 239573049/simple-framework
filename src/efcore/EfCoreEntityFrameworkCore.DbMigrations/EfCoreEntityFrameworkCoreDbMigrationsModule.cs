@@ -2,14 +2,13 @@
 using Token.Module;
 using Token.Module.Attributes;
 
-namespace EfCoreEntityFrameworkCore.DbMigrations
+namespace EfCoreEntityFrameworkCore.DbMigrations;
+
+[DependOn(typeof(EfCoreEntityFrameworkCoreModule))]
+public class EfCoreEntityFrameworkCoreDbMigrationsModule : TokenModule
 {
-    [DependOn(typeof(EfCoreEntityFrameworkCoreModule))]
-    public class EfCoreEntityFrameworkCoreDbMigrationsModule : TokenModule
+    public override void ConfigureServices(IServiceCollection services)
     {
-        public override void ConfigureServices(IServiceCollection services)
-        {
-            services.AddEfCoreEntityFrameworkCore<EfCoreMigrationDbContext>();
-        }
+        services.AddEfCoreEntityFrameworkCore<EfCoreMigrationDbContext>();
     }
 }

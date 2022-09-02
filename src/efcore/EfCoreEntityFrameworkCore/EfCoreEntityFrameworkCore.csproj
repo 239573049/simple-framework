@@ -3,6 +3,20 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>Simple.EfCoreEntityFrameworkCore</PackageId>
+		<PackageVersion>0.0.1</PackageVersion>
+		<Title>Simple.EfCoreEntityFrameworkCore</Title>
+		<Authors>Simple.EfCoreEntityFrameworkCore</Authors>
+		<Description>Simple Ef Core封装 
+实现自动事务
+支持租户
+支持软删除
+</Description>
+		<PackageProjectUrl>https://gitee.com/Simple-china/simple-framework</PackageProjectUrl>
+		<PackageLicenseUrl>https://gitee.com/Simple-china/simple-framework</PackageLicenseUrl>
+		<RepositoryUrl>https://gitee.com/Simple-china/simple-framework</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
 	<ItemGroup>

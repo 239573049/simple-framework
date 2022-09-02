@@ -1,10 +1,10 @@
 # 生成 Iot 库的迁移文件 （需将 Init 修改为实际的改动名字）
 
 ```shell
-dotnet ef migrations add tenantid --project ../efcore/EfCoreEntityFrameworkCore.DbMigrations
+dotnet ef migrations add Init --project ../efcore/EfCoreEntityFrameworkCore.DbMigrations
 ```
 
-# 执行  库的最近一次迁移
+# 执行库的最近一次迁移
 
 ```shell
 dotnet ef database update --project ../efcore/EfCoreEntityFrameworkCore.DbMigrations
