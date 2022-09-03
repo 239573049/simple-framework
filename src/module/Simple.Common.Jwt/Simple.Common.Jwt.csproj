@@ -9,7 +9,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-      <PackageReference Include="Token.Module" Version="1.2.5" />
+      <PackageReference Include="Token.Module" Version="1.2.6" />
     </ItemGroup>
 
     <ItemGroup>

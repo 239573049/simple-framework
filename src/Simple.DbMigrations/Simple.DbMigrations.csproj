@@ -14,7 +14,7 @@
       </PackageReference>
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
-        <PackageReference Include="Token.Module" Version="1.2.5" />
+        <PackageReference Include="Token.Module" Version="1.2.6" />
     </ItemGroup>
 
     <ItemGroup>

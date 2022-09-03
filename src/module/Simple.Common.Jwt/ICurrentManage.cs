@@ -17,6 +17,12 @@ public interface ICurrentManage
     Guid? UserId();
 
     /// <summary>
+    /// 获取用户id
+    /// </summary>
+    /// <returns></returns>
+    Guid GetUserId();
+    
+    /// <summary>
     /// 获取用户信息
     /// </summary>
     /// <typeparam name="T"></typeparam>

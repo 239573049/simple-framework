@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Simple.Domain.Base;
 using Simple.Domain.Shared;
 using Token.Module.Dependencys;
+using Token.Module.Exceptions;
 
 namespace Simple.Common.Jwt;
 
@@ -40,6 +41,18 @@ public class CurrentManage : ICurrentManage, ITransientDependency
         return Guid.Parse(id);
     }
 
+    public Guid GetUserId()
+    {
+        var userId = UserId();
+
+        if (userId == null)
+        {
+            throw new BusinessException("账号未登录", 401);
+        }
+
+        return (Guid)userId;
+    }
+
     /// <inheritdoc />
     public T? UserInfo<T>()
     {
@@ -62,7 +75,7 @@ public class CurrentManage : ICurrentManage, ITransientDependency
             new Claim(Constant.Id, data.Id?.ToString() ?? string.Empty),
             new Claim(Constant.User, JsonConvert.SerializeObject(data))
         };
-        
+
         var cred = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenOptions.SecretKey!)),
             SecurityAlgorithms.HmacSha256);
 
