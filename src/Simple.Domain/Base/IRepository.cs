@@ -113,4 +113,5 @@ public interface IRepository<TEntity,TKey>
     /// <param name="entities"></param>
     /// <returns></returns>
     Task UpdateManyAsync(IEnumerable<TEntity> entities);
+    
 }

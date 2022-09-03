@@ -16,6 +16,7 @@ public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext
 
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+        // 程序的所有Entity配置
         builder.ConfigureSimple();
         builder.ConfigureAuth();
     }

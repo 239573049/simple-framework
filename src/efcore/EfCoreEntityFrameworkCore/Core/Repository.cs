@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Base;
+using Token.Module.Dependencys;
 
 namespace EfCoreEntityFrameworkCore.Core;
 
@@ -15,7 +16,7 @@ namespace EfCoreEntityFrameworkCore.Core;
 /// <typeparam name="TDbContext"></typeparam>
 /// <typeparam name="TEntity"></typeparam>
 /// <typeparam name="TKey"></typeparam>
-public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey>
+public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey>, ITransientDependency
     where TEntity : Entity<TKey>
     where TDbContext : DbContext
 {
@@ -116,4 +117,5 @@ public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntit
 
         return Task.CompletedTask;
     }
+
 }

@@ -6,8 +6,7 @@ using Token.Module.Dependencys;
 namespace Simple.EntityFrameworkCore;
 
 [ExposeServices(typeof(IUserInfoRepository))]
-public class EfCoreUserInfoRepository : Repository<SimpleDbContext, UserInfo, Guid>, IUserInfoRepository,
-    ITransientDependency
+public class EfCoreUserInfoRepository : Repository<SimpleDbContext, UserInfo, Guid>, IUserInfoRepository
 {
     public EfCoreUserInfoRepository(SimpleDbContext dbContext) :
         base(dbContext)
