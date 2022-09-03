@@ -15,13 +15,17 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
 
     public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString("N");
 
+    public Dictionary<string,object> ExtraProperties { get; protected set; }
+    
     protected AggregateRoot()
     {
+        ExtraProperties = new Dictionary<string, object>();
     }
 
     protected AggregateRoot(TKey id, DateTime creationTime, DateTime? lastModificationTime, Guid? lastModifierId,
         bool isDeleted, Guid? creatorId) : base(id)
     {
+        ExtraProperties = new Dictionary<string, object>();
         CreationTime = creationTime;
         LastModificationTime = lastModificationTime;
         LastModifierId = lastModifierId;
@@ -33,6 +37,7 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
         Guid? creatorId)
     {
         CreationTime = creationTime;
+        ExtraProperties = new Dictionary<string, object>();
         LastModificationTime = lastModificationTime;
         LastModifierId = lastModifierId;
         IsDeleted = isDeleted;

@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\auth\Simple.Auth.EntityFrameworkCore\Simple.Auth.EntityFrameworkCore.csproj" />
       <ProjectReference Include="..\..\Simple.EntityFrameworkCore\Simple.EntityFrameworkCore.csproj" />
     </ItemGroup>
 

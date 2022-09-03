@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Simple.EntityFrameworkCore;
 using System.Reflection;
+using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 
 namespace EfCoreEntityFrameworkCore.DbMigrations;
 
@@ -16,6 +17,7 @@ public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         builder.ConfigureSimple();
+        builder.ConfigureAuth();
     }
 
 }
