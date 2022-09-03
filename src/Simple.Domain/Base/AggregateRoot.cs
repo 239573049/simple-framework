@@ -10,8 +10,10 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
     public Guid? LastModifierId { get; set; }
 
     public bool IsDeleted { get; set; }
-
+    
     public Guid? CreatorId { get; set; }
+
+    public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString("N");
 
     protected AggregateRoot()
     {

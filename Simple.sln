@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.Domain", "src\a
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.Domain.Shared", "src\auth\Simple.Auth.Domain.Shared\Simple.Auth.Domain.Shared.csproj", "{1CF34D7A-896C-4506-B2C0-959F7661C8DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.EntityFrameworkCore", "src\auth\Simple.Auth.EntityFrameworkCore\Simple.Auth.EntityFrameworkCore.csproj", "{93D657F1-BC8F-4CD0-8321-0FFD35A98810}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,7 @@ Global
 		{9732B5D7-4F27-4745-BBB7-C645E50E9B1A} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 		{AE2BC558-E0CA-4DF1-8247-688AEDF54991} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 		{1CF34D7A-896C-4506-B2C0-959F7661C8DB} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
+		{93D657F1-BC8F-4CD0-8321-0FFD35A98810} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7E95713C-9EF4-4162-8E10-F371C44411F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -129,5 +132,9 @@ Global
 		{1CF34D7A-896C-4506-B2C0-959F7661C8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CF34D7A-896C-4506-B2C0-959F7661C8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CF34D7A-896C-4506-B2C0-959F7661C8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D657F1-BC8F-4CD0-8321-0FFD35A98810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D657F1-BC8F-4CD0-8321-0FFD35A98810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D657F1-BC8F-4CD0-8321-0FFD35A98810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D657F1-BC8F-4CD0-8321-0FFD35A98810}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
