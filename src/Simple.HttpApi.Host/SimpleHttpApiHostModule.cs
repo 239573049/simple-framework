@@ -1,4 +1,6 @@
 using EfCoreEntityFrameworkCore;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 using Simple.Application;
 using Simple.HttpApi.Host.Filters;
 using Token.Module;
@@ -13,9 +15,9 @@ public class SimpleHttpApiHostModule : TokenModule
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer()
-            .AddSwaggerGen()
             .AddUnitOfWorkMiddleware();
 
+        ConfigureSwaggerServices(services);
         // 添加过滤器
         services.AddMvcCore(options =>
         {
@@ -23,6 +25,30 @@ public class SimpleHttpApiHostModule : TokenModule
             options.Filters.Add<ExceptionFilter>();
         });
     }
+    
+    
+    private static void ConfigureSwaggerServices(IServiceCollection services)
+    {
+        services.AddSwaggerDocument(config =>
+        {
+            config.UseControllerSummaryAsTagDescription = true;
+            config.PostProcess = document =>
+            {
+                document.Info.Version = "v1.0";
+                document.Info.Title = "Admin APi";
+                document.Info.Description = "Simple Api";
+            };
+            config.AddSecurity("bearer", Enumerable.Empty<string>(),
+                new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Bearer"
+                });
+            config.OperationProcessors.Add(
+                new AspNetCoreOperationSecurityScopeProcessor("bearer"));
+        });
+    }
+
 
     public override void OnApplicationShutdown(IApplicationBuilder app)
     {
@@ -30,11 +56,10 @@ public class SimpleHttpApiHostModule : TokenModule
         // 只有在 Development 才运行Swagger UI
         if (evn.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
         }
 
-        
         app.UseHttpsRedirection();
 
         app.UseAuthorization();

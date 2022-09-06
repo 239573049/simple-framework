@@ -37,6 +37,7 @@ public class MenuService : IMenuService, ITransientDependency
     public async Task<IEnumerable<MenuTreeDto>> GetMenuTreeAsync(GetMenuInput input)
     {
         var userId = _currentManage.GetUserId();
+        
         var menus = await _menuRepository.GetUserMenuAsync(userId, input.Keywords);
         
         var tree = GetRecursionMenu(menus, null);
