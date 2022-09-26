@@ -1,6 +1,6 @@
 using System;
 
-namespace EfCoreEntityFrameworkCore.Attributes;
+namespace EntityFrameworkCore.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class DisabledUnitOfWorkAttribute : Attribute

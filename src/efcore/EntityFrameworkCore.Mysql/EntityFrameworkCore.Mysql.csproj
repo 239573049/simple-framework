@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EfCoreEntityFrameworkCore\EfCoreEntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\EntityFrameworkCore\EntityFrameworkCore.csproj" />
     </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Base;
 using Token.Module.Dependencys;
 
-namespace EfCoreEntityFrameworkCore.Core;
+namespace EntityFrameworkCore.Core;
 
 /// <summary>
 /// 通用仓储实现

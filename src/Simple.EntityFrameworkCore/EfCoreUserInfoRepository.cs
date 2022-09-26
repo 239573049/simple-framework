@@ -1,7 +1,6 @@
-﻿using EfCoreEntityFrameworkCore.Core;
+﻿using EntityFrameworkCore.Core;
 using Simple.Domain.Users;
 using Token.Module.Attributes;
-using Token.Module.Dependencys;
 
 namespace Simple.EntityFrameworkCore;
 

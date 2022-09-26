@@ -8,13 +8,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Application.Contract
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "efcore", "efcore", "{EEA93EB1-B0BA-4579-9CA8-F46AA0C918B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreEntityFrameworkCore", "src\efcore\EfCoreEntityFrameworkCore\EfCoreEntityFrameworkCore.csproj", "{553249E3-A8F9-4F26-B0C3-3B4FE5EF7FE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore", "src\efcore\EntityFrameworkCore\EntityFrameworkCore.csproj", "{553249E3-A8F9-4F26-B0C3-3B4FE5EF7FE9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DA78A7E8-A30B-4DA3-AC02-041224758BB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "efcore", "efcore", "{4D284592-BA63-477D-9578-9A21F6A03ACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreEntityFrameworkCore.DbMigrations", "src\efcore\EfCoreEntityFrameworkCore.DbMigrations\EfCoreEntityFrameworkCore.DbMigrations.csproj", "{F69DC6C0-B809-4DCD-B0D2-FB59F6E27BB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.DbMigrations", "src\efcore\EntityFrameworkCore.DbMigrations\EntityFrameworkCore.DbMigrations.csproj", "{F69DC6C0-B809-4DCD-B0D2-FB59F6E27BB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.DbMigrations", "src\Simple.DbMigrations\Simple.DbMigrations.csproj", "{BF0BBF33-A36F-443F-8520-450634AF66FB}"
 EndProject
@@ -44,9 +44,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.Domain.Shared",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.EntityFrameworkCore", "src\auth\Simple.Auth.EntityFrameworkCore\Simple.Auth.EntityFrameworkCore.csproj", "{93D657F1-BC8F-4CD0-8321-0FFD35A98810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreEntityFrameworkCore.Mysql", "src\efcore\EfCoreEntityFrameworkCore.Mysql\EfCoreEntityFrameworkCore.Mysql.csproj", "{7B49EFB2-5253-4382-A8F0-0E818B62233D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.Mysql", "src\efcore\EntityFrameworkCore.Mysql\EntityFrameworkCore.Mysql.csproj", "{7B49EFB2-5253-4382-A8F0-0E818B62233D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreEntityFrameworkCore.SqlServer", "src\efcore\EfCoreEntityFrameworkCore.SqlServer\EfCoreEntityFrameworkCore.SqlServer.csproj", "{D6F78F86-58CB-4640-B994-370331CB3F44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.SqlServer", "src\efcore\EntityFrameworkCore.SqlServer\EntityFrameworkCore.SqlServer.csproj", "{D6F78F86-58CB-4640-B994-370331CB3F44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

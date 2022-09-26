@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using EfCoreEntityFrameworkCore.Options;
+using EntityFrameworkCore.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -8,7 +8,7 @@ using Simple.Common.Jwt;
 using Simple.Domain.Base;
 using Token.Module.Helpers;
 
-namespace EfCoreEntityFrameworkCore
+namespace EntityFrameworkCore
 {
     public abstract class MasterDbContext<TDbContext> : DbContext
         where TDbContext : DbContext

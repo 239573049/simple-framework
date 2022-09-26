@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EfCoreEntityFrameworkCore.Options;
+namespace EntityFrameworkCore.Options;
 
 public class UnitOfWorkOptions
 {

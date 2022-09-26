@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using EfCoreEntityFrameworkCore;
-using EfCoreEntityFrameworkCore.Attributes;
+using EntityFrameworkCore;
+using EntityFrameworkCore.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Users;
 

@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
-using EfCoreEntityFrameworkCore.Attributes;
-using EfCoreEntityFrameworkCore.Options;
+using EntityFrameworkCore.Attributes;
+using EntityFrameworkCore.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Options;
 using Simple.Domain.Base;
 
-namespace EfCoreEntityFrameworkCore.Middlewares;
+namespace EntityFrameworkCore.Middlewares;
 
 public class UnitOfWorkMiddleware : IMiddleware
 {

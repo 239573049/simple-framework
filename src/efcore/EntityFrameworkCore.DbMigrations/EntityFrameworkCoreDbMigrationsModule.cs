@@ -1,15 +1,15 @@
 ﻿using System;
-using EfCoreEntityFrameworkCore.Mysql.Extensions;
+using EntityFrameworkCore.Mysql.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Auth.EntityFrameworkCore;
 using Token.Module;
 using Token.Module.Attributes;
 
-namespace EfCoreEntityFrameworkCore.DbMigrations;
+namespace EntityFrameworkCore.DbMigrations;
 
-[DependOn(typeof(EfCoreEntityFrameworkCoreModule),
+[DependOn(typeof(EntityFrameworkCoreModule),
     typeof(SimpleAuthEntityFrameworkCoreModule))]
-public class EfCoreEntityFrameworkCoreDbMigrationsModule : TokenModule
+public class EntityFrameworkCoreDbMigrationsModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {

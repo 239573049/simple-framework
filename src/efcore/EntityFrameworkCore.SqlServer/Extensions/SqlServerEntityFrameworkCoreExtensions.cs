@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using EfCoreEntityFrameworkCore.Attributes;
+using EntityFrameworkCore.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EfCoreEntityFrameworkCore.Mysql.Extensions;
+namespace EntityFrameworkCore.SqlServer.Extensions;
 
-public static class MysqlEfCoreEntityFrameworkCoreExtensions
+public static class SqlServerEntityFrameworkCoreExtensions
 {
-    public static IServiceCollection AddMysqlEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services,
-        Version version)
+    public static IServiceCollection AddSqlServerEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services)
         where TDbContext : MasterDbContext<TDbContext>
     {
         var connectString = typeof(TDbContext).GetCustomAttribute<ConnectionStringNameAttribute>();
@@ -21,11 +20,9 @@ public static class MysqlEfCoreEntityFrameworkCoreExtensions
 
         var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
 
-        services.AddEfCoreEntityFrameworkCore<TDbContext>(x =>
-        {
-            x.UseMySql(configuration.GetConnectionString(connectString.ConnectionString),
-                new MySqlServerVersion(version));
-        }, ServiceLifetime.Scoped);
+        services.AddEfCoreEntityFrameworkCore<TDbContext>(
+            x => { x.UseSqlServer(configuration.GetConnectionString(connectString.ConnectionString)); },
+            ServiceLifetime.Scoped);
 
         return services;
     }

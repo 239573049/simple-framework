@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Simple.Common.Jwt;
 using Simple.Domain.Base;
 
-namespace EfCoreEntityFrameworkCore.Core
+namespace EntityFrameworkCore.Core
 {
     public sealed class UnitOfWork<TDbContext> : IUnitOfWork where TDbContext : DbContext, IDisposable
     {

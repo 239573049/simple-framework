@@ -1,4 +1,4 @@
-using EfCoreEntityFrameworkCore.Core;
+using EntityFrameworkCore.Core;
 using Simple.Auth.Domain.Roles;
 using Token.Module.Attributes;
 

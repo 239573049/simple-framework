@@ -3,7 +3,7 @@ using Simple.EntityFrameworkCore;
 using System.Reflection;
 using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 
-namespace EfCoreEntityFrameworkCore.DbMigrations;
+namespace EntityFrameworkCore.DbMigrations;
 
 public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext>
 {

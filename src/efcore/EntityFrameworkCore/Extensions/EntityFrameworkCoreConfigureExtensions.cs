@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Newtonsoft.Json;
 using Simple.Domain.Base;
 
-namespace EfCoreEntityFrameworkCore;
+namespace EntityFrameworkCore;
 
 public static class EntityFrameworkCoreConfigureExtensions
 {

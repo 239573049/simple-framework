@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EfCoreEntityFrameworkCore.Options;
+namespace EntityFrameworkCore.Options;
 
 public class SimpleDbContextOptions
 {

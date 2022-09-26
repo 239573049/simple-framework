@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>EfCoreEntityFrameworkCore.SqlServer</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EfCoreEntityFrameworkCore\EfCoreEntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\EntityFrameworkCore\EntityFrameworkCore.csproj" />
     </ItemGroup>
 
 </Project>

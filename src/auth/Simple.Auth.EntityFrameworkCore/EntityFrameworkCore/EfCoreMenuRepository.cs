@@ -1,4 +1,4 @@
-using EfCoreEntityFrameworkCore.Core;
+using EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
 

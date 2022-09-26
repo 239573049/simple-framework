@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\efcore\EfCoreEntityFrameworkCore.Mysql\EfCoreEntityFrameworkCore.Mysql.csproj" />
+      <ProjectReference Include="..\efcore\EntityFrameworkCore.Mysql\EntityFrameworkCore.Mysql.csproj" />
     </ItemGroup>
 
 </Project>

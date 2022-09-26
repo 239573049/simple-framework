@@ -1,7 +1,7 @@
 ﻿using System;
-using EfCoreEntityFrameworkCore.Core;
-using EfCoreEntityFrameworkCore.Middlewares;
-using EfCoreEntityFrameworkCore.Options;
+using EntityFrameworkCore.Core;
+using EntityFrameworkCore.Middlewares;
+using EntityFrameworkCore.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Simple.Domain.Base;
 
-namespace EfCoreEntityFrameworkCore
+namespace EntityFrameworkCore
 {
     public static class EfCoreEntityFrameworkCoreExtensions
     {

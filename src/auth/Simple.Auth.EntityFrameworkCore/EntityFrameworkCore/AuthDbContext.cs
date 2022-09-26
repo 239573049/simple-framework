@@ -1,9 +1,8 @@
-using EfCoreEntityFrameworkCore;
-using EfCoreEntityFrameworkCore.Attributes;
+using EntityFrameworkCore;
+using EntityFrameworkCore.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
 using Simple.Auth.Domain.Roles;
-using Token.Module.Attributes;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 

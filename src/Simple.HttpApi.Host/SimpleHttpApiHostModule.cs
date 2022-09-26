@@ -1,4 +1,4 @@
-using EfCoreEntityFrameworkCore;
+using EntityFrameworkCore;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Simple.Application;
