@@ -11,9 +11,9 @@ public class AuthDbContext : MasterDbContext<AuthDbContext>
 {
     public DbSet<SimpleRole> SimpleRole { get; set; } = null!;
 
-    public DbSet<UserRole> UserRole { get; set; } = null!;
+    public DbSet<UserRoleFunction> UserRoleFunction { get; set; } = null!;
 
-    public DbSet<MenuRole> MenuRole { get; set; } = null!;
+    public DbSet<MenuRoleFunction> MenuRole { get; set; } = null!;
 
     public DbSet<Menu> Menu { get; set; } = null!;
 

@@ -2,7 +2,7 @@
 
 namespace Simple.Auth.Domain.Roles;
 
-public class UserRole : Entity
+public class UserRoleFunction : Entity
 {
     /// <summary>
     /// 关联指定用户

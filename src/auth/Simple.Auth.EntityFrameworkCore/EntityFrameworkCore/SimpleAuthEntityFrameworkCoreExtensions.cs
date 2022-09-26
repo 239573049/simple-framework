@@ -22,9 +22,9 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
             x.Property(x=>x.IsPrivate).HasComment("是否私有 私有无法删除");
         });
 
-        builder.Entity<UserRole>(x =>
+        builder.Entity<UserRoleFunction>(x =>
         {
-            x.ToTable("UserRoles");
+            x.ToTable("UserRoleFunctions");
 
             x.HasIndex(x => x.Id);
             x.HasKey(x => x.Id);
@@ -34,9 +34,9 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
             x.Property(x => x.UserId).HasComment("用户id");
         });
 
-        builder.Entity<MenuRole>(x =>
+        builder.Entity<MenuRoleFunction>(x =>
         {
-            x.ToTable("MenuRoles");
+            x.ToTable("MenuRoleFunctions");
             
             x.HasIndex(x => x.Id);
             x.HasKey(x => x.Id);

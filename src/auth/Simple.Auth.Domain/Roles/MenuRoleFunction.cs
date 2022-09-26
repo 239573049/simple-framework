@@ -5,7 +5,7 @@ namespace Simple.Auth.Domain.Roles;
 /// <summary>
 /// 菜单角色配置
 /// </summary>
-public class MenuRole : Entity
+public class MenuRoleFunction : Entity
 {
     /// <summary>
     /// 关联菜单id
