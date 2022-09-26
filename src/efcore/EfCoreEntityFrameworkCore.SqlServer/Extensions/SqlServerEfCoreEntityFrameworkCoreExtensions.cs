@@ -8,7 +8,7 @@ namespace EfCoreEntityFrameworkCore.SqlServer.Extensions;
 
 public static class SqlServerEfCoreEntityFrameworkCoreExtensions
 {
-    public static IServiceCollection AddMysqlEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services)
+    public static IServiceCollection AddSqlServerEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services)
         where TDbContext : MasterDbContext<TDbContext>
     {
         var connectString = typeof(TDbContext).GetCustomAttribute<ConnectionStringNameAttribute>();

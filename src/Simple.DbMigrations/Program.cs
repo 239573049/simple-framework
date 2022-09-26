@@ -11,7 +11,6 @@ IHostBuilder host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(((context, services) =>
     {
         services.AddModuleApplication<SimpleDbMigrationsModule>();
-        
     }));
 
 host.RunConsoleAsync();
