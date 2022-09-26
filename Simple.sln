@@ -44,6 +44,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.Domain.Shared",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.EntityFrameworkCore", "src\auth\Simple.Auth.EntityFrameworkCore\Simple.Auth.EntityFrameworkCore.csproj", "{93D657F1-BC8F-4CD0-8321-0FFD35A98810}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreEntityFrameworkCore.Mysql", "src\efcore\EfCoreEntityFrameworkCore.Mysql\EfCoreEntityFrameworkCore.Mysql.csproj", "{7B49EFB2-5253-4382-A8F0-0E818B62233D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreEntityFrameworkCore.SqlServer", "src\efcore\EfCoreEntityFrameworkCore.SqlServer\EfCoreEntityFrameworkCore.SqlServer.csproj", "{D6F78F86-58CB-4640-B994-370331CB3F44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +74,8 @@ Global
 		{AE2BC558-E0CA-4DF1-8247-688AEDF54991} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 		{1CF34D7A-896C-4506-B2C0-959F7661C8DB} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 		{93D657F1-BC8F-4CD0-8321-0FFD35A98810} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
+		{7B49EFB2-5253-4382-A8F0-0E818B62233D} = {EEA93EB1-B0BA-4579-9CA8-F46AA0C918B5}
+		{D6F78F86-58CB-4640-B994-370331CB3F44} = {EEA93EB1-B0BA-4579-9CA8-F46AA0C918B5}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7E95713C-9EF4-4162-8E10-F371C44411F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -136,5 +142,13 @@ Global
 		{93D657F1-BC8F-4CD0-8321-0FFD35A98810}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D657F1-BC8F-4CD0-8321-0FFD35A98810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D657F1-BC8F-4CD0-8321-0FFD35A98810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B49EFB2-5253-4382-A8F0-0E818B62233D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B49EFB2-5253-4382-A8F0-0E818B62233D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B49EFB2-5253-4382-A8F0-0E818B62233D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B49EFB2-5253-4382-A8F0-0E818B62233D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F78F86-58CB-4640-B994-370331CB3F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F78F86-58CB-4640-B994-370331CB3F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F78F86-58CB-4640-B994-370331CB3F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F78F86-58CB-4640-B994-370331CB3F44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

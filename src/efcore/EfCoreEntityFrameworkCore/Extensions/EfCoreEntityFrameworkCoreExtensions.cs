@@ -1,4 +1,5 @@
-﻿using EfCoreEntityFrameworkCore.Core;
+﻿using System;
+using EfCoreEntityFrameworkCore.Core;
 using EfCoreEntityFrameworkCore.Middlewares;
 using EfCoreEntityFrameworkCore.Options;
 using Microsoft.AspNetCore.Builder;
@@ -16,13 +17,16 @@ namespace EfCoreEntityFrameworkCore
         /// 注册efCore基础服务
         /// </summary>
         /// <param name="services"></param>
+        /// <param name="optionsAction"></param>
+        /// <param name="lifetime"></param>
         /// <typeparam name="TDbContext"></typeparam>
         /// <returns></returns>
-        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services)
+        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services,Action<DbContextOptionsBuilder>? optionsAction = null,
+            ServiceLifetime lifetime = ServiceLifetime.Singleton)
             where TDbContext : DbContext
         {
             ConfigureOptions(services);
-            ConfigureDbContext<TDbContext>(services);
+            ConfigureDbContext<TDbContext>(services,optionsAction,lifetime);
 
             // 注入工作单元
             services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork<TDbContext>));
@@ -34,15 +38,17 @@ namespace EfCoreEntityFrameworkCore
         /// 注入SqlServer的DbContext
         /// </summary>
         /// <param name="services"></param>
+        /// <param name="optionsAction"></param>
+        /// <param name="lifetime"></param>
         /// <typeparam name="TDbContext"></typeparam>
-        private static void ConfigureDbContext<TDbContext>(IServiceCollection services)
+        private static void ConfigureDbContext<TDbContext>(IServiceCollection services,Action<DbContextOptionsBuilder>? optionsAction = null,
+            ServiceLifetime lifetime = ServiceLifetime.Singleton)
             where TDbContext : DbContext
         {
             var simpleDbContextOptions =
                 services.BuildServiceProvider().GetRequiredService<IOptions<SimpleDbContextOptions>>().Value;
 
-            services.AddDbContextFactory<TDbContext>(
-                options => options.UseSqlServer(simpleDbContextOptions.Default), ServiceLifetime.Scoped);
+            services.AddDbContextFactory<TDbContext>(optionsAction,lifetime);
             
         }
 

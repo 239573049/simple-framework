@@ -1,10 +1,12 @@
 ﻿using System.Reflection;
 using EfCoreEntityFrameworkCore;
+using EfCoreEntityFrameworkCore.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Users;
 
 namespace Simple.EntityFrameworkCore;
 
+[ConnectionStringName]
 public class SimpleDbContext : MasterDbContext<SimpleDbContext>
 {
     public DbSet<UserInfo>? UserInfo { get; set; }

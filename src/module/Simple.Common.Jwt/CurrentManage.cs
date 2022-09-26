@@ -56,7 +56,7 @@ public class CurrentManage : ICurrentManage, ITransientDependency
     /// <inheritdoc />
     public T? UserInfo<T>()
     {
-        var userInfo = GetClaimValueByType(Constant.User)?.FirstOrDefault();
+        var userInfo = GetClaimValueByType(ClaimTypes.Sid)?.FirstOrDefault();
         return string.IsNullOrEmpty(userInfo) ? default : JsonConvert.DeserializeObject<T>(userInfo);
     }
 

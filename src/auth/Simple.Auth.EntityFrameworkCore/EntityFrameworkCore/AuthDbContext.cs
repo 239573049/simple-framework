@@ -1,10 +1,13 @@
 using EfCoreEntityFrameworkCore;
+using EfCoreEntityFrameworkCore.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
 using Simple.Auth.Domain.Roles;
+using Token.Module.Attributes;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 
+[ConnectionStringName]
 public class AuthDbContext : MasterDbContext<AuthDbContext>
 {
     public DbSet<SimpleRole> SimpleRole { get; set; } = null!;
