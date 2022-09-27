@@ -16,15 +16,17 @@ public static class MysqlEfCoreEntityFrameworkCoreExtensions
         var configuration = services.GetService<IConfiguration>();
         var connectString = typeof(TDbContext).GetCustomAttribute<ConnectionStringNameAttribute>();
 
-        if (string.IsNullOrEmpty(connectString?.ConnectionString))
+        var connectionString = connectString?.ConnectionString ?? "Default";
+
+        if(string.IsNullOrEmpty(connectionString))
         {
-            throw new ArgumentNullException(connectString?.ConnectionString);
+            throw new ArgumentNullException(connectionString);
         }
 
 
         services.AddEfCoreEntityFrameworkCore<TDbContext>(x =>
         {
-            x.UseMySql(configuration.GetConnectionString(connectString.ConnectionString),
+            x.UseMySql(configuration.GetConnectionString(connectionString),
                 new MySqlServerVersion(version));
         }, ServiceLifetime.Scoped);
 

@@ -1,16 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Simple.DbMigrations;
 using Token.Module.Extensions;
 
-IHostBuilder host = Host.CreateDefaultBuilder(args)
-    .ConfigureAppConfiguration((configure) =>
-    {
-        configure.AddJsonFile("appsettings.json").Build();
-    })
-    .ConfigureServices(((context, services) =>
-    {
-        services.AddModuleApplication<SimpleDbMigrationsModule>();
-    }));
+var builder = WebApplication.CreateBuilder(args);
 
-host.RunConsoleAsync();
+builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+await builder.Services.AddModuleApplication<SimpleDbMigrationsModule>();
+
+var app = builder.Build();
+
+app.InitializeApplication();
+
+app.MapControllers();
+
+app.Run();

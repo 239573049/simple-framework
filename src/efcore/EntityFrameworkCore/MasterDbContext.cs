@@ -13,12 +13,8 @@ namespace EntityFrameworkCore
     public abstract class MasterDbContext<TDbContext> : DbContext
         where TDbContext : DbContext
     {
-        private readonly SimpleDbContextOptions _simpleDbContextOptions;
-
         protected MasterDbContext(DbContextOptions<TDbContext> options) : base(options)
         {
-            _simpleDbContextOptions = ServiceProviderHelper.ServiceProvider
-                .GetService<IOptions<SimpleDbContextOptions>>().Value;
 
         }
 
@@ -42,8 +38,6 @@ namespace EntityFrameworkCore
         {
 
             ConfigureSoftDelete(builder);
-
-            ConfigureTenant(builder);
         }
 
         /// <summary>
@@ -52,9 +46,6 @@ namespace EntityFrameworkCore
         /// <param name="builder"></param>
         private void ConfigureSoftDelete(ModelBuilder builder)
         {
-            if (!_simpleDbContextOptions.SoftDelete)
-                return;
-
             foreach (var entityType in builder.Model.GetEntityTypes())
             {
                 //判断是否继承了软删除类
@@ -71,50 +62,6 @@ namespace EntityFrameworkCore
                     Expression.Constant(false));
 
                 builder.Entity(entityType.ClrType).HasQueryFilter(Expression.Lambda(body, parameter));
-            }
-        }
-
-
-        private void ConfigureTenant(ModelBuilder builder)
-        {
-            if (!_simpleDbContextOptions.Tenant)
-                return;
-
-            var tenant = ServiceProviderHelper.ServiceProvider.GetRequiredService<ITenantManager>();
-
-            const string tenanted = nameof(ITenant.TenantId);
-
-            foreach (var entityType in builder.Model.GetEntityTypes())
-            {
-                // 是否继承租户基础类
-                if (!typeof(ITenant).IsAssignableFrom(entityType.ClrType)) continue;
-
-                builder.Entity(entityType.ClrType).Property<Guid?>(tenanted);
-
-                var parameter = Expression.Parameter(entityType.ClrType, tenanted);
-
-                if (tenant.GetTenantId() != null)
-                {
-                    // 添加租户过滤器
-                    var body = Expression.Equal(
-                        Expression.Call(typeof(EF), nameof(EF.Property),
-                            new[] { typeof(Guid) }, parameter,
-                            Expression.Constant(tenanted)),
-                        Expression.Constant(tenant.GetTenantId()));
-
-                    builder.Entity(entityType.ClrType).HasQueryFilter(Expression.Lambda(body, parameter));
-                }
-                else
-                {
-                    // 添加租户过滤器
-                    var body = Expression.Equal(
-                        Expression.Call(typeof(EF), nameof(EF.Property),
-                            new[] { typeof(Guid?) }, parameter,
-                            Expression.Constant(tenanted)),
-                        Expression.Constant(null));
-
-                    builder.Entity(entityType.ClrType).HasQueryFilter(Expression.Lambda(body, parameter));
-                }
             }
         }
     }

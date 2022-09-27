@@ -9,7 +9,9 @@ public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext
 {
     public EfCoreMigrationDbContext(DbContextOptions<EfCoreMigrationDbContext> options) : base(options)
     {
+
     }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

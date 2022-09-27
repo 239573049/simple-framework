@@ -15,7 +15,7 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
 
     public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString("N");
 
-    public Dictionary<string,object> ExtraProperties { get; protected set; }
+    public  Dictionary<string,object> ExtraProperties { get; protected set; }
     
     protected AggregateRoot()
     {

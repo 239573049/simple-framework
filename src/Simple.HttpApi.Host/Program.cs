@@ -1,4 +1,3 @@
-using EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
 using Simple.HttpApi.Host;

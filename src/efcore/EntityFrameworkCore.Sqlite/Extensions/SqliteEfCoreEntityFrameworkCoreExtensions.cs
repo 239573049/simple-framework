@@ -9,21 +9,23 @@ namespace EntityFrameworkCore.Sqlite.Extensions;
 
 public static class SqliteEfCoreEntityFrameworkCoreExtensions
 {
-    public static IServiceCollection AddSqliteEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services,
-        Version version)
+    public static IServiceCollection AddSqliteEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services)
         where TDbContext : MasterDbContext<TDbContext>
     {
         var configuration = services.GetService<IConfiguration>();
         var connectString = typeof(TDbContext).GetCustomAttribute<ConnectionStringNameAttribute>();
 
-        if (string.IsNullOrEmpty(connectString?.ConnectionString))
+        var connectionString = connectString?.ConnectionString ?? "Default";
+
+        if(string.IsNullOrEmpty(connectionString))
         {
-            throw new ArgumentNullException(connectString?.ConnectionString);
+            throw new ArgumentNullException(connectionString);
         }
 
         services.AddEfCoreEntityFrameworkCore<TDbContext>(x =>
         {
-            x.UseSqlite(configuration.GetConnectionString(connectString.ConnectionString));
+            x.UseSqlite(configuration.GetConnectionString(connectionString));
+
         }, ServiceLifetime.Scoped);
 
         return services;
