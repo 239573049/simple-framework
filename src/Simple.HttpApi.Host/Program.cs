@@ -1,3 +1,4 @@
+using EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
 using Simple.HttpApi.Host;
@@ -20,7 +21,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
 
-builder.Services.AddModuleApplication<SimpleHttpApiHostModule>();
+await builder.Services.AddModuleApplication<SimpleHttpApiHostModule>();
+builder.Services.AddUnitOfWorkMiddleware();
+
 var app = builder.Build();
 
 app.InitializeApplication();

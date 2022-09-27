@@ -14,8 +14,7 @@ public class SimpleHttpApiHostModule : TokenModule
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
-        services.AddEndpointsApiExplorer()
-            .AddUnitOfWorkMiddleware();
+        services.AddEndpointsApiExplorer();
 
         ConfigureSwaggerServices(services);
         // 添加过滤器

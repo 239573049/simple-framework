@@ -1,10 +1,11 @@
 using EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
+using Token.Module.Dependencys;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 
-public class EfCoreMenuRepository : Repository<AuthDbContext, Menu, Guid>, IMenuRepository
+public class EfCoreMenuRepository : Repository<AuthDbContext, Menu, Guid>, IMenuRepository ,ITransientDependency
 {
     public EfCoreMenuRepository(AuthDbContext dbContext) : base(dbContext)
     {

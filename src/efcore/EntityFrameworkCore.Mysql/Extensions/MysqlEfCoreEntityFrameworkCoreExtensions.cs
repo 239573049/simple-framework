@@ -3,6 +3,7 @@ using EntityFrameworkCore.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Token.Module.Extensions;
 
 namespace EntityFrameworkCore.Mysql.Extensions;
 
@@ -12,6 +13,7 @@ public static class MysqlEfCoreEntityFrameworkCoreExtensions
         Version version)
         where TDbContext : MasterDbContext<TDbContext>
     {
+        var configuration = services.GetService<IConfiguration>();
         var connectString = typeof(TDbContext).GetCustomAttribute<ConnectionStringNameAttribute>();
 
         if (string.IsNullOrEmpty(connectString?.ConnectionString))
@@ -19,7 +21,6 @@ public static class MysqlEfCoreEntityFrameworkCoreExtensions
             throw new ArgumentNullException(connectString?.ConnectionString);
         }
 
-        var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
 
         services.AddEfCoreEntityFrameworkCore<TDbContext>(x =>
         {

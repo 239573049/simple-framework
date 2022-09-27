@@ -16,7 +16,7 @@ namespace EntityFrameworkCore.Core;
 /// <typeparam name="TDbContext"></typeparam>
 /// <typeparam name="TEntity"></typeparam>
 /// <typeparam name="TKey"></typeparam>
-public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey>, ITransientDependency
+public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey>
     where TEntity : Entity<TKey>
     where TDbContext : DbContext
 {

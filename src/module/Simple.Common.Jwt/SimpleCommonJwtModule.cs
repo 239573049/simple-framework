@@ -10,7 +10,6 @@ using Token.Module.Extensions;
 
 namespace Simple.Common.Jwt;
 
-[RunOrder(-1)]
 public class SimpleCommonJwtModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
