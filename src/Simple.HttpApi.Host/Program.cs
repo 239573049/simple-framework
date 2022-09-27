@@ -22,7 +22,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog();
 
 await builder.Services.AddModuleApplication<SimpleHttpApiHostModule>();
-builder.Services.AddUnitOfWorkMiddleware();
 
 var app = builder.Build();
 
