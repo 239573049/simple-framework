@@ -4,7 +4,7 @@
 
 -----
 
-The document language: [[English](README.en.Md)] | [[简体中文](README.Md)]
+The document language: [[English](README.en.md)] | [[简体中文](README.md)]
 
 
 
