@@ -52,3 +52,9 @@ docker build -f ./src/Simple.HttpApi.Host/Dockerfile -t simple .
 ```shell
 docker build -f ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile -t auth .
 ```
+
+## 🛞使用说明
+
+***首先需要修改 Simple.HttpApi.Host，Simple.DbMigrations，Simple.Auth.HttpApi.Host的项目下的appsettings.json的mysql数据库连接字符串***
+
+***在Simple.DbMigrations生成迁移文件然后更新迁移文件***
