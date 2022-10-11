@@ -49,9 +49,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.SqlServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.Sqlite", "src\efcore\EntityFrameworkCore.Sqlite\EntityFrameworkCore.Sqlite.csproj", "{B3A9BAC3-E0CA-45AB-BF64-F94BCDF6B38A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.DbMigrations", "src\Simple.DbMigrations\Simple.DbMigrations.csproj", "{065BBDBC-5E0D-495C-8606-FD59FB33793B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.DbMigrations", "src\Simple.DbMigrations\Simple.DbMigrations.csproj", "{065BBDBC-5E0D-495C-8606-FD59FB33793B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.HttpApi.Host", "src\auth\Simple.Auth.HttpApi.Host\Simple.Auth.HttpApi.Host.csproj", "{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Auth.HttpApi.Host", "src\auth\Simple.Auth.HttpApi.Host\Simple.Auth.HttpApi.Host.csproj", "{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Simple.HttpApi.Host", "test\Test.Simple.HttpApi.Host\Test.Simple.HttpApi.Host.csproj", "{F30C0583-B857-42F1-8F70-3206F0B4BC95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +141,10 @@ Global
 		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F30C0583-B857-42F1-8F70-3206F0B4BC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30C0583-B857-42F1-8F70-3206F0B4BC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30C0583-B857-42F1-8F70-3206F0B4BC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30C0583-B857-42F1-8F70-3206F0B4BC95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,6 +173,7 @@ Global
 		{B3A9BAC3-E0CA-45AB-BF64-F94BCDF6B38A} = {EEA93EB1-B0BA-4579-9CA8-F46AA0C918B5}
 		{065BBDBC-5E0D-495C-8606-FD59FB33793B} = {DEF12350-E216-4902-8770-A8B52CFFFD0B}
 		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
+		{F30C0583-B857-42F1-8F70-3206F0B4BC95} = {DA78A7E8-A30B-4DA3-AC02-041224758BB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61CAEE30-44D2-4CAD-B360-EB438F1E24A2}
