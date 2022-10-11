@@ -1,6 +1,6 @@
 using Serilog;
 using Serilog.Events;
-using Simple.HttpApi.Host;
+using Simple.Auth.HttpApi.Host;
 using Token.Module.Extensions;
 
 Log.Logger = new LoggerConfiguration()
@@ -8,11 +8,11 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .ReadFrom.Configuration(new ConfigurationBuilder()
         .AddJsonFile("appsettings.json")
-        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json",// æ ¹æ®çŽ¯å¢ƒå˜é‡åŠ è½½æŒ‡å®šé…ç½®
+        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json",// ¸ù¾Ý»·¾³±äÁ¿¼ÓÔØÖ¸¶¨ÅäÖÃ
             optional: true).Build())
     .Enrich.FromLogContext()
     .WriteTo.Async(c => c.File(Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "/log/", "log"),
-        rollingInterval: RollingInterval.Day)) // å†™å…¥æ—¥å¿—åˆ°æ–‡ä»¶
+        rollingInterval: RollingInterval.Day)) // Ð´ÈëÈÕÖ¾µ½ÎÄ¼þ
     .WriteTo.Async(c => c.Console())
     .CreateLogger();
 
@@ -20,12 +20,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
 
-await builder.Services.AddModuleApplicationAsync<SimpleHttpApiHostModule>();
+var services = builder.Services;
+
+await services.AddModuleApplicationAsync<SimpleAuthHttpApiHostModule>();
 
 var app = builder.Build();
 
 app.InitializeApplication();
-
-app.MapControllers();
 
 app.Run();

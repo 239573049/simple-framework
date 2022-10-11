@@ -80,8 +80,6 @@ namespace EntityFrameworkCore.Core
                     case EntityState.Added:
                         SetCreation(entry);
                         break;
-                    default:
-                        break;
                 }
             }
         }

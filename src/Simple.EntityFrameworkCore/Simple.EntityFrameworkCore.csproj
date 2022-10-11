@@ -8,11 +8,11 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-      <PackageReference Include="Token.Module" Version="1.2.6" />
+      <PackageReference Include="Token.Module" Version="1.2.8" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\efcore\EntityFrameworkCore.Sqlite\EntityFrameworkCore.Sqlite.csproj" />
+      <ProjectReference Include="..\efcore\EntityFrameworkCore.Mysql\EntityFrameworkCore.Mysql.csproj" />
     </ItemGroup>
 
 </Project>

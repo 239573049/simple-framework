@@ -32,6 +32,7 @@ public class SimpleRoleService : ISimpleRoleService, ITransientDependency
         await _simpleRoleRepository.DeleteAsync(id);
     }
 
+    /// <inheritdoc />
     public async Task<SimpleRoleDto> GetRoleAsync(Guid id)
     {
         var result = await _simpleRoleRepository.FirstAsync(x => x.Id == id);

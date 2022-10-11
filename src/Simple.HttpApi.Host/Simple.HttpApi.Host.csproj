@@ -16,10 +16,4 @@
       <ProjectReference Include="..\Simple.Application\Simple.Application.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="Simple.db">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
 </Project>

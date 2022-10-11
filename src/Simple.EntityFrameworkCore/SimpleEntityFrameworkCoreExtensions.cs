@@ -14,7 +14,7 @@ public static class SimpleEntityFrameworkCoreExtensions
             
             x.AddSimpleConfigure();
 
-            x.HasIndex(info => info.Id);
+            x.HasIndex(info => info.Id).IsUnique();
         });
         
         return builder;

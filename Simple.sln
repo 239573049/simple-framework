@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.Sqlite"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.DbMigrations", "src\Simple.DbMigrations\Simple.DbMigrations.csproj", "{065BBDBC-5E0D-495C-8606-FD59FB33793B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.HttpApi.Host", "src\auth\Simple.Auth.HttpApi.Host\Simple.Auth.HttpApi.Host.csproj", "{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{065BBDBC-5E0D-495C-8606-FD59FB33793B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{065BBDBC-5E0D-495C-8606-FD59FB33793B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{065BBDBC-5E0D-495C-8606-FD59FB33793B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,6 +166,7 @@ Global
 		{D6F78F86-58CB-4640-B994-370331CB3F44} = {EEA93EB1-B0BA-4579-9CA8-F46AA0C918B5}
 		{B3A9BAC3-E0CA-45AB-BF64-F94BCDF6B38A} = {EEA93EB1-B0BA-4579-9CA8-F46AA0C918B5}
 		{065BBDBC-5E0D-495C-8606-FD59FB33793B} = {DEF12350-E216-4902-8770-A8B52CFFFD0B}
+		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61CAEE30-44D2-4CAD-B360-EB438F1E24A2}
