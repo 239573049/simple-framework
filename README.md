@@ -31,7 +31,7 @@
 
 /src/efcore/EfCoreEntityFrameworkCore.Sqlite   // Sqlite数据库模块实现
 
-/src/auth           授权服务 （单独部署）
+/src/auth // 授权服务 （单独部署）
 
  
 ## 🍬基本功能
