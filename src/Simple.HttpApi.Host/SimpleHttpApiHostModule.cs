@@ -29,7 +29,10 @@ public class SimpleHttpApiHostModule : TokenModule
         });
     }
     
-    
+    /// <summary>
+    /// 配置swagger
+    /// </summary>
+    /// <param name="services"></param>
     private static void ConfigureSwaggerServices(IServiceCollection services)
     {
         services.AddSwaggerDocument(config =>
@@ -62,8 +65,6 @@ public class SimpleHttpApiHostModule : TokenModule
             app.UseOpenApi();
             app.UseSwaggerUi3();
         }
-
-        app.UseHttpsRedirection();
 
         app.UseAuthorization();
 
