@@ -1,4 +1,5 @@
-﻿using EntityFrameworkCore.Sqlite.Extensions;
+﻿using System;
+using EntityFrameworkCore.Mysql.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Auth.EntityFrameworkCore;
 using Simple.EntityFrameworkCore;
@@ -13,6 +14,6 @@ public class EntityFrameworkCoreDbMigrationsModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddSqliteEfCoreEntityFrameworkCore<EfCoreMigrationDbContext>();
+        services.AddMysqlEfCoreEntityFrameworkCore<EfCoreMigrationDbContext>(new Version(8,0,10));
     }
 }

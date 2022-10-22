@@ -4,7 +4,7 @@ using Token.Module.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-await builder.Services.AddModuleApplication<SimpleDbMigrationsModule>();
+await builder.Services.AddModuleApplicationAsync<SimpleDbMigrationsModule>();
 
 var app = builder.Build();
 

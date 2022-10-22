@@ -1,37 +1,72 @@
 # SimpleFramework
 
 -----
-document language: [[English](README.en.md)] |[[简体中文](README.md)]
 
-## 🎈brief introduction
-Simplified framework, encapsulates the EFcore warehouse, work unit
-The frame structure is clear
+The document language: [[English](README.en.md)] | [[简体中文](README.md)]
 
-## 🎞project structure
+## 🎈 is introduced
 
-./src                                        // Project Folder
+Simplified framework encapsulates EFcore warehousing, work units
 
- --/src/Simple.DbMigrations                 // Migrate the file management project
+Clear frame structure
 
- --/src/Simple.EntityFrameworkCore          // Repository implementation and Dbcontext for the current domain
+## 🎞 ️ project structure
 
- --/src/Simple.Application.Contract         // contract
+/src // Project folder
 
- --/src/Simple.Application                  // Business Logic Layer
+/src/Simple.DbMigrations // Migrate file management projects
 
- --/src/efcore                              // Some EntityFrameworkCore encapsulation of the framework
+./src/Simple EntityFrameworkCore / / warehousing implementation in the field of current and Dbcontext
 
- --/src/efcore/EfCoreEntityFrameworkCore                // EntityFrameworkCoreBased on packaging
+/src/Simple. Application. Contract / / Contract
 
- --/src/efcore/EfCoreEntityFrameworkCore.DbMigrations   // All EntityFrameworkCore migration files of the project are stored
+/src/ simp. Application // Business layer
 
- --/src/efcore/EfCoreEntityFrameworkCore.Mysql   // Mysql module implementation
- 
- --/src/efcore/EfCoreEntityFrameworkCore.SqlServer   // SqlServer module implementation
- 
-## 🍬basic function
-1. Implements the basic soft delete function 
-2. Implement creator delete person update person assignment
-3. Implementing tenant functionality (not tested)
+/src/efcore // Some EfCore packaging for the framework
+
+/src/efcore EfCoreEntityFrameworkCore / / efcore based encapsulation
+
+./src/efcore/EfCoreEntityFrameworkCore DbMigrations / / project all efcore migration file storage
+
+./src/efcore EfCoreEntityFrameworkCore/Mysql / / Mysql database module implementation
+
+/src/efcore/EfCoreEntityFrameworkCore. Essentially a / / used database module implementation
+
+. /src/efcore/EfCoreEntityFrameworkCore Sqlite / / Sqlite database module implementation
+
+/src/auth // Licensing service (standalone deployment)
+
+
+## 🍬 Basic functions
+
+1. Implement the basic soft delete function
+
+2. Implement the creator to delete the person and update the person assignment
+
+3. Implement tenant functions (not tested)
+
 4. Implement basic authorization services
+
 5. Implement basic user functions
+
+
+
+## 🏴‍☠️ Build the project
+
+Build the Docker image that packages the Simple project
+
+```shell
+docker build -f ./src/Simple.HttpApi.Host/Dockerfile -t simple .
+```
+
+Build the Docker image that packages the Simple-Auth project
+
+```shell
+docker build -f ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile -t auth .
+```
+
+## 🛞instructions
+
+***First you need to modify the appsettings.json mysql database connection string under the simply.httpapi.host, simply.dbmigrations, simply.auth.httpapi.host project*** 
+
+***Generate the migration file at Simple.DbMigrations and then update the migration file***

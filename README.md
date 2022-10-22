@@ -9,25 +9,30 @@
 
 ## 🎞️项目结构
 
-./src                                        // 项目文件夹
+/src                                        // 项目文件夹
 
- --/src/Simple.DbMigrations                 // 迁移文件管理项目
+/src/Simple.DbMigrations                 // 迁移文件管理项目
 
- --/src/Simple.EntityFrameworkCore          // 当前领域的仓储实现和Dbcontext 
+/src/Simple.EntityFrameworkCore          // 当前领域的仓储实现和Dbcontext 
 
- --/src/Simple.Application.Contract         // 契约
+/src/Simple.Application.Contract         // 契约
 
- --/src/Simple.Application                  // 业务层
+/src/Simple.Application                  // 业务层
 
- --/src/efcore                              // 框架的一些EfCore封装
+/src/efcore                              // 框架的一些EfCore封装
 
- --/src/efcore/EfCoreEntityFrameworkCore                // EfCore基础封装
+/src/efcore/EfCoreEntityFrameworkCore                // EfCore基础封装
 
- --/src/efcore/EfCoreEntityFrameworkCore.DbMigrations   // 项目所有EfCore迁移文件存放
+/src/efcore/EfCoreEntityFrameworkCore.DbMigrations   // 项目所有EfCore迁移文件存放
 
- --/src/efcore/EfCoreEntityFrameworkCore.Mysql   // Mysql模块实现
+ /src/efcore/EfCoreEntityFrameworkCore.Mysql   // 数据库Mysql模块实现
  
- --/src/efcore/EfCoreEntityFrameworkCore.SqlServer   // SqlServer模块实现
+/src/efcore/EfCoreEntityFrameworkCore.SqlServer   // SqlServer数据库模块实现
+
+/src/efcore/EfCoreEntityFrameworkCore.Sqlite   // Sqlite数据库模块实现
+
+/src/auth // 授权服务 （单独部署）
+
  
 ## 🍬基本功能
 1. 实现基本软删功能 
@@ -35,3 +40,21 @@
 3. 实现租户功能（未测试）
 4. 实现基本的授权服务
 5. 实现基本用户功能
+
+## 🏴‍☠️构建项目
+
+构建打包 Simple项目的Docker镜像
+```shell
+docker build -f ./src/Simple.HttpApi.Host/Dockerfile -t simple .
+```
+
+构建打包 Simple-Auth项目的Docker镜像
+```shell
+docker build -f ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile -t auth .
+```
+
+## 🛞使用说明
+
+***首先需要修改 Simple.HttpApi.Host，Simple.DbMigrations，Simple.Auth.HttpApi.Host的项目下的appsettings.json的mysql数据库连接字符串***
+
+***在Simple.DbMigrations生成迁移文件然后更新迁移文件***

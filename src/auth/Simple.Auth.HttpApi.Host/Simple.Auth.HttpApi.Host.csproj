@@ -4,10 +4,15 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>f30b6ba9-fcb8-4dd4-b9c5-d330d367f282</UserSecretsId>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <UserSecretsId>3bd3e46b-1fd2-4da7-8d6d-93b13c94067d</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <DockerfileContext>..\..</DockerfileContext>
+        <DockerfileContext>..\..\..</DockerfileContext>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Simple.Auth.Application\Simple.Auth.Application.csproj" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
@@ -15,9 +20,4 @@
         <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
         <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Simple.Application\Simple.Application.csproj" />
-    </ItemGroup>
-
 </Project>
