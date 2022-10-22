@@ -2,7 +2,7 @@
 
 namespace Simple.Auth.Domain.Roles;
 
-public class SimpleRole : AggregateRoot<Guid>, ITenant
+public class Role : AggregateRoot<Guid>, ITenant
 {
     /// <summary>
     /// 角色名称

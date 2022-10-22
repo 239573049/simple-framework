@@ -9,7 +9,7 @@ namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 [ConnectionStringName]
 public class AuthDbContext : MasterDbContext<AuthDbContext>
 {
-    public DbSet<SimpleRole> SimpleRole { get; set; } = null!;
+    public DbSet<Role> SimpleRole { get; set; } = null!;
 
     public DbSet<UserRoleFunction> UserRoleFunction { get; set; } = null!;
 

@@ -6,12 +6,12 @@ using Token.Module.Dependencys;
 namespace Simple.Auth.Application.Roles;
 
 /// <inheritdoc />
-public class SimpleRoleService : ISimpleRoleService, ITransientDependency
+public class SimpleRoleService : IRoleService, ITransientDependency
 {
-    private readonly ISimpleRoleRepository _simpleRoleRepository;
+    private readonly IRoleRepository _simpleRoleRepository;
     private readonly IMapper _mapper;
 
-    public SimpleRoleService(ISimpleRoleRepository simpleRoleRepository, IMapper mapper)
+    public SimpleRoleService(IRoleRepository simpleRoleRepository, IMapper mapper)
     {
         _simpleRoleRepository = simpleRoleRepository;
         _mapper = mapper;
@@ -21,7 +21,7 @@ public class SimpleRoleService : ISimpleRoleService, ITransientDependency
     /// <inheritdoc />
     public async Task CreateRoleAsync(CreateRoleDto dto)
     {
-        var data = _mapper.Map<SimpleRole>(dto);
+        var data = _mapper.Map<Role>(dto);
 
         await _simpleRoleRepository.InsertAsync(data);
     }

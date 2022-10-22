@@ -3,7 +3,7 @@ namespace Simple.Auth.Application.Contract.Roles;
 /// <summary>
 /// 角色服务
 /// </summary>
-public interface ISimpleRoleService
+public interface IRoleService
 {
     /// <summary>
     /// 新增角色

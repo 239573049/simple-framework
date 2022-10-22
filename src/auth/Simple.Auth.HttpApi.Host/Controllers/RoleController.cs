@@ -8,11 +8,11 @@ namespace Simple.Auth.HttpApi.Host.Controllers;
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
-public class SimpleRoleController : ControllerBase
+public class RoleController : ControllerBase
 {
-    private readonly ISimpleRoleService _simpleRoleService;
+    private readonly IRoleService _simpleRoleService;
 
-    public SimpleRoleController(ISimpleRoleService simpleRoleService)
+    public RoleController(IRoleService simpleRoleService)
     {
         _simpleRoleService = simpleRoleService;
     }

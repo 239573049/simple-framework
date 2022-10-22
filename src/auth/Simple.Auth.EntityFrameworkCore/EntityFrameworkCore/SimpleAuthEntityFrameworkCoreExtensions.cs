@@ -10,9 +10,9 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
 {
     public static ModelBuilder ConfigureAuth(this ModelBuilder builder)
     {
-        builder.Entity<SimpleRole>(x=>
+        builder.Entity<Role>(x=>
         {
-            x.ToTable("SimpleRoles");
+            x.ToTable("Roles");
             x.HasComment("角色");
             
             x.AddSimpleConfigure();
