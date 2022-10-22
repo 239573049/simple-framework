@@ -8,6 +8,6 @@
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
-    <license type="expression">MulanPSL-2.0</license>
+    <license type="expression">MIT</license>
   </metadata>
 </package>

@@ -23,6 +23,12 @@ dotnet new --install Simple.Framework
 dotnet new simple --name MyProjectName
 ```
 
+生成新模板包 (必须在 cmd 中执行)
+
+```shell
+nuget pack ./Simple.Framework.nuspec
+```
+
 ## 🎞️ 项目结构
 
 /src // 项目文件夹
