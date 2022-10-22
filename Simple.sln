@@ -53,7 +53,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.DbMigrations", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Auth.HttpApi.Host", "src\auth\Simple.Auth.HttpApi.Host\Simple.Auth.HttpApi.Host.csproj", "{E9364DE7-C4A2-4588-AEC3-9742E3DBC160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Simple.HttpApi", "test\Test.Simple.HttpApi\Test.Simple.HttpApi.csproj", "{D218F8D9-6197-4E0E-A1C4-F7F5D65874E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Simple.HttpApi", "test\Test.Simple.HttpApi\Test.Simple.HttpApi.csproj", "{D218F8D9-6197-4E0E-A1C4-F7F5D65874E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

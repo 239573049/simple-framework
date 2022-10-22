@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Simple",
+    "classifications": [
+        "Web",
+        "WebAPI"
+    ],
+    "identity": "Simple框架",
+    "name": "simple框架模板",
+    "shortName": "simple",
+    "sourceName": "Simple",
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    }
+}
