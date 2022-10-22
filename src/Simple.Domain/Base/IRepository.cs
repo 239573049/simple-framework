@@ -2,8 +2,28 @@
 
 namespace Simple.Domain.Base;
 
-public interface IRepository<TEntity,TKey>
+public interface IRepository<TEntity, TKey> : IRepository<TEntity>
     where TEntity : Entity<TKey>
+{
+    /// <summary>
+    /// 删除
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task DeleteAsync(TKey id, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// 批量删除
+    /// </summary>
+    /// <param name="ids"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task DeleteManyAsync(IEnumerable<TKey> ids, CancellationToken cancellationToken = default);
+}
+
+public interface IRepository<TEntity>
+    where TEntity : class
 {
     /// <summary>
     /// 返回满足条件的第一个元素
@@ -47,8 +67,8 @@ public interface IRepository<TEntity,TKey>
     /// <param name="predicate"></param>
     /// <returns></returns>
     Task<IQueryable<TEntity>> GetQueryAsync(Expression<Func<TEntity, bool>> predicate);
-    
-    
+
+
     Task<IQueryable<TResult>> GetQueryAsync<TResult>(Expression<Func<TEntity, bool>> predicate,
         Expression<Func<TEntity, TResult>> selector);
 
@@ -58,7 +78,7 @@ public interface IRepository<TEntity,TKey>
     /// <param name="entity"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<TEntity> InsertAsync(TEntity entity,CancellationToken cancellationToken = default);
+    Task<TEntity> InsertAsync(TEntity entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// 批量添加
@@ -68,22 +88,6 @@ public interface IRepository<TEntity,TKey>
     /// <returns></returns>
     Task InsertManyAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// 删除
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    Task DeleteAsync(TKey id, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// 批量删除
-    /// </summary>
-    /// <param name="ids"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    Task DeleteManyAsync(IEnumerable<TKey> ids, CancellationToken cancellationToken = default);
-    
     /// <summary>
     /// 删除
     /// </summary>
@@ -113,5 +117,4 @@ public interface IRepository<TEntity,TKey>
     /// <param name="entities"></param>
     /// <returns></returns>
     Task UpdateManyAsync(IEnumerable<TEntity> entities);
-    
 }

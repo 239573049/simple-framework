@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Simple.Domain.Base;
 
-namespace EntityFrameworkCore
+namespace EntityFrameworkCore.Extensions
 {
     public static class EfCoreEntityFrameworkCoreExtensions
     {

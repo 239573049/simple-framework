@@ -16,8 +16,43 @@ namespace EntityFrameworkCore.Core;
 /// <typeparam name="TDbContext"></typeparam>
 /// <typeparam name="TEntity"></typeparam>
 /// <typeparam name="TKey"></typeparam>
-public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntity, TKey>
+public abstract class Repository<TDbContext, TEntity, TKey> : Repository<TDbContext, TEntity>,
+    IRepository<TEntity, TKey>
     where TEntity : Entity<TKey>
+    where TDbContext : DbContext
+{
+    protected readonly TDbContext DbContext;
+    protected readonly DbSet<TEntity> DbSet;
+
+    protected Repository(TDbContext dbContext) : base(dbContext)
+    {
+        DbContext = dbContext;
+        DbSet = dbContext.Set<TEntity>();
+    }
+
+    public async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)
+    {
+        var entity = await DbSet.FirstOrDefaultAsync(x => x.Id.Equals(id), cancellationToken: cancellationToken);
+        if (entity != null)
+        {
+            DbSet.Remove(entity);
+        }
+    }
+
+    public async Task DeleteManyAsync(IEnumerable<TKey> ids, CancellationToken cancellationToken = default)
+    {
+        var entity = await DbSet.Where(x => ids.Contains(x.Id)).ToListAsync(cancellationToken: cancellationToken);
+
+        if (entity.Count > 0)
+        {
+            DbSet.RemoveRange(entity);
+        }
+    }
+
+}
+
+public abstract class Repository<TDbContext, TEntity> : IRepository<TEntity>
+    where TEntity : class
     where TDbContext : DbContext
 {
     protected readonly TDbContext DbContext;
@@ -74,25 +109,6 @@ public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntit
         await DbSet.AddRangeAsync(entities, cancellationToken);
     }
 
-    public async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)
-    {
-        var entity = await DbSet.FirstOrDefaultAsync(x => x.Id.Equals(id), cancellationToken: cancellationToken);
-        if (entity != null)
-        {
-            DbSet.Remove(entity);
-        }
-    }
-
-    public async Task DeleteManyAsync(IEnumerable<TKey> ids, CancellationToken cancellationToken = default)
-    {
-        var entity = await DbSet.Where(x => ids.Contains(x.Id)).ToListAsync(cancellationToken: cancellationToken);
-
-        if (entity.Count > 0)
-        {
-            DbSet.RemoveRange(entity);
-        }
-    }
-
     public Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
     {
         DbSet.Remove(entity);
@@ -117,5 +133,4 @@ public abstract class Repository<TDbContext, TEntity, TKey> : IRepository<TEntit
 
         return Task.CompletedTask;
     }
-
 }

@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkCore;
+using EntityFrameworkCore.Extensions;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Simple.Auth.Application;

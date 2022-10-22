@@ -4,6 +4,9 @@ using Simple.Application.Contract.User.Views;
 
 namespace Simple.HttpApi.Host.Controllers;
 
+/// <summary>
+/// 用户模块
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class UserInfoController : ControllerBase
@@ -33,7 +36,7 @@ public class UserInfoController : ControllerBase
     /// 获取所有用户
     /// </summary>
     /// <returns></returns>
-    [HttpGet]
+    [HttpGet("list")]
     public async Task<List<UserInfoDto>> GetListAsync()
     {
         return await _userInfoService.GetListAsync();

@@ -13,7 +13,7 @@ public abstract class Entity<TKey> : IEntity<TKey>
 
 public abstract class Entity : IEntity
 {
-    protected Entity(Guid id)
+    protected Entity(object id)
     {
         Id = id;
     }
@@ -22,5 +22,5 @@ public abstract class Entity : IEntity
     {
     }
 
-    public Guid Id { get; }
+    public object Id { get; }
 }

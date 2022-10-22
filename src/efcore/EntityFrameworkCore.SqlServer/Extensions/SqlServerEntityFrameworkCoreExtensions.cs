@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using EntityFrameworkCore.Attributes;
+using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

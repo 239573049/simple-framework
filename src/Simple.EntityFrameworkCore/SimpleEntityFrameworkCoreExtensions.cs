@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkCore;
+using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Users;
 
