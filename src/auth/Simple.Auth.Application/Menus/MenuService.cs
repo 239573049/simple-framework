@@ -34,7 +34,7 @@ public class MenuService : IMenuService, ITransientDependency
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<MenuTreeDto>> GetMenuTreeAsync(GetMenuInput input)
+    public async Task<List<MenuTreeDto>> GetTreeAsync(GetMenuInput input)
     {
         var userId = _currentManage.GetUserId();
         

@@ -10,26 +10,26 @@ public interface IRoleService
     /// </summary>
     /// <param name="dto"></param>
     /// <returns></returns>
-    Task CreateRoleAsync(CreateRoleDto dto);
+    Task CreateAsync(CreateRoleDto dto);
 
     /// <summary>
     /// 删除角色
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task DeleteRoleAsync(Guid id);
+    Task DeleteAsync(Guid id);
 
     /// <summary>
     /// 获取角色详情
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<SimpleRoleDto> GetRoleAsync(Guid id);
+    Task<SimpleRoleDto> GetAsync(Guid id);
 
     /// <summary>
     /// 获取角色列表
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    Task<List<SimpleRoleDto>> GetRoleListAsync(GetRoleInput input);
+    Task<List<SimpleRoleDto>> GetListAsync(GetRoleInput input);
 }

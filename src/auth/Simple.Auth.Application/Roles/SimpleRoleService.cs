@@ -19,7 +19,7 @@ public class SimpleRoleService : IRoleService, ITransientDependency
 
 
     /// <inheritdoc />
-    public async Task CreateRoleAsync(CreateRoleDto dto)
+    public async Task CreateAsync(CreateRoleDto dto)
     {
         var data = _mapper.Map<Role>(dto);
 
@@ -27,13 +27,13 @@ public class SimpleRoleService : IRoleService, ITransientDependency
     }
 
     /// <inheritdoc />
-    public async Task DeleteRoleAsync(Guid id)
+    public async Task DeleteAsync(Guid id)
     {
         await _simpleRoleRepository.DeleteAsync(id);
     }
 
     /// <inheritdoc />
-    public async Task<SimpleRoleDto> GetRoleAsync(Guid id)
+    public async Task<SimpleRoleDto> GetAsync(Guid id)
     {
         var result = await _simpleRoleRepository.FirstAsync(x => x.Id == id);
 
@@ -43,7 +43,7 @@ public class SimpleRoleService : IRoleService, ITransientDependency
     }
 
     /// <inheritdoc />
-    public async Task<List<SimpleRoleDto>> GetRoleListAsync(GetRoleInput input)
+    public async Task<List<SimpleRoleDto>> GetListAsync(GetRoleInput input)
     {
         var roles =await _simpleRoleRepository.GetListAsync(x =>
             string.IsNullOrEmpty(input.Keywords) || x.Name.Contains(input.Keywords));

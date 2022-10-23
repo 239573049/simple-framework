@@ -21,7 +21,7 @@ public interface IMenuService
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    Task<IEnumerable<MenuTreeDto>> GetMenuTreeAsync(GetMenuInput input);
+    Task<List<MenuTreeDto>> GetTreeAsync(GetMenuInput input);
 
     /// <summary>
     /// 编辑菜单

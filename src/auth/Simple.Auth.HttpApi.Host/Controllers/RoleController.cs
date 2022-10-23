@@ -23,8 +23,8 @@ public class RoleController : ControllerBase
     /// <param name="dto"></param>
     /// <returns></returns>
     [HttpPost]
-    public async Task CreateRoleAsync(CreateRoleDto dto) =>
-        await _simpleRoleService.CreateRoleAsync(dto);
+    public async Task CreateAsync(CreateRoleDto dto) =>
+        await _simpleRoleService.CreateAsync(dto);
 
     /// <summary>
     /// 删除角色
@@ -32,8 +32,8 @@ public class RoleController : ControllerBase
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpDelete("{id}")]
-    public async Task DeleteRoleAsync(Guid id) =>
-        await _simpleRoleService.DeleteRoleAsync(id);
+    public async Task DeleteAsync(Guid id) =>
+        await _simpleRoleService.DeleteAsync(id);
 
     /// <summary>
     /// 获取角色详情
@@ -41,8 +41,8 @@ public class RoleController : ControllerBase
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    public async Task<SimpleRoleDto> GetRoleAsync(Guid id) =>
-        await _simpleRoleService.GetRoleAsync(id);
+    public async Task<SimpleRoleDto> GetAsync(Guid id) =>
+        await _simpleRoleService.GetAsync(id);
 
     /// <summary>
     /// 获取角色列表
@@ -50,6 +50,6 @@ public class RoleController : ControllerBase
     /// <param name="input"></param>
     /// <returns></returns>
     [HttpGet("list")]
-    public async Task<List<SimpleRoleDto>> GetRoleListAsync([FromQuery] GetRoleInput input) =>
-        await _simpleRoleService.GetRoleListAsync(input);
+    public async Task<List<SimpleRoleDto>> GetListAsync([FromQuery] GetRoleInput input) =>
+        await _simpleRoleService.GetListAsync(input);
 }

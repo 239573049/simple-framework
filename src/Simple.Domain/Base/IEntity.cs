@@ -7,5 +7,5 @@ public interface IEntity<out TKey>
 
 public interface IEntity
 {
-    object Id { get; }
+    Guid Id { get; }
 }

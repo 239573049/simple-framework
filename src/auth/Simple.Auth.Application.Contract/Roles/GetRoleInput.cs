@@ -6,4 +6,11 @@ public class GetRoleInput
     /// 关键字
     /// </summary>
     public string? Keywords { get; set; }
+
+    public static bool TryParse(string input, out GetRoleInput result)
+    {
+        result = new GetRoleInput();
+        result.Keywords = input;
+        return true;
+    }
 }

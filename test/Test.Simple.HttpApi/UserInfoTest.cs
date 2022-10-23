@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Application.Contract.User;
 using Token.Module.Extensions;
@@ -13,7 +14,13 @@ public class UserInfoTest
     [SetUp]
     public void Setup()
     {
+        var configuration = new ConfigurationBuilder()
+            .AddJsonFile("./appsettings.json")
+            .Build();
+
         var service = new ServiceCollection();
+        service.AddSingleton<IConfiguration>(configuration);
+
         service.AddModuleApplicationAsync<TestSimpleHttpApiModule>();
         ServiceProvider = service.BuildServiceProvider();
 
