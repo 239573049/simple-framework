@@ -1,4 +1,5 @@
-﻿using EntityFrameworkCore.Extensions;
+﻿using DynamicWebApi.Extensions;
+using EntityFrameworkCore.Extensions;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Simple.Auth.Application;
@@ -15,7 +16,8 @@ public class SimpleAuthHttpApiHostModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
+        services.AddControllers().ConfigureDynamicWebApi(typeof(SimpleAuthApplicationModule).Assembly);
+
         services.AddEndpointsApiExplorer();
 
         // 注入自动事务中间件

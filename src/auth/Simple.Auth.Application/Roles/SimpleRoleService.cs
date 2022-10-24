@@ -1,4 +1,5 @@
 using AutoMapper;
+using DynamicWebApi.Shared;
 using Simple.Auth.Application.Contract.Roles;
 using Simple.Auth.Domain.Roles;
 using Token.Module.Dependencys;
@@ -6,7 +7,7 @@ using Token.Module.Dependencys;
 namespace Simple.Auth.Application.Roles;
 
 /// <inheritdoc />
-public class SimpleRoleService : IRoleService, ITransientDependency
+public class SimpleRoleService : IRoleService, ITransientDependency, IApplicationService
 {
     private readonly IRoleRepository _simpleRoleRepository;
     private readonly IMapper _mapper;

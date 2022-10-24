@@ -146,7 +146,7 @@ namespace EntityFrameworkCore.Core
                 return;
             }
 
-            IsDisposed = true; throw new NotImplementedException();
+            IsDisposed = true; 
         }
 
     }

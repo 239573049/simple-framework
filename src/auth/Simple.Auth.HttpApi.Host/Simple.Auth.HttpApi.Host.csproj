@@ -11,6 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\module\DynamicWebApi\DynamicWebApi.csproj" />
       <ProjectReference Include="..\Simple.Auth.Application\Simple.Auth.Application.csproj" />
       <ProjectReference Include="..\Simple.Auth.EntityFrameworkCore\Simple.Auth.EntityFrameworkCore.csproj" />
     </ItemGroup>
