@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityFrameworkCore.Core
 {
-    public sealed class UnitOfWork<TDbContext> : IUnitOfWork where TDbContext : DbContext, IDisposable
+    public sealed class UnitOfWork<TDbContext> : IUnitOfWork, IDisposable where TDbContext : DbContext
     {
         public bool IsDisposed { get; private set; }
 
@@ -137,15 +137,16 @@ namespace EntityFrameworkCore.Core
             deleteCreator.DeleteCreatorId = _currentManage.UserId();
 
         }
+        
 
-        public void Disponse()
+        public void Dispose()
         {
             if (IsDisposed)
             {
                 return;
             }
 
-            IsDisposed = true;
+            IsDisposed = true; throw new NotImplementedException();
         }
 
     }
