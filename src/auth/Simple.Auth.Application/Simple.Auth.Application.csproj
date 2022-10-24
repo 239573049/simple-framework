@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -12,7 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
       <ProjectReference Include="..\Simple.Auth.Application.Contract\Simple.Auth.Application.Contract.csproj" />
+      <ProjectReference Include="..\Simple.Auth.Domain\Simple.Auth.Domain.csproj" />
     </ItemGroup>
 
 </Project>

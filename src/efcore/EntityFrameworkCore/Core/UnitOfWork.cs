@@ -60,7 +60,7 @@ namespace EntityFrameworkCore.Core
             {
                 return;
             }
-            IsRollback= true;
+            IsRollback = true;
             await _dbContext.Database.RollbackTransactionAsync(cancellationToken).ConfigureAwait(false);
         }
 
@@ -137,7 +137,7 @@ namespace EntityFrameworkCore.Core
             deleteCreator.DeleteCreatorId = _currentManage.UserId();
 
         }
-        
+
 
         public void Dispose()
         {

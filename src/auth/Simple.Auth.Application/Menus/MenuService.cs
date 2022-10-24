@@ -1,5 +1,7 @@
 using AutoMapper;
 using Simple.Auth.Application.Contract.Menus;
+using Simple.Auth.Domain.Menus;
+using Simple.Common.Jwt;
 using Token.Module.Dependencys;
 
 namespace Simple.Auth.Application.Menus;

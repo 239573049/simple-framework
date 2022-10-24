@@ -21,6 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\Simple.Application\Simple.Application.csproj" />
+      <ProjectReference Include="..\..\src\Simple.EntityFrameworkCore\Simple.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
     <ItemGroup>

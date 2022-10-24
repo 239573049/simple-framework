@@ -1,5 +1,6 @@
 using AutoMapper;
 using Simple.Auth.Application.Contract.Roles;
+using Simple.Auth.Domain.Roles;
 
 namespace Simple.Auth.Application.AutoMapperProfile;
 

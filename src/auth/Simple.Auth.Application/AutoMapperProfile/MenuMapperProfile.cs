@@ -1,5 +1,6 @@
 using AutoMapper;
 using Simple.Auth.Application.Contract.Menus;
+using Simple.Auth.Domain.Menus;
 
 namespace Simple.Auth.Application.AutoMapperProfile;
 

@@ -2,7 +2,6 @@ using EntityFrameworkCore.Extensions;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Simple.Application;
-using Simple.Auth.EntityFrameworkCore;
 using Simple.EntityFrameworkCore;
 using Simple.HttpApi.Host.Filters;
 using Token.Module;
@@ -10,7 +9,7 @@ using Token.Module.Attributes;
 
 namespace Simple.HttpApi.Host;
 
-[DependOn(typeof(SimpleApplicationModule), typeof(SimpleEntityFrameworkCoreModule), typeof(SimpleAuthEntityFrameworkCoreModule))]
+[DependOn(typeof(SimpleApplicationModule), typeof(SimpleEntityFrameworkCoreModule))]
 public class SimpleHttpApiHostModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
