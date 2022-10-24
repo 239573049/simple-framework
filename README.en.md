@@ -1,6 +1,6 @@
 # SimpleFramework
 
------
+---
 
 The document language: [[English](README.en.md)] | [[简体中文](README.md)]
 
@@ -9,6 +9,26 @@ The document language: [[English](README.en.md)] | [[简体中文](README.md)]
 Simplified framework encapsulates EFcore warehousing, work units
 
 Clear frame structure
+
+### template installation
+
+Installing the simple Template
+
+```shell
+dotnet new --install Simple.Framework
+```
+
+Creating a simple Template
+
+```shell
+dotnet new simple --name MyProjectName
+```
+
+Generate a new template package (must be done in cmd)
+
+```shell
+nuget pack ./Simple.Framework.nuspec
+```
 
 ## 🎞 ️ project structure
 
@@ -36,7 +56,6 @@ Clear frame structure
 
 /src/auth // Licensing service (standalone deployment)
 
-
 ## 🍬 Basic functions
 
 1. Implement the basic soft delete function
@@ -48,8 +67,6 @@ Clear frame structure
 4. Implement basic authorization services
 
 5. Implement basic user functions
-
-
 
 ## 🏴‍☠️ Build the project
 
@@ -67,6 +84,6 @@ docker build -f ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile -t auth .
 
 ## 🛞instructions
 
-***First you need to modify the appsettings.json mysql database connection string under the simply.httpapi.host, simply.dbmigrations, simply.auth.httpapi.host project*** 
+**_First you need to modify the appsettings.json mysql database connection string under the simply.httpapi.host, simply.dbmigrations, simply.auth.httpapi.host project_**
 
-***Generate the migration file at Simple.DbMigrations and then update the migration file***
+**_Generate the migration file at Simple.DbMigrations and then update the migration file_**
