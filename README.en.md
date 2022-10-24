@@ -10,6 +10,11 @@ Simplified framework encapsulates EFcore warehousing, work units
 
 Clear frame structure
 
+[![NuGet](https://img.shields.io/nuget/dt/Simple.Framework.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Simple.Framework/)
+[![NuGet](https://img.shields.io/nuget/v/Simple.Framework.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/Simple.Framework/)
+
+![Alt](https://repobeats.axiom.co/api/embed/17958d5a05cdd2ceebafc987ad9be05de01c4b31.svg "Repobeats analytics image")
+
 ### template installation
 
 Installing the simple Template
