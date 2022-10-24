@@ -10,4 +10,10 @@
     </packageTypes>
     <license type="expression">MIT</license>
   </metadata>
+  
+  <files>
+    <file src="nuget.exe" target="nuget"/> 
+    <file src="*.dll" target="dll" exclude="src\**.dll" />
+  </files>
+
 </package>
