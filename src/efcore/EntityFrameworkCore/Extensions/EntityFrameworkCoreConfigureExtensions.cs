@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Newtonsoft.Json;
 using Simple.Domain.Base;
+using System;
+using System.Collections.Generic;
 
 namespace EntityFrameworkCore.Extensions;
 

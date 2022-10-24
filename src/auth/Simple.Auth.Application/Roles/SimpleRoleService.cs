@@ -1,6 +1,5 @@
 using AutoMapper;
 using Simple.Auth.Application.Contract.Roles;
-using Simple.Auth.Domain.Roles;
 using Token.Module.Dependencys;
 
 namespace Simple.Auth.Application.Roles;
@@ -45,7 +44,7 @@ public class SimpleRoleService : IRoleService, ITransientDependency
     /// <inheritdoc />
     public async Task<List<SimpleRoleDto>> GetListAsync(GetRoleInput input)
     {
-        var roles =await _simpleRoleRepository.GetListAsync(x =>
+        var roles = await _simpleRoleRepository.GetListAsync(x =>
             string.IsNullOrEmpty(input.Keywords) || x.Name.Contains(input.Keywords));
 
         var dto = _mapper.Map<List<SimpleRoleDto>>(roles);

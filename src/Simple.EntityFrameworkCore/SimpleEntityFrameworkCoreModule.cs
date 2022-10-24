@@ -11,6 +11,6 @@ public class SimpleEntityFrameworkCoreModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddMysqlEfCoreEntityFrameworkCore<SimpleDbContext>(new Version(8,0,10));
+        services.AddMysqlEfCoreEntityFrameworkCore<SimpleDbContext>(new Version(8, 0, 10));
     }
 }

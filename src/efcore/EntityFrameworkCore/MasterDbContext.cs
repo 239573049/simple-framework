@@ -1,12 +1,6 @@
-﻿using System;
-using System.Linq.Expressions;
-using EntityFrameworkCore.Options;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Simple.Common.Jwt;
+﻿using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Base;
-using Token.Module.Helpers;
+using System.Linq.Expressions;
 
 namespace EntityFrameworkCore
 {
@@ -26,12 +20,12 @@ namespace EntityFrameworkCore
             // 显示更详细的异常日志
             optionsBuilder.EnableDetailedErrors();
 #endif
-            
+
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

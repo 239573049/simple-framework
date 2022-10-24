@@ -3,7 +3,7 @@ using Simple.Domain.Shared;
 
 namespace Simple.Domain.Users;
 
-public class UserInfo : AggregateRoot<Guid>,ITenant
+public class UserInfo : AggregateRoot<Guid>, ITenant
 {
     /// <summary>
     /// 昵称

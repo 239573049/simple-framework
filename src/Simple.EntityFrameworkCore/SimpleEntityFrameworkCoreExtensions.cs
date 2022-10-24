@@ -1,5 +1,4 @@
-﻿using EntityFrameworkCore;
-using EntityFrameworkCore.Extensions;
+﻿using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Users;
 
@@ -12,12 +11,12 @@ public static class SimpleEntityFrameworkCoreExtensions
         builder.Entity<UserInfo>(x =>
         {
             x.ToTable("UserInfos");
-            
+
             x.AddSimpleConfigure();
 
             x.HasIndex(info => info.Id).IsUnique();
         });
-        
+
         return builder;
     }
 }

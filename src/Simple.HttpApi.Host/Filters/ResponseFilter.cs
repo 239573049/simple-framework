@@ -1,7 +1,7 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Simple.HttpApi.Host.Views;
+using System.Diagnostics;
 
 namespace Simple.HttpApi.Host.Filters;
 

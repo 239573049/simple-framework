@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Simple.Application.Contract.User;
 using Simple.Application.Contract.User.Views;
 using Simple.Domain.Users;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Token.Module.Dependencys;
 
 namespace Simple.Application.User;

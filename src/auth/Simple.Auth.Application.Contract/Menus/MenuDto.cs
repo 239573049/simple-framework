@@ -2,7 +2,7 @@ using Simple.Domain.Base;
 
 namespace Simple.Auth.Application.Contract.Menus;
 
-public class MenuDto: AggregateRoot<Guid>, ITenant
+public class MenuDto : AggregateRoot<Guid>, ITenant
 {
     /// <summary>
     /// 标题

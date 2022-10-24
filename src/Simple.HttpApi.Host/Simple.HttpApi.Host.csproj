@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -17,7 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\auth\Simple.Auth.EntityFrameworkCore\Simple.Auth.EntityFrameworkCore.csproj" />
       <ProjectReference Include="..\Simple.Application\Simple.Application.csproj" />
+      <ProjectReference Include="..\Simple.EntityFrameworkCore\Simple.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
 </Project>

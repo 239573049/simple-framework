@@ -2,7 +2,7 @@ using Simple.Domain.Base;
 
 namespace Simple.Auth.Domain.Menus;
 
-public interface IMenuRepository : IRepository<Menu,Guid>
+public interface IMenuRepository : IRepository<Menu, Guid>
 {
     /// <summary>
     /// 获取用户可访菜单
@@ -10,5 +10,5 @@ public interface IMenuRepository : IRepository<Menu,Guid>
     /// <param name="id"></param>
     /// <param name="keywords"></param>
     /// <returns></returns>
-    Task<List<Menu>> GetUserMenuAsync(Guid id,string? keywords);
+    Task<List<Menu>> GetUserMenuAsync(Guid id, string? keywords);
 }

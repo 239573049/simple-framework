@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Simple.Application.Contract.User.Views;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Simple.Application.Contract.User.Views;
 
 namespace Simple.Application.Contract.User;
 

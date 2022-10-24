@@ -13,7 +13,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Simple.Auth.Application.Contract\Simple.Auth.Application.Contract.csproj" />
-      <ProjectReference Include="..\Simple.Auth.EntityFrameworkCore\Simple.Auth.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
 </Project>

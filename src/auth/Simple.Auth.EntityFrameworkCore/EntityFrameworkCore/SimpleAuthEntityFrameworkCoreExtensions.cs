@@ -1,4 +1,3 @@
-using EntityFrameworkCore;
 using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
@@ -10,17 +9,17 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
 {
     public static ModelBuilder ConfigureAuth(this ModelBuilder builder)
     {
-        builder.Entity<Role>(x=>
+        builder.Entity<Role>(x =>
         {
             x.ToTable("Roles");
             x.HasComment("角色");
-            
+
             x.AddSimpleConfigure();
 
             x.Property(x => x.Code).HasComment("编号");
             x.Property(x => x.Index).HasComment("顺序");
             x.Property(x => x.Name).HasComment("角色名称");
-            x.Property(x=>x.IsPrivate).HasComment("是否私有 私有无法删除");
+            x.Property(x => x.IsPrivate).HasComment("是否私有 私有无法删除");
         });
 
         builder.Entity<UserRoleFunction>(x =>
@@ -38,7 +37,7 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
         builder.Entity<MenuRoleFunction>(x =>
         {
             x.ToTable("MenuRoleFunctions");
-            
+
             x.HasIndex(x => x.Id);
             x.HasKey(x => x.Id);
 
@@ -63,8 +62,8 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
             x.Property(x => x.Index).HasComment("顺序");
 
         });
-        
-        
+
+
         return builder;
     }
 }

@@ -1,7 +1,7 @@
-using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Application.Contract.User;
+using System.Text.Json;
 using Token.Module.Extensions;
 
 namespace Test.Simple.HttpApi;

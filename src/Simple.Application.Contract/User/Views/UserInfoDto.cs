@@ -1,12 +1,12 @@
-using System;
 using Simple.Domain.Shared;
+using System;
 
 namespace Simple.Application.Contract.User.Views;
 
 public class UserInfoDto
 {
     public Guid Id { get; set; }
-    
+
     /// <summary>
     /// 昵称
     /// </summary>

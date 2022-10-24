@@ -1,8 +1,8 @@
-﻿using System.Reflection;
-using EntityFrameworkCore;
+﻿using EntityFrameworkCore;
 using EntityFrameworkCore.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Simple.Domain.Users;
+using System.Reflection;
 
 namespace Simple.EntityFrameworkCore;
 
@@ -14,13 +14,13 @@ public class SimpleDbContext : MasterDbContext<SimpleDbContext>
     public SimpleDbContext(DbContextOptions<SimpleDbContext> options) : base(options)
     {
     }
-    
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        
+
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        
+
         builder.ConfigureSimple();
     }
 

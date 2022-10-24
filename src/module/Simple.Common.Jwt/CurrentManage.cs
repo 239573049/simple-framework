@@ -1,18 +1,18 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Simple.Domain.Base;
 using Simple.Domain.Shared;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using Token.Module.Dependencys;
 using Token.Module.Exceptions;
 
 namespace Simple.Common.Jwt;
 
-public class CurrentManage : ICurrentManage, ITransientDependency
+public class CurrentManage : ITransientDependency
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly TokenOptions _tokenOptions;

@@ -1,9 +1,9 @@
-﻿using System.Reflection;
-using EntityFrameworkCore.Attributes;
+﻿using EntityFrameworkCore.Attributes;
 using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using Token.Module.Extensions;
 
 namespace EntityFrameworkCore.Sqlite.Extensions;
@@ -18,7 +18,7 @@ public static class SqliteEfCoreEntityFrameworkCoreExtensions
 
         var connectionString = connectString?.ConnectionString ?? "Default";
 
-        if(string.IsNullOrEmpty(connectionString))
+        if (string.IsNullOrEmpty(connectionString))
         {
             throw new ArgumentNullException(connectionString);
         }

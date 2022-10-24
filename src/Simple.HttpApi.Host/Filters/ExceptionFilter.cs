@@ -1,7 +1,7 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Simple.HttpApi.Host.Views;
+using System.Diagnostics;
 
 namespace Simple.HttpApi.Host.Filters;
 
@@ -21,14 +21,14 @@ public class ExceptionFilter : ExceptionFilterAttribute
     public override Task OnExceptionAsync(ExceptionContext context)
     {
         var ex = context.Exception;
-        
-        _logger.LogError("Path {Path} message {Exception}",context.HttpContext.Request.Path,context.Exception);
-        
-        context.Result = new OkObjectResult(new HttpResult(500,ex.Message));
+
+        _logger.LogError("Path {Path} message {Exception}", context.HttpContext.Request.Path, context.Exception);
+
+        context.Result = new OkObjectResult(new HttpResult(500, ex.Message));
 
         context.ExceptionHandled = true;
-        
-        
+
+
         return Task.CompletedTask;
     }
 }

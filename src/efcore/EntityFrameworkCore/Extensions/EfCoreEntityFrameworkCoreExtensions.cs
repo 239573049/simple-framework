@@ -1,5 +1,4 @@
-﻿using System;
-using EntityFrameworkCore.Core;
+﻿using EntityFrameworkCore.Core;
 using EntityFrameworkCore.Middlewares;
 using EntityFrameworkCore.Options;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Simple.Domain.Base;
+using System;
 
 namespace EntityFrameworkCore.Extensions
 {
@@ -21,12 +21,12 @@ namespace EntityFrameworkCore.Extensions
         /// <param name="lifetime"></param>
         /// <typeparam name="TDbContext"></typeparam>
         /// <returns></returns>
-        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services,Action<DbContextOptionsBuilder>? optionsAction = null,
+        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services, Action<DbContextOptionsBuilder>? optionsAction = null,
             ServiceLifetime lifetime = ServiceLifetime.Singleton)
             where TDbContext : DbContext
         {
             ConfigureOptions(services);
-            ConfigureDbContext<TDbContext>(services,optionsAction,lifetime);
+            ConfigureDbContext<TDbContext>(services, optionsAction, lifetime);
 
             // 注入工作单元
             services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork<TDbContext>));
@@ -41,15 +41,15 @@ namespace EntityFrameworkCore.Extensions
         /// <param name="optionsAction"></param>
         /// <param name="lifetime"></param>
         /// <typeparam name="TDbContext"></typeparam>
-        private static void ConfigureDbContext<TDbContext>(IServiceCollection services,Action<DbContextOptionsBuilder>? optionsAction = null,
+        private static void ConfigureDbContext<TDbContext>(IServiceCollection services, Action<DbContextOptionsBuilder>? optionsAction = null,
             ServiceLifetime lifetime = ServiceLifetime.Singleton)
             where TDbContext : DbContext
         {
             var simpleDbContextOptions =
                 services.BuildServiceProvider().GetRequiredService<IOptions<SimpleDbContextOptions>>().Value;
 
-            services.AddDbContextFactory<TDbContext>(optionsAction,lifetime);
-            
+            services.AddDbContextFactory<TDbContext>(optionsAction, lifetime);
+
         }
 
         /// <summary>

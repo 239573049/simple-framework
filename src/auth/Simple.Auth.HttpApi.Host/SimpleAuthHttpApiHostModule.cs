@@ -1,8 +1,8 @@
-﻿using EntityFrameworkCore;
-using EntityFrameworkCore.Extensions;
+﻿using EntityFrameworkCore.Extensions;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Simple.Auth.Application;
+using Simple.Auth.EntityFrameworkCore;
 using Simple.Auth.HttpApi.Host.Filters;
 using Simple.HttpApi.Host.Filters;
 using Token.Module;
@@ -10,19 +10,19 @@ using Token.Module.Attributes;
 
 namespace Simple.Auth.HttpApi.Host;
 
-[DependOn(typeof(SimpleAuthApplicationModule))]
+[DependOn(typeof(SimpleAuthApplicationModule), typeof(SimpleAuthEntityFrameworkCoreModule))]
 public class SimpleAuthHttpApiHostModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-        
+
         // 注入自动事务中间件
         services.AddUnitOfWorkMiddleware();
-        
+
         ConfigureSwaggerServices(services);
-        
+
         // 添加过滤器
         services.AddMvcCore(options =>
         {
@@ -30,7 +30,7 @@ public class SimpleAuthHttpApiHostModule : TokenModule
             options.Filters.Add<ExceptionFilter>();
         });
     }
-    
+
     private static void ConfigureSwaggerServices(IServiceCollection services)
     {
         services.AddSwaggerDocument(config =>
@@ -56,6 +56,7 @@ public class SimpleAuthHttpApiHostModule : TokenModule
     public override void OnApplicationShutdown(IApplicationBuilder app)
     {
         var evn = app.ApplicationServices.GetService<IWebHostEnvironment>();
+
         // 只有在 Development 才运行Swagger UI
         if (evn.IsDevelopment())
         {

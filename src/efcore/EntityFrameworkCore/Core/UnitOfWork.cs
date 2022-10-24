@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Simple.Common.Jwt;
 using Simple.Domain.Base;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EntityFrameworkCore.Core
 {
@@ -12,12 +12,13 @@ namespace EntityFrameworkCore.Core
     {
         public bool IsDisposed { get; private set; }
 
+        public bool IsRollback { get; private set; }
         public bool IsCompleted { get; private set; }
 
         private readonly TDbContext _dbContext;
-        private readonly ICurrentManage _currentManage;
-        private readonly ITenantManager _tenantManager;
-        public UnitOfWork(TDbContext dbContext, ICurrentManage currentManage, ITenantManager tenantManager)
+        private readonly CurrentManage _currentManage;
+        private readonly TenantManager _tenantManager;
+        public UnitOfWork(TDbContext dbContext, CurrentManage currentManage, TenantManager tenantManager)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"db context nameof{nameof(dbContext)} is null");
             _currentManage = currentManage;
@@ -55,6 +56,11 @@ namespace EntityFrameworkCore.Core
 
         public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
         {
+            if (IsCompleted)
+            {
+                return;
+            }
+            IsRollback= true;
             await _dbContext.Database.RollbackTransactionAsync(cancellationToken).ConfigureAwait(false);
         }
 
@@ -84,7 +90,7 @@ namespace EntityFrameworkCore.Core
             }
         }
 
-        private  void SetModified(EntityEntry entry)
+        private void SetModified(EntityEntry entry)
         {
             switch (entry.Entity)
             {
@@ -118,7 +124,7 @@ namespace EntityFrameworkCore.Core
             }
         }
 
-        private  void SetDelete(EntityEntry entry)
+        private void SetDelete(EntityEntry entry)
         {
             if (entry.Entity is ISoftDelete entity)
             {
@@ -126,7 +132,7 @@ namespace EntityFrameworkCore.Core
             }
 
             if (entry.Entity is not IHasDeleteCreator deleteCreator) return;
-            
+
             deleteCreator.DeleteTime = DateTime.Now;
             deleteCreator.DeleteCreatorId = _currentManage.UserId();
 
@@ -141,5 +147,6 @@ namespace EntityFrameworkCore.Core
 
             IsDisposed = true;
         }
+
     }
 }

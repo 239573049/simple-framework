@@ -1,6 +1,4 @@
-﻿using EntityFrameworkCore;
-using EntityFrameworkCore.Extensions;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Application;
 using Token.Module;

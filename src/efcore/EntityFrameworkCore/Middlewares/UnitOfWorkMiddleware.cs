@@ -1,22 +1,21 @@
-using System.Linq;
-using System.Threading.Tasks;
 using EntityFrameworkCore.Attributes;
 using EntityFrameworkCore.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Simple.Domain.Base;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EntityFrameworkCore.Middlewares;
 
 public class UnitOfWorkMiddleware : IMiddleware
 {
-    private readonly IUnitOfWork _unitOfWork;
     private readonly UnitOfWorkOptions _unitOfWorkOptions;
 
-    public UnitOfWorkMiddleware(IUnitOfWork unitOfWork, IOptions<UnitOfWorkOptions> unitOfWorkOptions)
+    public UnitOfWorkMiddleware(IOptions<UnitOfWorkOptions> unitOfWorkOptions)
     {
-        _unitOfWork = unitOfWork;
         _unitOfWorkOptions = unitOfWorkOptions.Value;
     }
 
@@ -26,19 +25,39 @@ public class UnitOfWorkMiddleware : IMiddleware
         {
             await next(context).ConfigureAwait(false);
         }
-
         var unitOfWorkAttribute = context.Features.Get<IEndpointFeature>()?.Endpoint?.Metadata
             .GetMetadata<DisabledUnitOfWorkAttribute>();
 
         if (unitOfWorkAttribute?.Disabled == true)
         {
-            await next.Invoke(context);
+            await next.Invoke(context).ConfigureAwait(false);
         }
         else
         {
-            await _unitOfWork.BeginTransactionAsync();
-            await next.Invoke(context);
-            await _unitOfWork.CommitTransactionAsync();
+            // 获取服务中多个DbContext
+            var unitOfWorks = context.RequestServices.GetServices<IUnitOfWork>();
+            foreach (var unitOfWork in unitOfWorks)
+            {
+                // 开启事务
+                await unitOfWork.BeginTransactionAsync();
+            }
+            try
+            {
+                await next.Invoke(context);
+
+                foreach (var unitOfWork in unitOfWorks)
+                {
+                    // 提交事务
+                    await unitOfWork.CommitTransactionAsync();
+                }
+            }
+            finally
+            {
+                foreach (var d in unitOfWorks)
+                {
+                    await d.RollbackTransactionAsync();
+                }
+            }
         }
     }
 

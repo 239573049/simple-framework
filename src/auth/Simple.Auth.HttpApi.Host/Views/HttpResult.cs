@@ -18,7 +18,7 @@ public class HttpResult : ActionResult
     /// 有效数据
     /// </summary>
     public object? Data { get; protected set; }
-    
+
 
     public HttpResult(int code = 400, string? message = null, object? data = null)
     {

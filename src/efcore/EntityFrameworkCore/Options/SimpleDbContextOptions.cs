@@ -10,7 +10,7 @@ public class SimpleDbContextOptions
     /// 连接字符串
     /// </summary>
     [Required(ErrorMessage = "连接字符串是必须的")]
-    public string Default { get; set; }
+    public string Default { get; set; } = null!;
 
     /// <summary>
     /// 是否启用软删过滤器
@@ -20,5 +20,5 @@ public class SimpleDbContextOptions
     /// <summary>
     /// 是否启用租户
     /// </summary>
-    public bool Tenant { get; set; } 
+    public bool Tenant { get; set; }
 }

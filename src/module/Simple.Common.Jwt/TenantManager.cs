@@ -4,7 +4,7 @@ using Token.Module.Dependencys;
 
 namespace Simple.Common.Jwt;
 
-public class TenantManager : ITenantManager , ITransientDependency
+public class TenantManager : ITransientDependency
 {
     private readonly IHttpContextAccessor _accessor;
 
@@ -15,11 +15,11 @@ public class TenantManager : ITenantManager , ITransientDependency
 
     public Guid? GetTenantId()
     {
-        var tenant =  _accessor.HttpContext?.Request.Headers[Constant.TenantId].ToString();
+        var tenant = _accessor.HttpContext?.Request.Headers[Constant.TenantId].ToString();
 
         if (string.IsNullOrEmpty(tenant))
             return null;
-        
+
         return Guid.Parse(tenant);
     }
 }

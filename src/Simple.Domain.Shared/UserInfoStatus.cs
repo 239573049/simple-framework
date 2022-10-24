@@ -9,7 +9,7 @@ public enum UserInfoStatus
     /// </summary>
     [Description("正常")]
     Normal = 0,
-    
+
     /// <summary>
     /// 异常
     /// </summary>

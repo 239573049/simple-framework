@@ -24,7 +24,7 @@ public class AuthDbContext : MasterDbContext<AuthDbContext>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        
+
         builder.ConfigureAuth();
     }
 }
