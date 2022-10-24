@@ -42,7 +42,7 @@ public class MenuController : ControllerBase
     /// <returns></returns>
     [HttpGet("menu-tree")]
     public async Task<IEnumerable<MenuTreeDto>> GetMenuTreeAsync([FromQuery] GetMenuInput input) =>
-        await _menuService.GetMenuTreeAsync(input);
+        await _menuService.GetTreeAsync(input);
 
     /// <summary>
     /// 编辑菜单
