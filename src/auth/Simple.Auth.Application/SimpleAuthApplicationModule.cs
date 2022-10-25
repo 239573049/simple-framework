@@ -6,7 +6,7 @@ using Token.Module.Attributes;
 
 namespace Simple.Auth.Application;
 
-[DependOn(typeof(SimpleAuthDomainModule),typeof(SimpleCommonJwtModule))]
+[DependOn(typeof(SimpleAuthDomainModule), typeof(SimpleCommonJwtModule))]
 public class SimpleAuthApplicationModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)

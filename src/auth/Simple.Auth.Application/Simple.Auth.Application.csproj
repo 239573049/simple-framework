@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\module\DynamicWebApi.Shared\DynamicWebApi.Shared.csproj" />
       <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
       <ProjectReference Include="..\Simple.Auth.Application.Contract\Simple.Auth.Application.Contract.csproj" />
       <ProjectReference Include="..\Simple.Auth.Domain\Simple.Auth.Domain.csproj" />

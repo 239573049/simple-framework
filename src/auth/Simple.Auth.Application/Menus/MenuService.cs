@@ -1,5 +1,4 @@
 using AutoMapper;
-using DynamicWebApi.Shared;
 using Simple.Auth.Application.Contract.Menus;
 using Simple.Auth.Domain.Menus;
 using Simple.Common.Jwt;
@@ -7,7 +6,7 @@ using Token.Module.Dependencys;
 
 namespace Simple.Auth.Application.Menus;
 
-public class MenuService : IMenuService, ITransientDependency, IApplicationService
+public class MenuService : IMenuService, ITransientDependency
 {
     private readonly IMapper _mapper;
     private readonly IMenuRepository _menuRepository;

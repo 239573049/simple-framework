@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DynamicWebApi.Shared
+﻿namespace DynamicWebApi.Shared
 {
     public interface IApplicationService
     {

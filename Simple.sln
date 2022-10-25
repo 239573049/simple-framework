@@ -55,10 +55,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Auth.HttpApi.Host", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Simple.HttpApi", "test\Test.Simple.HttpApi\Test.Simple.HttpApi.csproj", "{D218F8D9-6197-4E0E-A1C4-F7F5D65874E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicWebApi", "src\module\DynamicWebApi\DynamicWebApi.csproj", "{01DF9327-52DF-41E2-8BFD-6758CAB962B5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicWebApi.Shared", "src\module\DynamicWebApi.Shared\DynamicWebApi.Shared.csproj", "{D8C79C88-8700-44C7-A575-91DF7511FFBF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,14 +145,6 @@ Global
 		{D218F8D9-6197-4E0E-A1C4-F7F5D65874E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D218F8D9-6197-4E0E-A1C4-F7F5D65874E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D218F8D9-6197-4E0E-A1C4-F7F5D65874E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01DF9327-52DF-41E2-8BFD-6758CAB962B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01DF9327-52DF-41E2-8BFD-6758CAB962B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01DF9327-52DF-41E2-8BFD-6758CAB962B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01DF9327-52DF-41E2-8BFD-6758CAB962B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8C79C88-8700-44C7-A575-91DF7511FFBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8C79C88-8700-44C7-A575-91DF7511FFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8C79C88-8700-44C7-A575-91DF7511FFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8C79C88-8700-44C7-A575-91DF7511FFBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,8 +174,6 @@ Global
 		{065BBDBC-5E0D-495C-8606-FD59FB33793B} = {DEF12350-E216-4902-8770-A8B52CFFFD0B}
 		{E9364DE7-C4A2-4588-AEC3-9742E3DBC160} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 		{D218F8D9-6197-4E0E-A1C4-F7F5D65874E8} = {DA78A7E8-A30B-4DA3-AC02-041224758BB0}
-		{01DF9327-52DF-41E2-8BFD-6758CAB962B5} = {F643F3E1-A9CB-438C-B1AF-434FA0240CFE}
-		{D8C79C88-8700-44C7-A575-91DF7511FFBF} = {F643F3E1-A9CB-438C-B1AF-434FA0240CFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61CAEE30-44D2-4CAD-B360-EB438F1E24A2}
