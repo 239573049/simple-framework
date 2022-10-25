@@ -41,7 +41,7 @@ public class RoleController : ControllerBase
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    public async Task<SimpleRoleDto> GetAsync(Guid id) =>
+    public async Task<RoleDto> GetAsync(Guid id) =>
         await _simpleRoleService.GetAsync(id);
 
     /// <summary>
@@ -50,6 +50,6 @@ public class RoleController : ControllerBase
     /// <param name="input"></param>
     /// <returns></returns>
     [HttpGet("list")]
-    public async Task<List<SimpleRoleDto>> GetListAsync([FromQuery] GetRoleInput input) =>
+    public async Task<List<RoleDto>> GetListAsync([FromQuery] GetRoleInput input) =>
         await _simpleRoleService.GetListAsync(input);
 }

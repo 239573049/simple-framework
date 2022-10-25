@@ -4,7 +4,7 @@ using Token.Module.Dependencys;
 
 namespace Simple.EntityFrameworkCore;
 
-public class UserInfoRepository : EfCoreRepository<SimpleDbContext, UserInfo, Guid>, IUserInfoRepository, ITransientDependency
+public class UserInfoRepository : EfCoreRepository<SimpleDbContext, UserInfo, Guid>, IUserInfoRepository
 {
     public UserInfoRepository(SimpleDbContext dbContext) :
         base(dbContext)
