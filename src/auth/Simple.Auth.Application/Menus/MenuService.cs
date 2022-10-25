@@ -61,6 +61,7 @@ public class MenuService : IMenuService, ITransientDependency
         return trees;
     }
 
+    /// <inheritdoc />
     public async Task UpdateAsync(MenuDto dto)
     {
         var data = await _menuRepository.FirstAsync(x => x.Id == dto.Id);
