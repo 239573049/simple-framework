@@ -24,10 +24,13 @@ public static class SimpleEntityFrameworkCoreExtensions
 
             x.AddSimpleConfigure();
 
-            x.Property(x => x.ExtraProperties)
+            x.HasIndex(x => x.Key);
+
+            x.Property(x => x.Value)
                 .HasConversion(x => JsonSerializer.Serialize(x, new JsonSerializerOptions()),
                     x => JsonSerializer.Deserialize<Dictionary<string, object>>(x, new JsonSerializerOptions()) ?? new Dictionary<string, object>());
         });
+
         return builder;
     }
 }

@@ -1,13 +1,13 @@
-﻿using Simple.Domain.Base;
-using Simple.Domain.Shared;
+﻿using Simple.Domain.Shared;
+using System;
+using System.Collections.Generic;
 
-namespace Simple.Domain.Systems
+namespace Simple.Application.Contract.Systems.Dtos
 {
-    /// <summary>
-    /// 字典设置
-    /// </summary>
-    public class DictionarySetting : AggregateRoot<Guid>
+    public class DictionarySettingDto
     {
+        public Guid Id { get; set; }
+
         /// <summary>
         /// 字典Key
         /// </summary>
@@ -20,7 +20,7 @@ namespace Simple.Domain.Systems
         /// </summary>
         public DictionarySettingType Type { get; set; }
 
-        public DictionarySetting()
+        public DictionarySettingDto()
         {
             Value = new Dictionary<string, object>();
         }

@@ -6,7 +6,7 @@ using Token.Module.Dependencys;
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 
 [ExposeServices(typeof(IRoleRepository))] // 指定注入服务
-public class EfCoreRoleRepository : Repository<AuthDbContext, Role, Guid>, IRoleRepository, ITransientDependency
+public class EfCoreRoleRepository : EfCoreRepository<AuthDbContext, Role, Guid>, IRoleRepository
 {
     public EfCoreRoleRepository(AuthDbContext dbContext) : base(dbContext)
     {
