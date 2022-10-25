@@ -24,6 +24,7 @@ public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext
 
         // 初始化数据
         builder.ConfigureAuthDefault();
+        builder.ConfigureSimpleDefault();
     }
 
 }

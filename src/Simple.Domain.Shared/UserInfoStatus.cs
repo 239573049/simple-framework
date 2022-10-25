@@ -14,5 +14,5 @@ public enum UserInfoStatus
     /// 异常
     /// </summary>
     [Description("异常")]
-    Abnormal = 1
+    Forbidden = 1
 }

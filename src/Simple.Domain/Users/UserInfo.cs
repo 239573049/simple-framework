@@ -30,11 +30,13 @@ public class UserInfo : AggregateRoot<Guid>, ITenant
     /// </summary>
     public UserInfoStatus Status { get; protected set; }
 
-    public UserInfo()
+    protected UserInfo()
     {
     }
 
-    public UserInfo(string? name, string? userName, string? passWord, string? avatar, UserInfoStatus status)
+
+
+    public UserInfo(Guid id, string? name, string? userName, string? passWord, string? avatar, UserInfoStatus status) : base(id)
     {
         Name = name;
         UserName = userName;
