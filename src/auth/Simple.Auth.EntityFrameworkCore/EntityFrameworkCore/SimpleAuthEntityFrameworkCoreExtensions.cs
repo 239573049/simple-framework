@@ -66,4 +66,18 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
 
         return builder;
     }
+
+    public static void ConfigureAuthDefault(this ModelBuilder builder)
+    {
+        #region 菜单
+
+        var menus = new List<Menu>()
+        {
+            new Menu(Guid.NewGuid(),"首页","HomeOutlined",0,"@/pages/home/index","/home",null,null),
+            new Menu(Guid.NewGuid(),"用户管理","",1,"@/pages/user-admin/index","/user-admin",null,null)
+        };
+
+        builder.Entity<Menu>().HasData(menus);
+        #endregion
+    }
 }

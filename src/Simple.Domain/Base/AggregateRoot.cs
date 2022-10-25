@@ -22,6 +22,13 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IMod
         ExtraProperties = new Dictionary<string, object>();
     }
 
+    protected AggregateRoot(TKey id)
+    {
+        ExtraProperties = new Dictionary<string, object>();
+        Id = id;
+    }
+
+
     protected AggregateRoot(TKey id, DateTime creationTime, DateTime? lastModificationTime, Guid? lastModifierId,
         bool isDeleted, Guid? creatorId) : base(id)
     {
