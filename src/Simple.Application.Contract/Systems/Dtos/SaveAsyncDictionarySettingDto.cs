@@ -1,6 +1,6 @@
 ﻿using Simple.Domain.Shared;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace Simple.Application.Contract.Systems.Dtos
 {

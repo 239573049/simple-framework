@@ -2,7 +2,7 @@
 
 namespace Simple.Domain.Systems
 {
-    public interface IDictionarySettingRepository : IRepository<DictionarySetting,Guid>
+    public interface IDictionarySettingRepository : IRepository<DictionarySetting, Guid>
     {
         /// <summary>
         /// 获取详情

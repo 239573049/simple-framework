@@ -36,7 +36,7 @@ public static class SimpleEntityFrameworkCoreExtensions
 
     public static ModelBuilder ConfigureSimpleDefault(this ModelBuilder builder)
     {
-        var userInfo = new UserInfo(Guid.NewGuid(),"admin","admin","admin","",Domain.Shared.UserInfoStatus.Normal);
+        var userInfo = new UserInfo(Guid.NewGuid(), "admin", "admin", "admin", "", Domain.Shared.UserInfoStatus.Normal);
 
         builder.Entity<UserInfo>().HasData(userInfo);
 

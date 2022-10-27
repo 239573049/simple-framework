@@ -20,7 +20,7 @@ namespace Simple.EntityFrameworkCore.Systems
 
         public async Task<DictionarySetting> GetAsync(Guid id)
         {
-            return await DbContext.DictionarySettings.FirstAsync(x=>x.Id== id);
+            return await DbContext.DictionarySettings.FirstAsync(x => x.Id == id);
         }
     }
 }

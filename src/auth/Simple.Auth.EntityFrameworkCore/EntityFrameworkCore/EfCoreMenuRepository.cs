@@ -2,7 +2,6 @@ using EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
 using Token.Module.Attributes;
-using Token.Module.Dependencys;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 

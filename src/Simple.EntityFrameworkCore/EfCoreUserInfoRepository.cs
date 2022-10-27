@@ -1,6 +1,5 @@
 ﻿using EntityFrameworkCore.Core;
 using Simple.Domain.Users;
-using Token.Module.Dependencys;
 
 namespace Simple.EntityFrameworkCore;
 
