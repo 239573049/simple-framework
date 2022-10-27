@@ -15,5 +15,6 @@ public class EntityFrameworkCoreDbMigrationsModule : TokenModule
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddMysqlEfCoreEntityFrameworkCore<EfCoreMigrationDbContext>(new Version(8, 0, 10));
+
     }
 }
