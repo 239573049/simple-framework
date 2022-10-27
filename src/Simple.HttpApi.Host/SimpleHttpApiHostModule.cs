@@ -16,7 +16,6 @@ public class SimpleHttpApiHostModule : TokenModule
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-
         // 注入自动事务中间件
         services.AddUnitOfWorkMiddleware();
 

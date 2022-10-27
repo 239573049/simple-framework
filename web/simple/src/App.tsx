@@ -1,14 +1,18 @@
 import './App.css';
-import React, { Component } from 'react';
-import { Button, Toast } from '@douyinfe/semi-ui';
+import { Component } from 'react';
+import Routes from './router';
+import {
+  BrowserRouter
+} from 'react-router-dom';
 
-class App extends React.Component {
-  constructor(props: any) {
-    super(props);
-  }
+class App extends Component {
 
   render() {
-    return <Button onClick={() => Toast.warning({ content: 'welcome' })}>Hello Semi</Button>;
+    return (
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    );
   }
 }
 
