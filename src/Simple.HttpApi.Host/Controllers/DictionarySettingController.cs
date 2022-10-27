@@ -20,7 +20,7 @@ namespace Simple.HttpApi.Host.Controllers
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("id")]
         public async Task<DictionarySettingDto> GetAsync(Guid id)
             => await _dictionarySettingService.GetAsync(id);
 
@@ -29,7 +29,7 @@ namespace Simple.HttpApi.Host.Controllers
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("key")]
         public async Task<DictionarySettingDto> GetAsync(string key)
             => await _dictionarySettingService.GetAsync(key);
 
