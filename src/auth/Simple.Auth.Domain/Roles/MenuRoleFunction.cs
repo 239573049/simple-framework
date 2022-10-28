@@ -18,5 +18,16 @@ namespace Simple.Auth.Domain.Roles
         /// 关联角色Id
         /// </summary>
         public Guid RoleId { get; set; }
+
+        protected MenuRoleFunction()
+        {
+
+        }
+
+        public MenuRoleFunction(Guid id, Guid menuId, Guid roleId) : base(id)
+        {
+            MenuId = menuId;
+            RoleId = roleId;
+        }
     }
 }

@@ -15,4 +15,8 @@
       <ProjectReference Include="..\..\admin\Simple.Admin.EntityFrameworkCore\Simple.Admin.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Extensions\" />
+    </ItemGroup>
+
 </Project>

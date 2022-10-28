@@ -2,6 +2,7 @@
 using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 using Simple.Admin.EntityFrameworkCore;
 using System.Reflection;
+using EntityFrameworkCore.DbMigrations.Extensions;
 
 namespace EntityFrameworkCore.DbMigrations;
 
@@ -23,8 +24,7 @@ public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext
         builder.ConfigureAuth();
 
         // 初始化数据
-        builder.ConfigureAuthDefault();
-        builder.ConfigureSimpleDefault();
+        builder.ConfigureDefaultData();
 
     }
 

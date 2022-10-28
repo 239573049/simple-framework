@@ -1,4 +1,5 @@
 ﻿using Simple.Admin.Domain.Shared;
+using Simple.Auth.Application.Contract.Roles;
 
 namespace Simple.Auth.Application.Contract.Auth.Dtos;
 
@@ -31,4 +32,7 @@ public class AuthUserInfoDto
     public UserInfoStatus Status { get; set; }
 
     public Guid? TenantId { get; set; }
+
+    public IEnumerable<RoleDto> Roles { get; set; } = Enumerable.Empty<RoleDto>();
+
 }

@@ -9,27 +9,27 @@ public class UserInfo : AggregateRoot<Guid>, IUserInfo<Guid>, ITenant
     /// <summary>
     /// 昵称
     /// </summary>
-    public string? Name { get;  set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// 账号
     /// </summary>
-    public string? UserName { get;  set; }
+    public string? UserName { get; set; }
 
     /// <summary>
     /// 密码
     /// </summary>
-    public string? PassWord { get;  set; }
+    public string? PassWord { get; set; }
 
     /// <summary>
     /// 头像
     /// </summary>
-    public string? Avatar { get;  set; }
+    public string? Avatar { get; set; }
 
     /// <summary>
     /// 账号状态
     /// </summary>
-    public UserInfoStatus Status { get;  set; }
+    public UserInfoStatus Status { get; set; }
 
     protected UserInfo()
     {
@@ -37,7 +37,7 @@ public class UserInfo : AggregateRoot<Guid>, IUserInfo<Guid>, ITenant
 
 
 
-    public UserInfo(Guid id, string? name, string? userName, string? passWord, string? avatar, UserInfoStatus status) : base(id)
+    public UserInfo(Guid id, string? name, string? userName, string? passWord, string? avatar, UserInfoStatus status = UserInfoStatus.Normal) : base(id)
     {
         Name = name;
         UserName = userName;

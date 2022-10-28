@@ -9,5 +9,6 @@ public class AuthMapperProfile : Profile
     public AuthMapperProfile()
     {
         CreateMap<AuthUserInfo, AuthUserInfoDto>().ReverseMap();
+        CreateMap<AuthUserInfoView, AuthUserInfoDto>().ReverseMap();
     }
 }

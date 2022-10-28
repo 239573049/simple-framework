@@ -26,5 +26,15 @@ namespace Simple.Auth.Domain.Roles
         public bool IsPrivate { get; set; }
 
         public Guid? TenantId { get; set; }
+
+        public Role(Guid id) : base(id)
+        {
+
+        }
+
+        protected Role()
+        {
+
+        }
     }
 }

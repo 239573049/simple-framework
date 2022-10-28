@@ -24,7 +24,7 @@ public class AuthService : IAuthService, ITransientDependency
     /// <inheritdoc />
     public async Task<AuthUserInfoDto> SignOnAsync(SignOnInput input)
     {
-        var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.UserName == input.Username && x.PassWord == input.Password);
+        var userInfo = await _userInfoRepository.GetAuthUserInfoAsync(input.Username, input.Password);
 
         if (userInfo == null)
         {

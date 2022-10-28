@@ -39,19 +39,17 @@ public class AuthController : ControllerBase
     public async Task<string> SignOnAsync(SignOnInput input)
     {
         var userInfo = await _authService.SignOnAsync(input);
+        var roles = userInfo.Roles.Select(x => new Claim(ClaimsIdentity.DefaultRoleClaimType, x.Code)).ToList();
 
-        var claims = new[]
-        {
-            new Claim(Constant.Id, userInfo.Id.ToString()),
-            new Claim(Constant.User, JsonSerializer.Serialize(userInfo))
-        };
+        roles.Add(new Claim(Constant.Id, userInfo.Id.ToString()));
+        roles.Add(new Claim(Constant.User, JsonSerializer.Serialize(userInfo)));
 
         var cred = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenOptions.SecretKey!)),
             SecurityAlgorithms.HmacSha256);
         var jwtSecurityToken = new JwtSecurityToken(
             _tokenOptions.Issuer, // 签发者
             _tokenOptions.Audience, // 接收者
-            claims, // payload
+            roles, // payload
             expires: DateTime.Now.AddMinutes(_tokenOptions.ExpireMinutes), // 过期时间
             signingCredentials: cred); // 令牌
         var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
