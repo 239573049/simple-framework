@@ -53,8 +53,18 @@ public class MenuService : IMenuService, ITransientDependency
         menus = menus.Where(x => x.ParentId != parentId).ToList();
         foreach (var d in data)
         {
-            var tree = _mapper.Map<MenuTreeDto>(d);
-            tree.Children.AddRange(GetRecursionMenu(menus, d.Id));
+            var tree = new MenuTreeDto()
+            {
+                ItemKey = d.Id,
+                ParentId = d.ParentId,
+                Component = d.Component,
+                Icon = d.Icon,
+                Index = d.Index,
+                Link = d.Path,
+                TenantId = d.TenantId,
+                Text = d.Title
+            };
+            tree.Items.AddRange(GetRecursionMenu(menus, d.Id));
             trees.Add(tree);
         }
 

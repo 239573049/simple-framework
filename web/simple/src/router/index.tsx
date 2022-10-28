@@ -2,7 +2,7 @@ import {
     useRoutes
 } from 'react-router-dom';
 import Admin from '../pages/admin';
-import DictionarySettings from '../pages/admin/dictionary-settings/dictionary_settings';
+import DictionarySettings from '../pages/admin/dictionary-settings';
 import Home from '../pages/admin/home/';
 import Menu from '../pages/admin/menu';
 import User from '../pages/admin/user';

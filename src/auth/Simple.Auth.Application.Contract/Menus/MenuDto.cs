@@ -3,8 +3,10 @@ using Simple.Shared.Base;
 namespace Simple.Auth.Application.Contract.Menus
 {
 
-    public class MenuDto : AggregateRoot<Guid>, ITenant
+    public class MenuDto :  ITenant
     {
+        public Guid Id { get; set; }
+
         /// <summary>
         /// 标题
         /// </summary>

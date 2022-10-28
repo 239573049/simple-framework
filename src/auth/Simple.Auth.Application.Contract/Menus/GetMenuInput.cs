@@ -10,10 +10,4 @@ public class GetMenuInput
     /// </summary>
     public string? Keywords { get; set; }
 
-    //public static bool TryParse(string? keywords, out GetMenuInput input)
-    //{
-    //    input = new GetMenuInput();
-    //    input.Keywords = keywords;
-    //    return true;
-    //}
 }

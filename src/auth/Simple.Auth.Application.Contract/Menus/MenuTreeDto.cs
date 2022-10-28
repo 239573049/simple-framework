@@ -2,12 +2,14 @@ using Simple.Shared.Base;
 
 namespace Simple.Auth.Application.Contract.Menus
 {
-    public class MenuTreeDto : AggregateRoot<Guid>, ITenant
+    public class MenuTreeDto : ITenant
     {
+        public Guid ItemKey { get; set; }
+
         /// <summary>
         /// 标题
         /// </summary>
-        public string? Title { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// 图标
@@ -27,7 +29,7 @@ namespace Simple.Auth.Application.Contract.Menus
         /// <summary>
         /// 路由
         /// </summary>
-        public string? Path { get; set; }
+        public string? Link { get; set; }
 
         /// <summary>
         /// 上级Id
@@ -39,6 +41,6 @@ namespace Simple.Auth.Application.Contract.Menus
         /// <summary>
         /// 子集数据
         /// </summary>
-        public List<MenuTreeDto> Children { get; set; } = new();
+        public List<MenuTreeDto> Items { get; set; } = new();
     }
 }

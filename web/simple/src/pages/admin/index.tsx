@@ -10,6 +10,7 @@ class Admin extends Component {
     constructor(props: any) {
         super(props)
     }
+
     render(): ReactNode {
         return (
             <Layout style={{ border: '1px solid var(--semi-color-border)', height: '100%' }}>

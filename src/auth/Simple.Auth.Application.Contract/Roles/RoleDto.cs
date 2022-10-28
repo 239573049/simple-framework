@@ -2,8 +2,10 @@ using Simple.Shared.Base;
 
 namespace Simple.Auth.Application.Contract.Roles;
 
-public class RoleDto : AggregateRoot<Guid>, ITenant
+public class RoleDto : ITenant
 {
+    public Guid Id { get; set; }
+
     /// <summary>
     /// 角色名称
     /// </summary>
