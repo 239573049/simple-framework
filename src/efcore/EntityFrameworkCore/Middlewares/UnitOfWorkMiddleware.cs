@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Threading.Tasks;
-using EntityFrameworkCore.Shared.Base;
+using Simple.Shared.Base;
 
 namespace EntityFrameworkCore.Middlewares;
 

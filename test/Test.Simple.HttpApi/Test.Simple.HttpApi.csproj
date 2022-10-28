@@ -19,10 +19,6 @@
         <PackageReference Include="Token.Module" Version="1.2.9" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\Simple.Application\Simple.Application.csproj" />
-      <ProjectReference Include="..\..\src\Simple.EntityFrameworkCore\Simple.EntityFrameworkCore.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
       <Content Include="appsettings.json">
@@ -30,6 +26,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\admin\Simple.Admin.Application\Simple.Admin.Application.csproj" />
+      <ProjectReference Include="..\..\src\admin\Simple.Admin.EntityFrameworkCore\Simple.Admin.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
 </Project>

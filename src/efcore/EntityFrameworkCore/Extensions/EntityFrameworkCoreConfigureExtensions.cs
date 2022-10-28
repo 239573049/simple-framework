@@ -1,8 +1,8 @@
-using EntityFrameworkCore.Shared.Base;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
+using Simple.Shared.Base;
 
 namespace EntityFrameworkCore.Extensions;
 

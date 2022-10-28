@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\efcore\EntityFrameworkCore.Shared\EntityFrameworkCore.Shared.csproj" />
-      <ProjectReference Include="..\Simple.Domain.Shared\Simple.Domain.Shared.csproj" />
+      <ProjectReference Include="..\..\Simple.Shared\Simple.Shared.csproj" />
+      <ProjectReference Include="..\Simple.Admin.Domain.Shared\Simple.Admin.Domain.Shared.csproj" />
     </ItemGroup>
 
 </Project>

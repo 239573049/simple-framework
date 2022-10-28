@@ -30,7 +30,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
-	  <ProjectReference Include="..\..\Simple.Domain\Simple.Domain.csproj" />
+	  <ProjectReference Include="..\..\admin\Simple.Admin.Domain\Simple.Admin.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

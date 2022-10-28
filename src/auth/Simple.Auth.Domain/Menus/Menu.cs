@@ -1,4 +1,4 @@
-﻿using EntityFrameworkCore.Shared.Base;
+﻿using Simple.Shared.Base;
 using System;
 
 namespace Simple.Auth.Domain.Menus

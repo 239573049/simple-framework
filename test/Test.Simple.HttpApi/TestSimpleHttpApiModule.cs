@@ -1,14 +1,14 @@
 ﻿using EntityFrameworkCore.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Simple.Application;
-using Simple.EntityFrameworkCore;
+using Simple.Admin.Application;
+using Simple.Admin.EntityFrameworkCore;
 using Token.Module;
 using Token.Module.Attributes;
 
 namespace Test.Simple.HttpApi;
 
-[DependOn(typeof(SimpleApplicationModule), typeof(SimpleEntityFrameworkCoreModule))]
+[DependOn(typeof(SimpleAdminApplicationModule), typeof(SimpleAdminEntityFrameworkCoreModule))]
 public class TestSimpleHttpApiModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)

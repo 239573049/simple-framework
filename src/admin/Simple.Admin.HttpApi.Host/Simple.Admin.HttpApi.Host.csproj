@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Simple.Application\Simple.Application.csproj" />
-      <ProjectReference Include="..\Simple.EntityFrameworkCore\Simple.EntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\Simple.Admin.Application\Simple.Admin.Application.csproj" />
+      <ProjectReference Include="..\Simple.Admin.EntityFrameworkCore\Simple.Admin.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
 </Project>

@@ -229,7 +229,7 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.HasComment("用户角色配置");
                 });
 
-            modelBuilder.Entity("Simple.Domain.Systems.DictionarySetting", b =>
+            modelBuilder.Entity("Simple.Admin.Domain.Systems.DictionarySetting", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -285,7 +285,7 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.ToTable("DictionarySettings", (string)null);
                 });
 
-            modelBuilder.Entity("Simple.Domain.Users.UserInfo", b =>
+            modelBuilder.Entity("Simple.Admin.Domain.Users.UserInfo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

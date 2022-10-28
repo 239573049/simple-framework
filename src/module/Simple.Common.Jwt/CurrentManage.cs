@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Simple.Domain.Shared;
+using Simple.Admin.Domain.Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
-using EntityFrameworkCore.Shared.Base;
+using Simple.Shared.Base;
 using Token.Module.Dependencys;
 using Token.Module.Exceptions;
 

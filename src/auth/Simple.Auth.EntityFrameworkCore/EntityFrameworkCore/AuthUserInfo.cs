@@ -1,5 +1,5 @@
-﻿using EntityFrameworkCore.Shared.Base;
-using Simple.Domain.Shared;
+﻿using Simple.Admin.Domain.Shared;
+using Simple.Shared.Base;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 

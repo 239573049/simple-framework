@@ -1,4 +1,4 @@
-using EntityFrameworkCore.Shared.Base;
+using Simple.Shared.Base;
 
 namespace Simple.Auth.Application.Contract.Roles;
 

@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Simple.Application.Contract\Simple.Application.Contract.csproj" />
-      <ProjectReference Include="..\Simple.Domain\Simple.Domain.csproj" />
+      <ProjectReference Include="..\Simple.Admin.Application.Contract\Simple.Admin.Application.Contract.csproj" />
+      <ProjectReference Include="..\Simple.Admin.Domain\Simple.Admin.Domain.csproj" />
     </ItemGroup>
 
 </Project>
