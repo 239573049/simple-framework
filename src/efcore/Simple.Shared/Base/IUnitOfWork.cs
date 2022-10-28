@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace EntityFrameworkCore.Shared.Base
+namespace Simple.Shared.Base
 {
     public interface IUnitOfWork
     {

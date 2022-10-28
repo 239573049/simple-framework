@@ -1,4 +1,4 @@
-﻿namespace EntityFrameworkCore.Shared.Base
+﻿namespace Simple.Shared.Base
 {
     public interface ISoftDelete
     {

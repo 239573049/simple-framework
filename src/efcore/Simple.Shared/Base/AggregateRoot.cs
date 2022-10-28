@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EntityFrameworkCore.Shared.Base
+namespace Simple.Shared.Base
 {
     public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreationTime, IModificationAuditedObject, ISoftDelete,
         IMayHaveCreator, IHasDeleteCreator

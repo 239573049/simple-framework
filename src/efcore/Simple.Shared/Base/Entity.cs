@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntityFrameworkCore.Shared.Base
+namespace Simple.Shared.Base
 {
 
     public abstract class Entity<TKey> : IEntity<TKey>

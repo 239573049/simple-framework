@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EntityFrameworkCore.Shared.Base
+namespace Simple.Shared.Base
 {
 
     public interface IRepository<TEntity, TKey> : IRepository<TEntity>
