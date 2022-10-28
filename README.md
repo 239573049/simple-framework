@@ -28,7 +28,8 @@ dotnet new --install Simple.Framework
 dotnet new simple --name MyProjectName
 ```
 
-生成新模板包 (必须在 cmd 中执行)
+生成新模板包 (必须在 cmd 中执行) 
+```用来发布新模块版本```
 
 ```shell
 nuget pack ./Simple.Framework.nuspec
