@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 using Simple.Domain.Base;
 using Simple.Domain.Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using Token.Module.Dependencys;
 using Token.Module.Exceptions;
 
@@ -57,7 +57,7 @@ public class CurrentManage : ITransientDependency
     public T? UserInfo<T>()
     {
         var userInfo = GetClaimValueByType(ClaimTypes.Sid)?.FirstOrDefault();
-        return string.IsNullOrEmpty(userInfo) ? default : JsonConvert.DeserializeObject<T>(userInfo);
+        return string.IsNullOrEmpty(userInfo) ? default : JsonSerializer.Deserialize<T>(userInfo);
     }
 
     private IEnumerable<string>? GetClaimValueByType(string claimType)
@@ -73,7 +73,7 @@ public class CurrentManage : ITransientDependency
         var claims = new[]
         {
             new Claim(Constant.Id, data.Id?.ToString() ?? string.Empty),
-            new Claim(Constant.User, JsonConvert.SerializeObject(data))
+            new Claim(Constant.User, JsonSerializer.Serialize(data))
         };
 
         var cred = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenOptions.SecretKey!)),

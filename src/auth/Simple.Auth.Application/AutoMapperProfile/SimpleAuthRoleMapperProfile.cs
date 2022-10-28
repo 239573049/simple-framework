@@ -9,6 +9,6 @@ public class SimpleAuthRoleMapperProfile : Profile
     public SimpleAuthRoleMapperProfile()
     {
         CreateMap<CreateRoleDto, Role>();
-        CreateMap<Role, SimpleRoleDto>();
+        CreateMap<Role, RoleDto>();
     }
 }

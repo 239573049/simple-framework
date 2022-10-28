@@ -10,6 +10,4 @@ var app = builder.Build();
 
 app.InitializeApplication();
 
-app.MapControllers();
-
 app.Run();

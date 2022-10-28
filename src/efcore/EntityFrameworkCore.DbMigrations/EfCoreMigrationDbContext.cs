@@ -21,6 +21,11 @@ public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext
         // 程序的所有Entity配置
         builder.ConfigureSimple();
         builder.ConfigureAuth();
+
+        // 初始化数据
+        builder.ConfigureAuthDefault();
+        builder.ConfigureSimpleDefault();
+
     }
 
 }

@@ -52,7 +52,18 @@ public class Menu : AggregateRoot<Guid>, ITenant
         TenantId = tenantId;
     }
 
-    public Menu()
+    public Menu(Guid id, string? title, string? icon, int index, string? component, string? path, Guid? parentId, Guid? tenantId) : base(id)
+    {
+        Title = title;
+        Icon = icon;
+        Index = index;
+        Component = component;
+        Path = path;
+        ParentId = parentId;
+        TenantId = tenantId;
+    }
+
+    protected Menu()
     {
     }
 }

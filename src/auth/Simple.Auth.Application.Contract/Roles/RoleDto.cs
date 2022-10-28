@@ -2,7 +2,7 @@ using Simple.Domain.Base;
 
 namespace Simple.Auth.Application.Contract.Roles;
 
-public class SimpleRoleDto : AggregateRoot<Guid>, ITenant
+public class RoleDto : AggregateRoot<Guid>, ITenant
 {
     /// <summary>
     /// 角色名称

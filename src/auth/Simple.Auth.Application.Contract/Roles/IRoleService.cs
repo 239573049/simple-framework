@@ -24,12 +24,12 @@ public interface IRoleService
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<SimpleRoleDto> GetAsync(Guid id);
+    Task<RoleDto> GetAsync(Guid id);
 
     /// <summary>
     /// 获取角色列表
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    Task<List<SimpleRoleDto>> GetListAsync(GetRoleInput input);
+    Task<List<RoleDto>> GetListAsync(GetRoleInput input);
 }

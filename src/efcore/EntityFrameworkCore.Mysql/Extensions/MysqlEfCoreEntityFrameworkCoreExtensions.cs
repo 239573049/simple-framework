@@ -11,7 +11,7 @@ namespace EntityFrameworkCore.Mysql.Extensions;
 public static class MysqlEfCoreEntityFrameworkCoreExtensions
 {
     public static IServiceCollection AddMysqlEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services,
-        Version version)
+        Version version, ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
         where TDbContext : MasterDbContext<TDbContext>
     {
         var configuration = services.GetService<IConfiguration>();
@@ -24,12 +24,12 @@ public static class MysqlEfCoreEntityFrameworkCoreExtensions
             throw new ArgumentNullException(connectionString);
         }
 
-
         services.AddEfCoreEntityFrameworkCore<TDbContext>(x =>
         {
             x.UseMySql(configuration.GetConnectionString(connectionString),
                 new MySqlServerVersion(version));
-        }, ServiceLifetime.Scoped);
+
+        }, serviceLifetime);
 
         return services;
     }

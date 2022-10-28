@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(EfCoreMigrationDbContext))]
-    [Migration("20221011082519_Init")]
+    [Migration("20221027170508_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,9 +85,38 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Menus", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f1a96082-0bb3-4bad-ae87-3573f24e599e"),
+                            Component = "@/pages/home/index",
+                            ConcurrencyStamp = "598d073a580e4c74ae1d9f3d65c17bf3",
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExtraProperties = "{}",
+                            Icon = "HomeOutlined",
+                            Index = 0,
+                            IsDeleted = false,
+                            Path = "/home",
+                            Title = "首页"
+                        },
+                        new
+                        {
+                            Id = new Guid("2885593e-298b-4bd9-8efc-08740ee0adb0"),
+                            Component = "@/pages/user-admin/index",
+                            ConcurrencyStamp = "b01dab58767945a3916233780bd017ff",
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExtraProperties = "{}",
+                            Icon = "",
+                            Index = 1,
+                            IsDeleted = false,
+                            Path = "/user-admin",
+                            Title = "用户管理"
+                        });
                 });
 
             modelBuilder.Entity("Simple.Auth.Domain.Roles.MenuRoleFunction", b =>
@@ -113,7 +142,7 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.HasComment("菜单角色配置");
                 });
 
-            modelBuilder.Entity("Simple.Auth.Domain.Roles.SimpleRole", b =>
+            modelBuilder.Entity("Simple.Auth.Domain.Roles.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,9 +198,10 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("Id")
+                        .IsUnique();
 
-                    b.ToTable("SimpleRoles", (string)null);
+                    b.ToTable("Roles", (string)null);
 
                     b.HasComment("角色");
                 });
@@ -197,6 +227,62 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.ToTable("UserRoleFunctions", (string)null);
 
                     b.HasComment("用户角色配置");
+                });
+
+            modelBuilder.Entity("Simple.Domain.Systems.DictionarySetting", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("DeleteCreatorId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("DeleteTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.HasIndex("Key");
+
+                    b.ToTable("DictionarySettings", (string)null);
                 });
 
             modelBuilder.Entity("Simple.Domain.Users.UserInfo", b =>
@@ -258,6 +344,21 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                         .IsUnique();
 
                     b.ToTable("UserInfos", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b64d9277-2716-4dc9-9c66-18311c3363ca"),
+                            Avatar = "",
+                            ConcurrencyStamp = "7fc7ae11ee3d44f7a4e5b7b17c453457",
+                            CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExtraProperties = "{}",
+                            IsDeleted = false,
+                            Name = "admin",
+                            PassWord = "admin",
+                            Status = 0,
+                            UserName = "admin"
+                        });
                 });
 #pragma warning restore 612, 618
         }
