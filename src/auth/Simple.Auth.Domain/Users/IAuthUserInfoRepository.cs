@@ -3,8 +3,8 @@ using Simple.Shared.Base;
 
 namespace Simple.Auth.Domain.Users
 {
-    public interface IAuthUserInfoRepository : IRepository<AuthUserInfo,Guid>
+    public interface IAuthUserInfoRepository : IRepository<AuthUserInfo, Guid>
     {
-        
+
     }
 }

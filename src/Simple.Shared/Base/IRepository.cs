@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Simple.Shared.Base
 {
-
     public interface IRepository<TEntity, TKey> : IRepository<TEntity>
         where TEntity : Entity<TKey>
     {
