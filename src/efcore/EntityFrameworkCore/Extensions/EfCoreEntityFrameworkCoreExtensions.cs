@@ -1,12 +1,12 @@
 ﻿using EntityFrameworkCore.Core;
 using EntityFrameworkCore.Middlewares;
 using EntityFrameworkCore.Options;
+using EntityFrameworkCore.Shared.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Simple.Domain.Base;
 using System;
 
 namespace EntityFrameworkCore.Extensions

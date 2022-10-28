@@ -1,5 +1,5 @@
+using EntityFrameworkCore.Shared.Base;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Simple.Domain.Base;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;

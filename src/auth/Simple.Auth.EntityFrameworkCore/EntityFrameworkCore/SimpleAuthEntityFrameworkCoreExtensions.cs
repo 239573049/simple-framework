@@ -2,6 +2,7 @@ using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
 using Simple.Auth.Domain.Roles;
+using Simple.Domain.Users;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 
@@ -60,6 +61,14 @@ public static class SimpleAuthEntityFrameworkCoreExtensions
             x.Property(x => x.Title).HasComment("菜单显示标题");
             x.Property(x => x.ParentId).HasComment("上级id 为null表示当前为顶层");
             x.Property(x => x.Index).HasComment("顺序");
+
+        });
+
+        builder.Entity<AuthUserInfo>(x =>
+        {
+            x.ToTable("UserInfos");
+
+            x.AddSimpleConfigure();
 
         });
 

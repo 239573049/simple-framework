@@ -2,7 +2,7 @@ using System;
 
 namespace EntityFrameworkCore.Attributes;
 
-[AttributeUsage(AttributeTargets.Class)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class DisabledUnitOfWorkAttribute : Attribute
 {
     public readonly bool Disabled;

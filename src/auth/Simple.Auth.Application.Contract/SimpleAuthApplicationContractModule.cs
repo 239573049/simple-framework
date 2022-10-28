@@ -1,8 +1,10 @@
-﻿using Token.Module;
+﻿
+using Token.Module;
 
-namespace Simple.Auth.Application.Contract;
-
-public class SimpleAuthApplicationContractModule : TokenModule
+namespace Simple.Auth.Application.Contract
 {
+    public class SimpleAuthApplicationContractModule : TokenModule
+    {
 
+    }
 }

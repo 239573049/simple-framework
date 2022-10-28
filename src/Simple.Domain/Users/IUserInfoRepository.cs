@@ -1,4 +1,4 @@
-﻿using Simple.Domain.Base;
+﻿using EntityFrameworkCore.Shared.Base;
 
 namespace Simple.Domain.Users;
 

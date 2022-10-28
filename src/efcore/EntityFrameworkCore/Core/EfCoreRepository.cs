@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Simple.Domain.Base;
+﻿using EntityFrameworkCore.Shared.Base;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +21,8 @@ public abstract class EfCoreRepository<TDbContext, TEntity, TKey> : Repository<T
     where TEntity : Entity<TKey>
     where TDbContext : DbContext
 {
-    protected readonly TDbContext DbContext;
-    protected readonly DbSet<TEntity> DbSet;
-
     protected EfCoreRepository(TDbContext dbContext) : base(dbContext)
     {
-        DbContext = dbContext;
-        DbSet = dbContext.Set<TEntity>();
     }
 
     public async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)

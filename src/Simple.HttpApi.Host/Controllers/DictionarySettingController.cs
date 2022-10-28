@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EntityFrameworkCore.Attributes;
+using Microsoft.AspNetCore.Mvc;
 using Simple.Application.Contract.Systems;
 using Simple.Application.Contract.Systems.Dtos;
 
@@ -21,6 +22,7 @@ namespace Simple.HttpApi.Host.Controllers
         /// <param name="key"></param>
         /// <returns></returns>
         [HttpGet("id")]
+        [DisabledUnitOfWork]
         public async Task<DictionarySettingDto> GetAsync(Guid id)
             => await _dictionarySettingService.GetAsync(id);
 
@@ -30,6 +32,7 @@ namespace Simple.HttpApi.Host.Controllers
         /// <param name="key"></param>
         /// <returns></returns>
         [HttpGet("key")]
+        [DisabledUnitOfWork]
         public async Task<DictionarySettingDto> GetAsync(string key)
             => await _dictionarySettingService.GetAsync(key);
 

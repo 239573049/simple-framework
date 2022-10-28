@@ -1,3 +1,4 @@
+using EntityFrameworkCore.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using Simple.Application.Contract.User;
 using Simple.Application.Contract.User.Views;
@@ -37,6 +38,7 @@ public class UserInfoController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpGet("list")]
+    [DisabledUnitOfWork]
     public async Task<List<UserInfoDto>> GetListAsync()
     {
         return await _userInfoService.GetListAsync();

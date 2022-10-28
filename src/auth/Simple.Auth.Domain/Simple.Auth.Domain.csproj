@@ -1,9 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+	    <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,7 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Simple.Domain\Simple.Domain.csproj" />
+      <ProjectReference Include="..\..\efcore\EntityFrameworkCore.Shared\EntityFrameworkCore.Shared.csproj" />
     </ItemGroup>
 
 </Project>

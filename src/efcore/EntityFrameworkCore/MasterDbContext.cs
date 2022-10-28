@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Simple.Domain.Base;
 using System.Linq.Expressions;
+using EntityFrameworkCore.Shared.Base;
 
 namespace EntityFrameworkCore
 {

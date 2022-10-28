@@ -31,7 +31,7 @@ public class RoleController : ControllerBase
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task DeleteAsync(Guid id) =>
         await _simpleRoleService.DeleteAsync(id);
 
@@ -40,7 +40,7 @@ public class RoleController : ControllerBase
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<RoleDto> GetAsync(Guid id) =>
         await _simpleRoleService.GetAsync(id);
 

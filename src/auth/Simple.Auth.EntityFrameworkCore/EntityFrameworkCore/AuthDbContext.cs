@@ -9,13 +9,16 @@ namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 [ConnectionStringName]
 public class AuthDbContext : MasterDbContext<AuthDbContext>
 {
-    public DbSet<Role> SimpleRole { get; set; } = null!;
+    public DbSet<Role> Role { get; set; } = null!;
 
     public DbSet<UserRoleFunction> UserRoleFunction { get; set; } = null!;
 
     public DbSet<MenuRoleFunction> MenuRole { get; set; } = null!;
 
     public DbSet<Menu> Menu { get; set; } = null!;
+
+    public DbSet<AuthUserInfo> AuthUserInfo { get; set; } = null!;
+
 
     public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
     {

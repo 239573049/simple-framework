@@ -1,4 +1,7 @@
-﻿namespace Simple.Domain.Base
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+namespace EntityFrameworkCore.Shared.Base
 {
     public interface IUnitOfWork
     {
