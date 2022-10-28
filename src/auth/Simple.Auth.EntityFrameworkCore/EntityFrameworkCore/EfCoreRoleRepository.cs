@@ -10,6 +10,4 @@ public class EfCoreRoleRepository : EfCoreRepository<AuthDbContext, Role, Guid>,
     public EfCoreRoleRepository(AuthDbContext dbContext) : base(dbContext)
     {
     }
-
-
 }

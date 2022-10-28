@@ -4,13 +4,17 @@ using NSwag.Generation.Processors.Security;
 using Simple.Auth.Application;
 using Simple.Auth.EntityFrameworkCore;
 using Simple.Auth.HttpApi.Host.Filters;
+using Simple.Common.Jwt;
 using Simple.HttpApi.Host.Filters;
 using Token.Module;
 using Token.Module.Attributes;
 
 namespace Simple.Auth.HttpApi.Host;
 
-[DependOn(typeof(SimpleAuthApplicationModule), typeof(SimpleAuthEntityFrameworkCoreModule))]
+[DependOn(
+    typeof(SimpleAuthApplicationModule),
+    typeof(SimpleAuthEntityFrameworkCoreModule),
+    typeof(SimpleCommonJwtModule))]
 public class SimpleAuthHttpApiHostModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)

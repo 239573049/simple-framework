@@ -9,6 +9,7 @@ import Login from '../pages/user/login';
 const Routes = () => {
     const router = useRoutes([{
         path: "/",
+        element: <Admin />,
         children: [
             {
                 path: "/",

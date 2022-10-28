@@ -1,34 +1,35 @@
-﻿using Simple.Shared.Base;
-using Simple.Admin.Domain.Shared;
+﻿using Simple.Admin.Domain.Shared;
+using Simple.Domain.Shared;
+using Simple.Shared.Base;
 
 namespace Simple.Admin.Domain.Users;
 
-public class UserInfo : AggregateRoot<Guid>, ITenant
+public class UserInfo : AggregateRoot<Guid>, IUserInfo<Guid>, ITenant
 {
     /// <summary>
     /// 昵称
     /// </summary>
-    public string? Name { get; protected set; }
+    public string? Name { get;  set; }
 
     /// <summary>
     /// 账号
     /// </summary>
-    public string? UserName { get; protected set; }
+    public string? UserName { get;  set; }
 
     /// <summary>
     /// 密码
     /// </summary>
-    public string? PassWord { get; protected set; }
+    public string? PassWord { get;  set; }
 
     /// <summary>
     /// 头像
     /// </summary>
-    public string? Avatar { get; protected set; }
+    public string? Avatar { get;  set; }
 
     /// <summary>
     /// 账号状态
     /// </summary>
-    public UserInfoStatus Status { get; protected set; }
+    public UserInfoStatus Status { get;  set; }
 
     protected UserInfo()
     {

@@ -21,7 +21,7 @@ namespace EntityFrameworkCore.Extensions
         /// <param name="lifetime"></param>
         /// <typeparam name="TDbContext"></typeparam>
         /// <returns></returns>
-        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services, Action<DbContextOptionsBuilder>? optionsAction = null,
+        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services, Action<DbContextOptionsBuilder>?      optionsAction = null,
             ServiceLifetime lifetime = ServiceLifetime.Singleton)
             where TDbContext : DbContext
         {

@@ -13,5 +13,6 @@ public class SimpleAuthEntityFrameworkCoreModule : TokenModule
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddMysqlEfCoreEntityFrameworkCore<AuthDbContext>(new Version(8, 0, 10));
+
     }
 }

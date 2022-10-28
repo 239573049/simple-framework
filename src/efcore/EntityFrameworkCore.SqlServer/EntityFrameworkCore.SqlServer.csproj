@@ -9,7 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
-      <PackageReference Include="Token.Module" Version="1.2.9" />
+      <PackageReference Include="Token.Module" Version="1.3.0" />
     </ItemGroup>
 
     <ItemGroup>

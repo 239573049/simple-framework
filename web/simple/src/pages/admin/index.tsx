@@ -8,8 +8,6 @@ const { Header, Footer, Sider, Content } = Layout;
 class Admin extends Component {
 
     constructor(props: any) {
-        console.log(props);
-
         super(props)
     }
     render(): ReactNode {
@@ -20,14 +18,42 @@ class Admin extends Component {
                         defaultSelectedKeys={['Home']}
                         style={{ maxWidth: 220, height: '100%' }}
                         items={[
-                            { itemKey: 'Home', text: '首页', icon: <IconHome size="large" /> },
-                            { itemKey: 'Histogram', text: '基础数据', icon: <IconHistogram size="large" /> },
-                            { itemKey: 'Live', text: '测试功能', icon: <IconLive size="large" /> },
-                            { itemKey: 'Setting', text: '设置', icon: <IconSetting size="large" /> },
+                            {
+                                itemKey: 'Home',
+                                text: '首页',
+                                link: '/',
+                                icon: <IconHome size="large" />
+                            },
+                            {
+                                itemKey: 'Histogram',
+                                text: '用户管理',
+                                link: '/user',
+                                icon: <IconHistogram size="large" />
+                            },
+                            {
+                                itemKey: 'Live',
+                                text: '测试功能',
+                                icon: <IconLive size="large" />,
+                                items: [
+                                    {
+                                        itemKey: 'operation-management',
+                                        text: '运营管理',
+                                        items: [
+                                            '人员管理',
+                                            '人员变更'
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                itemKey: 'Setting',
+                                text: '设置',
+                                icon: <IconSetting size="large" />
+                            },
                         ]}
                         header={{
                             logo: <img src="//lf1-cdn-tos.bytescm.com/obj/ttfe/ies/semi/webcast_logo.svg" />,
-                            text: 'Semi 运营后台',
+                            text: 'Simple 后台管理',
                         }}
                         footer={{
                             collapseButton: true,
@@ -73,7 +99,7 @@ class Admin extends Component {
                             style={{
                                 marginBottom: '24px',
                             }}
-                            routes={['首页', '当这个页面标题很长时需要省略', '上一页', '详情页']}
+                            routes={['首页', '详情页']}
                         />
                         <div
                             style={{
@@ -85,7 +111,6 @@ class Admin extends Component {
                         >
                             <Skeleton placeholder={<Skeleton.Paragraph rows={2} />} loading={false}>
                                 <Outlet></Outlet>
-
                             </Skeleton>
                         </div>
                     </Content>

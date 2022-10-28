@@ -2,6 +2,7 @@ using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Menus;
 using Simple.Auth.Domain.Roles;
+using Simple.Auth.Domain.Users;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 

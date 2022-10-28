@@ -25,12 +25,11 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
-		<PackageReference Include="Token.Module" Version="1.2.9" />
+		<PackageReference Include="Token.Module" Version="1.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
-	  <ProjectReference Include="..\..\admin\Simple.Admin.Domain\Simple.Admin.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

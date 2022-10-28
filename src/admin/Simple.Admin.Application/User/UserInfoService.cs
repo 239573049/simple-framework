@@ -26,6 +26,7 @@ public class UserInfoService : IUserInfoService, ITransientDependency
         await _userInfoRepository.CreateAsync(data);
     }
 
+    /// <inheritdoc />
     public async Task<List<UserInfoDto>> GetListAsync()
     {
         var result = await _userInfoRepository.GetListAsync(x => true);

@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Simple.Shared.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Simple.Shared.Base;
 using Token.Module.Dependencys;
 
 namespace EntityFrameworkCore.Core;
@@ -16,7 +16,7 @@ namespace EntityFrameworkCore.Core;
 /// <typeparam name="TDbContext"></typeparam>
 /// <typeparam name="TEntity"></typeparam>
 /// <typeparam name="TKey"></typeparam>
-public abstract class EfCoreRepository<TDbContext, TEntity, TKey> : Repository<TDbContext, TEntity>, ITransientDependency,
+public abstract class EfCoreRepository<TDbContext, TEntity, TKey> : EfCoreRepository<TDbContext, TEntity>,
     IRepository<TEntity, TKey>
     where TEntity : Entity<TKey>
     where TDbContext : DbContext
@@ -46,14 +46,14 @@ public abstract class EfCoreRepository<TDbContext, TEntity, TKey> : Repository<T
 
 }
 
-public abstract class Repository<TDbContext, TEntity> : IRepository<TEntity>
+public abstract class EfCoreRepository<TDbContext, TEntity> : IRepository<TEntity>, ITransientDependency
     where TEntity : class
     where TDbContext : DbContext
 {
     protected readonly TDbContext DbContext;
     protected readonly DbSet<TEntity> DbSet;
 
-    protected Repository(TDbContext dbContext)
+    protected EfCoreRepository(TDbContext dbContext)
     {
         DbContext = dbContext;
         DbSet = dbContext.Set<TEntity>();
