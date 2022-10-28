@@ -42,7 +42,7 @@ public class SimpleHttpApiHostModule : TokenModule
             config.PostProcess = document =>
             {
                 document.Info.Version = "v1.0";
-                document.Info.Title = "Admin APi";
+                document.Info.Title = "Admin Api";
                 document.Info.Description = "Simple Api";
             };
             config.AddSecurity("bearer", Enumerable.Empty<string>(),
