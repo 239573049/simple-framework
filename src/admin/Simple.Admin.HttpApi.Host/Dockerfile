@@ -17,10 +17,10 @@ COPY ["src/module/Simple.Common.Jwt/Simple.Common.Jwt.csproj", "src/module/Simpl
 RUN dotnet restore "src/admin/Simple.Admin.HttpApi.Host/Simple.Admin.HttpApi.Host.csproj"
 COPY . .
 WORKDIR "/src/src/admin/Simple.Admin.HttpApi.Host"
-RUN dotnet build "Simple.Admin.HttpApi.Host.csproj" -c Release -o /app/build
+RUN dotnet build "Simple.Admin.HttpApi.Host.csproj" -c Release  --os linux -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Simple.Admin.HttpApi.Host.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Simple.Admin.HttpApi.Host.csproj" -c Release  --os linux -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

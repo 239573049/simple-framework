@@ -55,7 +55,6 @@ public class SimpleHttpApiHostModule : TokenModule
         });
     }
 
-
     public override void OnApplicationShutdown(IApplicationBuilder app)
     {
         var evn = app.ApplicationServices.GetService<IWebHostEnvironment>();

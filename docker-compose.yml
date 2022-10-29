@@ -1,0 +1,59 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    networks:
+      - simple
+    volumes:
+      - ./stack/conf.d:/etc/nginx/conf.d
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 80:80
+    depends_on: # 依赖顺序等待服务启动完成在启动代理
+     - auth
+     - simple
+
+  redis:
+    image: redis:alpine3.16
+    container_name: redis
+    networks:
+      - simple
+    ports:
+      - 6379:6379
+  
+  mssql:
+      image: mcr.microsoft.com/mssql/server:2017-latest
+      container_name: mssql
+      volumes:
+        - ./stack/data/mssql:/var/opt/mssql/data
+        - /etc/localtime:/etc/localtime
+      environment:
+        - "MSSQL_SA_PASSWORD=dd666666"
+        - "ACCEPT_EULA=Y"
+        - "TZ=Asia/Shanghai"
+      ports:
+        - 1433:1433
+      networks:
+      - simple
+
+  auth:
+    build:
+      context: .
+      dockerfile: ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile
+    container_name: auth
+    depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
+     - mssql
+     - redis
+
+  simple:
+    build:
+      context: .
+      dockerfile: ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile
+    container_name: simple
+    depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
+     - mssql
+     - redis
+
+networks:
+  simple:
+    driver: bridge

@@ -18,10 +18,10 @@ COPY ["src/efcore/EntityFrameworkCore/EntityFrameworkCore.csproj", "src/efcore/E
 RUN dotnet restore "src/auth/Simple.Auth.HttpApi.Host/Simple.Auth.HttpApi.Host.csproj"
 COPY . .
 WORKDIR "/src/src/auth/Simple.Auth.HttpApi.Host"
-RUN dotnet build "Simple.Auth.HttpApi.Host.csproj" -c Release -o /app/build
+RUN dotnet build "Simple.Auth.HttpApi.Host.csproj" -c Release --os linux -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Simple.Auth.HttpApi.Host.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Simple.Auth.HttpApi.Host.csproj" -c Release --os linux -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

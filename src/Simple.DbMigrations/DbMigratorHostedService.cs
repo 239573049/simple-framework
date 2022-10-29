@@ -26,6 +26,7 @@ public class DbMigratorHostedService : IHostedService
         {
             await dbContext.Database.MigrateAsync(cancellationToken: cancellationToken); //执行迁移
         }
+
         _hostApplicationLifetime.StopApplication();
     }
 
