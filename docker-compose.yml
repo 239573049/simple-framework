@@ -44,6 +44,8 @@ services:
     depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
      - mssql
      - redis
+    networks:
+      - simple
 
   simple:
     build:
@@ -53,6 +55,8 @@ services:
     depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
      - mssql
      - redis
+    networks:
+      - simple
 
 networks:
   simple:
