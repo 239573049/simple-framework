@@ -41,6 +41,8 @@ services:
       context: .
       dockerfile: ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile
     container_name: auth
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
     depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
      - mssql
      - redis
@@ -52,6 +54,8 @@ services:
       context: .
       dockerfile: ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile
     container_name: simple
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
     depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
      - mssql
      - redis

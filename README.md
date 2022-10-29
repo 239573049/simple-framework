@@ -28,11 +28,33 @@ dotnet new --install Simple.Framework
 dotnet new simple --name MyProjectName
 ```
 
-生成新模板包 (必须在 cmd 中执行) 
-```用来发布新模块版本```
+生成新模板包 (必须在 cmd 中执行)
+`用来发布新模块版本`
 
 ```shell
 nuget pack ./Simple.Framework.nuspec
+```
+
+## 项目部署
+
+项目将通过 docker compose 一键部署
+
+**_构建项目_**
+
+```shell
+docker-compose build
+```
+
+**_启动项目_**
+
+```shell
+docker-compose up -d
+```
+
+**_销毁项目_**
+
+```shell
+docker-compose down
 ```
 
 ## 🎞️ 项目结构
@@ -90,5 +112,5 @@ docker build -f ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile -t auth .
 **_在 Simple.DbMigrations 生成迁移文件然后更新迁移文件_**
 
 ## 技术交流
-QQ群：737776595
 
+QQ 群：737776595
