@@ -43,7 +43,7 @@ public class SimpleAuthHttpApiHostModule : TokenModule
             config.UseControllerSummaryAsTagDescription = true;
             config.PostProcess = document =>
             {
-                document.Info.Version = "v1.0";
+                document.Info.Version = "auth-v1.0";
                 document.Info.Title = "Auth Api";
                 document.Info.Description = "Auth Api";
             };

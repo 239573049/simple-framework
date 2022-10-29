@@ -40,7 +40,7 @@ public class SimpleHttpApiHostModule : TokenModule
             config.UseControllerSummaryAsTagDescription = true;
             config.PostProcess = document =>
             {
-                document.Info.Version = "v1.0";
+                document.Info.Version = "admin-v1.0";
                 document.Info.Title = "Admin Api";
                 document.Info.Description = "Simple Api";
             };
