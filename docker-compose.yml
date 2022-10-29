@@ -28,7 +28,7 @@ services:
         - ./stack/data/mssql:/var/opt/mssql/data
         - /etc/localtime:/etc/localtime
       environment:
-        - "MSSQL_SA_PASSWORD=dd666666"
+        - "MSSQL_SA_PASSWORD=Aa123456."
         - "ACCEPT_EULA=Y"
         - "TZ=Asia/Shanghai"
       ports:
