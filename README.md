@@ -39,6 +39,10 @@ nuget pack ./Simple.Framework.nuspec
 
 项目将通过 docker compose 一键部署
 
+实现记得部署好 mssql 然后启动 Simple.DbMigrations 项目执行迁移
+
+注意：先修改项目配置文件的连接字符串
+
 **_构建项目_**
 
 ```shell
