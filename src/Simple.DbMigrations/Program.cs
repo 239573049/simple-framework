@@ -1,13 +1,20 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Simple.DbMigrations;
 using Token.Module.Extensions;
 
-var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-await builder.Services.AddModuleApplicationAsync<SimpleDbMigrationsModule>();
+IHostBuilder host =
+    Host.CreateDefaultBuilder(args)
+        .ConfigureAppConfiguration(options =>
+        {
 
-var app = builder.Build();
+        })
+        .ConfigureServices(async (hostContext, services) =>
+        {
+            await services.AddModuleApplicationAsync<SimpleDbMigrationsModule>();
 
-app.InitializeApplication();
+            services.AddHostedService<DbMigratorHostedService>();
+        });
 
-app.Run();
+await host.RunConsoleAsync();

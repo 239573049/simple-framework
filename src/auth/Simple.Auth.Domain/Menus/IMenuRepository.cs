@@ -10,9 +10,9 @@ namespace Simple.Auth.Domain.Menus
         /// <summary>
         /// 获取用户可访菜单
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="keywords"></param>
+        /// <param name="roleIds"></param>
         /// <returns></returns>
-        Task<List<Menu>> GetUserMenuAsync(Guid id, string keywords);
+        Task<List<Menu>> GetUserMenuAsync(string keywords, IEnumerable<Guid> roleIds);
     }
 }

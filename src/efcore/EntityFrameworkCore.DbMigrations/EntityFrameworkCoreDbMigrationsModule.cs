@@ -1,8 +1,8 @@
-﻿using EntityFrameworkCore.Mysql.Extensions;
+﻿using EntityFrameworkCore.SqlServer.Extensions;
 using Microsoft.Extensions.DependencyInjection;
-using Simple.Auth.EntityFrameworkCore;
 using Simple.Admin.EntityFrameworkCore;
-using System;
+using Simple.Auth.EntityFrameworkCore;
+using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 using Token.Module;
 using Token.Module.Attributes;
 
@@ -14,7 +14,6 @@ public class EntityFrameworkCoreDbMigrationsModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddMysqlEfCoreEntityFrameworkCore<EfCoreMigrationDbContext>(new Version(8, 0, 10));
-
+        services.AddSqlServerEfCoreEntityFrameworkCore<EfCoreMigrationDbContext>();
     }
 }

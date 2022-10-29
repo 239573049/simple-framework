@@ -3,6 +3,7 @@ using System;
 using EntityFrameworkCore.DbMigrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -17,53 +18,55 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.9")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Simple.Admin.Domain.Systems.DictionarySetting", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("DeleteCreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DeleteTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Key")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -79,54 +82,54 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Avatar")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("DeleteCreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DeleteTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PassWord")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<Guid?>("TenantId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -138,9 +141,9 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ef4c4a34-f531-46e2-985d-04f8f2915f79"),
+                            Id = new Guid("c8dfc2ee-e470-4b35-a2d3-45ee427589e2"),
                             Avatar = "",
-                            ConcurrencyStamp = "3372412b3ca3477fa6596e576fc37c47",
+                            ConcurrencyStamp = "728c53d65d974c7980241555e548f9c3",
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExtraProperties = "{}",
                             IsDeleted = false,
@@ -155,34 +158,34 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Component")
-                        .HasColumnType("longtext")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("前端对应组件");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("DeleteCreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DeleteTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Icon")
-                        .HasColumnType("longtext")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("图标");
 
                     b.Property<int>("Index")
@@ -190,27 +193,27 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                         .HasComment("顺序");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("ParentId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasComment("上级id 为null表示当前为顶层");
 
                     b.Property<string>("Path")
-                        .HasColumnType("longtext")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("前端跳转路由");
 
                     b.Property<Guid?>("TenantId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("菜单显示标题");
 
                     b.HasKey("Id");
@@ -223,9 +226,9 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b37c4c37-8b27-4935-a89d-78c2cf6252dd"),
+                            Id = new Guid("760f0579-ec52-4375-8fa3-17a14aef3dce"),
                             Component = "@/pages/admin/home",
-                            ConcurrencyStamp = "3d07abde59964c2fa072e23fb596aab0",
+                            ConcurrencyStamp = "a46496bf08f34c09b7d6937e00ffc591",
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExtraProperties = "{}",
                             Icon = "HomeOutlined",
@@ -236,9 +239,9 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dd20c59b-ec18-4e89-b70e-39cd995f8f18"),
+                            Id = new Guid("370be57a-ed43-4e0f-8a3c-78e02483b42c"),
                             Component = "@/pages/admin/menu",
-                            ConcurrencyStamp = "8a18de374f2d4904b093883982386241",
+                            ConcurrencyStamp = "d0d5a3da23d8478f9f96bd5346667b8a",
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExtraProperties = "{}",
                             Icon = "",
@@ -249,9 +252,9 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7f0eab34-78b7-47d0-9596-9de9d3e38510"),
+                            Id = new Guid("82c0045b-1f29-4b28-904c-9c1eccd589fb"),
                             Component = "@/pages/admin/dictionary-settings",
-                            ConcurrencyStamp = "78bde32630cd4c6eac6775a8bdc0fe35",
+                            ConcurrencyStamp = "026d9e80a205415280d50a5efec97f5e",
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExtraProperties = "{}",
                             Icon = "",
@@ -262,9 +265,9 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c7742972-6851-4bbc-ad35-ada1f39d2077"),
+                            Id = new Guid("f7ee403f-f8b9-4d8f-b30e-b2a9c7e514d3"),
                             Component = "@/pages/admin/user",
-                            ConcurrencyStamp = "6c559b82b1ea48418c400951db091093",
+                            ConcurrencyStamp = "b94886e593d847f88b3ed1778a64bc66",
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExtraProperties = "{}",
                             Icon = "",
@@ -279,14 +282,14 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("MenuId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasComment("菜单Id");
 
                     b.Property<Guid>("RoleId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasComment("角色Id");
 
                     b.HasKey("Id");
@@ -300,27 +303,27 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7ea91342-524e-4fd6-99bc-005b8dcf30c9"),
-                            MenuId = new Guid("b37c4c37-8b27-4935-a89d-78c2cf6252dd"),
-                            RoleId = new Guid("0d0c305d-fdfb-435b-a65a-868ffb74d6e5")
+                            Id = new Guid("38153075-8c3d-4363-9640-b881c59d2eb4"),
+                            MenuId = new Guid("760f0579-ec52-4375-8fa3-17a14aef3dce"),
+                            RoleId = new Guid("4cdc12d4-5060-439f-9024-525011efaf81")
                         },
                         new
                         {
-                            Id = new Guid("61a8b6ee-00b4-417e-b2ce-2ead942872e9"),
-                            MenuId = new Guid("dd20c59b-ec18-4e89-b70e-39cd995f8f18"),
-                            RoleId = new Guid("0d0c305d-fdfb-435b-a65a-868ffb74d6e5")
+                            Id = new Guid("2c11ceff-2002-467c-9ceb-21e81517522a"),
+                            MenuId = new Guid("370be57a-ed43-4e0f-8a3c-78e02483b42c"),
+                            RoleId = new Guid("4cdc12d4-5060-439f-9024-525011efaf81")
                         },
                         new
                         {
-                            Id = new Guid("91dab773-31bc-4d9a-a028-16a5562bc69b"),
-                            MenuId = new Guid("7f0eab34-78b7-47d0-9596-9de9d3e38510"),
-                            RoleId = new Guid("0d0c305d-fdfb-435b-a65a-868ffb74d6e5")
+                            Id = new Guid("c70d3608-cd77-4844-9999-9054c2cae7f2"),
+                            MenuId = new Guid("82c0045b-1f29-4b28-904c-9c1eccd589fb"),
+                            RoleId = new Guid("4cdc12d4-5060-439f-9024-525011efaf81")
                         },
                         new
                         {
-                            Id = new Guid("7a3040ee-6105-470a-802f-d2bcb6596a5d"),
-                            MenuId = new Guid("c7742972-6851-4bbc-ad35-ada1f39d2077"),
-                            RoleId = new Guid("0d0c305d-fdfb-435b-a65a-868ffb74d6e5")
+                            Id = new Guid("fafe0e71-6252-4fa7-984b-e7e31330d80c"),
+                            MenuId = new Guid("f7ee403f-f8b9-4d8f-b30e-b2a9c7e514d3"),
+                            RoleId = new Guid("4cdc12d4-5060-439f-9024-525011efaf81")
                         });
                 });
 
@@ -328,55 +331,55 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
-                        .HasColumnType("longtext")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("编号");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("DeleteCreatorId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DeleteTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Index")
                         .HasColumnType("int")
                         .HasComment("顺序");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsPrivate")
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("bit")
                         .HasComment("是否私有 私有无法删除");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("角色名称");
 
                     b.Property<Guid?>("TenantId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -390,10 +393,10 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0d0c305d-fdfb-435b-a65a-868ffb74d6e5"),
+                            Id = new Guid("4cdc12d4-5060-439f-9024-525011efaf81"),
                             Code = "admin",
-                            ConcurrencyStamp = "e04ba189ed804c008d5c2bea8ce56a04",
-                            CreationTime = new DateTime(2022, 10, 29, 1, 29, 17, 597, DateTimeKind.Local).AddTicks(9189),
+                            ConcurrencyStamp = "3e63d4465afc4519ab4f58c4f8efe37c",
+                            CreationTime = new DateTime(2022, 10, 30, 1, 31, 36, 237, DateTimeKind.Local).AddTicks(9714),
                             ExtraProperties = "{}",
                             Index = 1,
                             IsDeleted = false,
@@ -406,14 +409,14 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("RoleId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasComment("角色Id");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uniqueidentifier")
                         .HasComment("用户id");
 
                     b.HasKey("Id");
@@ -427,9 +430,9 @@ namespace EntityFrameworkCore.DbMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("84faf69a-b8dc-4f86-9655-4b34ade3cd73"),
-                            RoleId = new Guid("0d0c305d-fdfb-435b-a65a-868ffb74d6e5"),
-                            UserId = new Guid("ef4c4a34-f531-46e2-985d-04f8f2915f79")
+                            Id = new Guid("6304e824-2e15-4ff8-bd5f-2fc548bee67c"),
+                            RoleId = new Guid("4cdc12d4-5060-439f-9024-525011efaf81"),
+                            UserId = new Guid("c8dfc2ee-e470-4b35-a2d3-45ee427589e2")
                         });
                 });
 #pragma warning restore 612, 618

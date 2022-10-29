@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Simple.Admin.Domain.Shared;
 using System.Security.Claims;
 using System.Text.Json;
+using Simple.Shared;
 using Token.Module.Dependencys;
 
 namespace Simple.Common.Jwt;
@@ -15,22 +16,15 @@ public class CurrentManage : ITransientDependency
         _httpContextAccessor = httpContextAccessor;
     }
 
-    /// <inheritdoc />
     public bool? IsAuthenticated()
     {
         return _httpContextAccessor.HttpContext?.User.Identity?.IsAuthenticated;
     }
 
-    /// <inheritdoc />
     public Guid? UserId()
     {
         var id = GetClaimValueByType(Constant.Id)?.FirstOrDefault();
-        if (string.IsNullOrEmpty(id))
-        {
-            return default;
-        }
-
-        return Guid.Parse(id);
+        return string.IsNullOrEmpty(id) ? default(Guid?) : Guid.Parse(id);
     }
 
     public Guid GetUserId()
@@ -45,7 +39,6 @@ public class CurrentManage : ITransientDependency
         return (Guid)userId;
     }
 
-    /// <inheritdoc />
     public T? UserInfo<T>()
     {
         var userInfo = GetClaimValueByType(ClaimTypes.Sid)?.FirstOrDefault();
@@ -58,4 +51,12 @@ public class CurrentManage : ITransientDependency
             .Select(item => item.Value);
     }
 
+    /// <summary>
+    /// 获取用户角色列表
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerable<Guid> GetRoles()
+    {
+        return _httpContextAccessor.HttpContext!.User.Claims.Where(x => x.Type == Constant.RoleId).Select(x => Guid.Parse(x.Value));
+    }
 }

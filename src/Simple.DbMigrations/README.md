@@ -2,7 +2,9 @@
 
 **当前项目仅用来迁移数据库结构**
 
-## 生成 Iot 库的迁移文件 （需将 Init 修改为实际的改动名字）
+如果存在迁移记录可以启动程序更新数据库结构
+
+## 生成 Simple 库的迁移文件 （需将 Init 修改为实际的改动名字）
 
 ```shell
 dotnet ef migrations add Init --project ../efcore/EntityFrameworkCore.DbMigrations --context EfCoreMigrationDbContext 

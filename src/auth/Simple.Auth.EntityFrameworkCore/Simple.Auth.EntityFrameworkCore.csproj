@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\efcore\EntityFrameworkCore.Mysql\EntityFrameworkCore.Mysql.csproj" />
+      <ProjectReference Include="..\..\efcore\EntityFrameworkCore.SqlServer\EntityFrameworkCore.SqlServer.csproj" />
       <ProjectReference Include="..\Simple.Auth.Domain\Simple.Auth.Domain.csproj" />
     </ItemGroup>
 

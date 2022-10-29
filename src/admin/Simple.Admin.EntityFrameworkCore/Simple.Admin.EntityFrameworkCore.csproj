@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\efcore\EntityFrameworkCore.Mysql\EntityFrameworkCore.Mysql.csproj" />
+      <ProjectReference Include="..\..\efcore\EntityFrameworkCore.SqlServer\EntityFrameworkCore.SqlServer.csproj" />
       <ProjectReference Include="..\Simple.Admin.Domain\Simple.Admin.Domain.csproj" />
     </ItemGroup>
 

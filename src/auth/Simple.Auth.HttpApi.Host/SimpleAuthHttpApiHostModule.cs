@@ -69,8 +69,6 @@ public class SimpleAuthHttpApiHostModule : TokenModule
             app.UseSwaggerUi3();
         }
 
-        app.UseHttpsRedirection();
-
         app.UseAuthorization();
 
         // 注册自动工作单元中间件

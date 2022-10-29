@@ -24,7 +24,10 @@ public static class SqlServerEntityFrameworkCoreExtensions
         }
 
         services.AddEfCoreEntityFrameworkCore<TDbContext>(
-            x => { x.UseSqlServer(configuration.GetConnectionString(connectionString)); },
+            x =>
+            {
+                x.UseSqlServer(configuration.GetConnectionString(connectionString));
+            },
             ServiceLifetime.Scoped);
 
         return services;

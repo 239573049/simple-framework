@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EntityFrameworkCore.Options;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Simple.Common.Jwt;
+using Microsoft.Extensions.Options;
 using Simple.Shared.Base;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,13 +19,14 @@ namespace EntityFrameworkCore.Core
         public bool IsCompleted { get; private set; }
 
         private readonly TDbContext _dbContext;
-        private readonly CurrentManage _currentManage;
-        private readonly TenantManager _tenantManager;
-        public UnitOfWork(TDbContext dbContext, CurrentManage currentManage, TenantManager tenantManager)
+        private readonly IServiceProvider _serviceProvider;
+        private readonly UnitOfWorkOptions _unitOfWorkOptions;
+
+        public UnitOfWork(TDbContext dbContext, IServiceProvider serviceProvider, IOptions<UnitOfWorkOptions> unitOfWorkOptions)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"db context nameof{nameof(dbContext)} is null");
-            _currentManage = currentManage;
-            _tenantManager = tenantManager;
+            _serviceProvider = serviceProvider;
+            _unitOfWorkOptions = unitOfWorkOptions.Value;
         }
 
         public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
@@ -95,7 +99,8 @@ namespace EntityFrameworkCore.Core
             switch (entry.Entity)
             {
                 case IModificationAuditedObject modificationAuditedObject:
-                    modificationAuditedObject.LastModifierId = _currentManage.UserId();
+
+                    modificationAuditedObject.LastModifierId = GetUserId();
                     modificationAuditedObject.LastModificationTime = DateTime.Now;
                     break;
                 case IHasModificationTime entity:
@@ -108,7 +113,7 @@ namespace EntityFrameworkCore.Core
         {
             if (entry.Entity is IMayHaveCreator creator)
             {
-                creator.CreatorId = _currentManage.UserId();
+                creator.CreatorId = GetUserId();
             }
 
             switch (entry.Entity)
@@ -120,7 +125,7 @@ namespace EntityFrameworkCore.Core
 
             if (entry.Entity is ITenant tenant)
             {
-                tenant.TenantId = _tenantManager.GetTenantId();
+                tenant.TenantId = GetTenantId();
             }
         }
 
@@ -134,10 +139,47 @@ namespace EntityFrameworkCore.Core
             if (entry.Entity is not IHasDeleteCreator deleteCreator) return;
 
             deleteCreator.DeleteTime = DateTime.Now;
-            deleteCreator.DeleteCreatorId = _currentManage.UserId();
+            deleteCreator.DeleteCreatorId = GetUserId();
 
         }
 
+        public Guid? GetUserId()
+        {
+            try
+            {
+
+                var httpContext = _serviceProvider.GetService(typeof(HttpContext)) as HttpContext;
+                var value = httpContext?.User?.Claims?.FirstOrDefault(x => x.Type == _unitOfWorkOptions.GetIdType)
+                    ?.Value;
+                if (string.IsNullOrEmpty(value))
+                    return null;
+
+                return Guid.Parse(value);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public Guid? GetTenantId()
+        {
+            try
+            {
+
+                var httpContext = _serviceProvider.GetService(typeof(HttpContext)) as HttpContext;
+                var value = httpContext?.User?.Claims?.FirstOrDefault(x => x.Type == _unitOfWorkOptions.GetTenantIdType)
+                    ?.Value;
+                if (string.IsNullOrEmpty(value))
+                    return null;
+
+                return Guid.Parse(value);
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         public void Dispose()
         {

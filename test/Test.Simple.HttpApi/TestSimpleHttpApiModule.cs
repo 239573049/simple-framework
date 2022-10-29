@@ -13,8 +13,6 @@ public class TestSimpleHttpApiModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
-        services.AddEndpointsApiExplorer();
 
         // 注入自动事务中间件
         services.AddUnitOfWorkMiddleware();
@@ -23,8 +21,6 @@ public class TestSimpleHttpApiModule : TokenModule
 
     public override void OnApplicationShutdown(IApplicationBuilder app)
     {
-        app.UseAuthorization();
-
         // 注册自动工作单元中间件
         app.UseUnitOfWorkMiddleware();
     }

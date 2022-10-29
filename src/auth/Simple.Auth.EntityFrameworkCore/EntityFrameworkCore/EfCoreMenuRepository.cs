@@ -12,12 +12,13 @@ public class EfCoreMenuRepository : EfCoreRepository<AuthDbContext, Menu, Guid>,
     {
     }
 
-    public async Task<List<Menu>> GetUserMenuAsync(Guid id, string? keywords)
+    /// <inheritdoc />
+    public async Task<List<Menu>> GetUserMenuAsync(string keywords, IEnumerable<Guid> roleIds)
     {
         var query =
             from menu in DbContext.Menu
             join menuRole in DbContext.MenuRole on menu.Id equals menuRole.MenuId
-            where string.IsNullOrEmpty(keywords) || menu.Title.Contains(keywords)
+            where string.IsNullOrEmpty(keywords) || menu.Title.Contains(keywords) && roleIds.Contains(menuRole.RoleId)
             select menu;
 
         return await query.ToListAsync();

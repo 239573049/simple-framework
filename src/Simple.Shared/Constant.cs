@@ -1,6 +1,6 @@
-namespace Simple.Admin.Domain.Shared
+namespace Simple.Shared
 {
-    
+
     public class Constant
     {
 
@@ -10,6 +10,6 @@ namespace Simple.Admin.Domain.Shared
 
         public const string User = "User";
 
-
+        public const string RoleId = "RoleId";
     }
 }

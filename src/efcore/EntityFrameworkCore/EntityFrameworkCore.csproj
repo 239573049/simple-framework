@@ -29,7 +29,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
+	  <ProjectReference Include="..\..\Simple.Shared\Simple.Shared.csproj" />
 	</ItemGroup>
+
 
 </Project>
