@@ -35,7 +35,7 @@ dotnet new simple --name MyProjectName
 nuget pack ./Simple.Framework.nuspec
 ```
 
-## 项目部署
+## 🎁 项目部署
 
 项目将通过 docker compose 一键部署
 
@@ -75,23 +75,9 @@ docker-compose down
 
 - [ ] 实现审计日志
 
-## 🏴‍☠️ 构建项目
-
-构建打包 Simple 项目的 Docker 镜像
-
-```shell
-docker build -f ./src/Simple.HttpApi.Host/Dockerfile -t simple .
-```
-
-构建打包 Simple-Auth 项目的 Docker 镜像
-
-```shell
-docker build -f ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile -t auth .
-```
-
 ## 🛞 使用说明
 
-**_首先需要修改 Simple.HttpApi.Host，Simple.DbMigrations，Simple.Auth.HttpApi.Host 的项目下的 appsettings.json 的 mysql 数据库连接字符串_**
+**_首先需要修改 Simple.Admin.HttpApi.Host，Simple.DbMigrations，Simple.Auth.HttpApi.Host 的项目下的 appsettings.json 的 mssql 数据库连接字符串_**
 
 **_在 Simple.DbMigrations 生成迁移文件然后更新迁移文件_**
 
