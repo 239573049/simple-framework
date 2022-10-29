@@ -6,6 +6,7 @@ using Simple.Admin.Application;
 using Simple.Admin.EntityFrameworkCore;
 using Token.Module;
 using Token.Module.Attributes;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace Simple.Admin.HttpApi.Host;
 
@@ -20,6 +21,15 @@ public class SimpleHttpApiHostModule : TokenModule
         services.AddUnitOfWorkMiddleware();
 
         ConfigureSwaggerServices(services);
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy", corsBuilder =>
+            {
+                corsBuilder.SetIsOriginAllowed((string _) => true).AllowAnyMethod().AllowAnyHeader()
+                    .AllowCredentials();
+            });
+        });
 
         // 添加过滤器
         services.AddMvcCore(options =>
@@ -70,5 +80,7 @@ public class SimpleHttpApiHostModule : TokenModule
 
         // 注册自动工作单元中间件
         app.UseUnitOfWorkMiddleware();
+
+        app.UseCors("CorsPolicy");
     }
 }

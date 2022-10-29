@@ -4,8 +4,8 @@ class Api {
     post(url: string, data: any) {
         return new Promise((resolve, reject) => {
             instance.post(url, data)
-                .then(res => {
-                    resolve(res.data)
+                .then((res: any) => {
+                    resolve(res)
                 })
                 .catch((err) => {
                     reject(err)
@@ -17,7 +17,7 @@ class Api {
         return new Promise((resolve, reject) => {
             instance.post(url, data, { params: params })
                 .then(res => {
-                    resolve(res.data)
+                    resolve(res)
                 })
                 .catch((err) => {
                     reject(err)
@@ -30,7 +30,7 @@ class Api {
         return new Promise((resolve, reject) => {
             instance.put(url, data)
                 .then(res => {
-                    resolve(res.data)
+                    resolve(res)
                 })
                 .catch((err) => {
                     reject(err)
@@ -43,7 +43,7 @@ class Api {
         return new Promise((resolve, reject) => {
             instance.put(url, data, { params: params })
                 .then(res => {
-                    resolve(res.data)
+                    resolve(res)
                 })
                 .catch((err) => {
                     reject(err)
@@ -58,7 +58,7 @@ class Api {
                 params: params
             })
                 .then(res => {
-                    resolve(res.data)
+                    resolve(res)
                 })
                 .catch((err) => {
                     reject(err)
@@ -70,7 +70,7 @@ class Api {
         return new Promise((resolve, reject) => {
             instance.delete(url, { params: params })
                 .then(res => {
-                    resolve(res.data)
+                    resolve(res)
                 })
                 .catch((err) => {
                     reject(err)
@@ -79,4 +79,4 @@ class Api {
         })
     }
 }
-export default new Api
+export default new Api()

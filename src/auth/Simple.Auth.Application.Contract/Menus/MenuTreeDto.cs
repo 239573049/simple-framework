@@ -29,7 +29,7 @@ namespace Simple.Auth.Application.Contract.Menus
         /// <summary>
         /// 路由
         /// </summary>
-        public string? Link { get; set; }
+        public string? Path { get; set; }
 
         /// <summary>
         /// 上级Id
@@ -41,6 +41,6 @@ namespace Simple.Auth.Application.Contract.Menus
         /// <summary>
         /// 子集数据
         /// </summary>
-        public List<MenuTreeDto> Items { get; set; } = new();
+        public List<MenuTreeDto> Childrens { get; set; } = new();
     }
 }

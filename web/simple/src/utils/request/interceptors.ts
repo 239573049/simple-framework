@@ -8,7 +8,7 @@ const header = {
 const instance = axios.create({
     timeout: 60000,
     responseType: 'json',
-    baseURL: 'http://localhost:5006',
+    baseURL: 'http://localhost',
     headers: header,
 });
 
@@ -49,7 +49,7 @@ instance.interceptors.response.use(
                 break;
             case 401:
                 Toast.error('请先登录账号')
-                window.location.href = '/';
+                window.location.href = "/login"
                 break;
             case 403:
                 Toast.error('没有权限')

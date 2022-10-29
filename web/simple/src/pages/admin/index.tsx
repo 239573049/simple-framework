@@ -1,65 +1,69 @@
 import { Component, ReactNode } from "react";
 import { Outlet } from "react-router-dom";
-import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar } from '@douyinfe/semi-ui';
+import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar, Toast } from '@douyinfe/semi-ui';
 import { IconBell, IconHelpCircle, IconBytedanceLogo, IconHome, IconHistogram, IconLive, IconSetting } from '@douyinfe/semi-icons';
+import menuapi from "../../apis/menuapi";
+
 
 const { Header, Footer, Sider, Content } = Layout;
 
 class Admin extends Component {
 
+    state = {
+        menutree: []
+    }
+
     constructor(props: any) {
         super(props)
+        if (!window.sessionStorage.getItem('token')) {
+
+            Toast.error('请先登录账号')
+            window.location.href = "/login"
+        }
+        this.get_menu_tree()
+    }
+
+    get_menu_tree() {
+        menuapi.GetMenuTree({ keywords: "" })
+            .then((res: any) => {
+                console.log(res);
+                this.setState({
+                    menutree: res.data
+                })
+            })
+    }
+
+    onSelectNav(value: any) {
+        console.log(value.selectedItems[0]);
     }
 
     render(): ReactNode {
+        var { menutree } = this.state
+
         return (
             <Layout style={{ border: '1px solid var(--semi-color-border)', height: '100%' }}>
                 <Sider style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
                     <Nav
+                        onSelect={(value) => this.onSelectNav(value)}
                         defaultSelectedKeys={['Home']}
                         style={{ maxWidth: 220, height: '100%' }}
-                        items={[
-                            {
-                                itemKey: 'Home',
-                                text: '首页',
-                                link: '/',
-                                icon: <IconHome size="large" />
-                            },
-                            {
-                                itemKey: 'Histogram',
-                                text: '用户管理',
-                                link: '/user',
-                                icon: <IconHistogram size="large" />
-                            },
-                            {
-                                itemKey: 'Live',
-                                text: '测试功能',
-                                icon: <IconLive size="large" />,
-                                items: [
-                                    {
-                                        itemKey: 'operation-management',
-                                        text: '运营管理',
-                                        items: [
-                                            '人员管理',
-                                            '人员变更'
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                itemKey: 'Setting',
-                                text: '设置',
-                                icon: <IconSetting size="large" />
-                            },
-                        ]}
-                        header={{
-                            logo: <img src="//lf1-cdn-tos.bytescm.com/obj/ttfe/ies/semi/webcast_logo.svg" />,
-                            text: 'Simple 后台管理',
-                        }}
-                        footer={{
-                            collapseButton: true,
-                        }}
-                    />
+                    >
+                        <Nav.Header logo={<img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" />} text={'Semi 运营后台'} />
+
+                        {menutree.map((x: any) => {
+                            if (x.childrens.length) {
+                                return <Nav.Sub itemKey={x.itemKey} text={x.text}>
+                                    {x.childrens.map((s: any) => {
+                                        <Nav.Item itemKey={s.itemKey} text={s.text} />
+                                    })}
+                                </Nav.Sub>
+                            } else {
+                                return <Nav.Item itemKey={x.itemKey} text={x.text} />
+                            }
+                        })}
+                        <Nav.Footer collapseButton={true} />
+
+                    </Nav>
                 </Sider>
                 <Layout>
                     <Header style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>

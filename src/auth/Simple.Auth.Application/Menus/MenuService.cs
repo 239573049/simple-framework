@@ -50,7 +50,7 @@ public class MenuService : IMenuService, ITransientDependency
     {
         var trees = new List<MenuTreeDto>();
 
-        var data = menus.Where(x => x.ParentId == parentId);
+        var data = menus.Where(x => x.ParentId == parentId).OrderBy(x=>x.Index);
         menus = menus.Where(x => x.ParentId != parentId).ToList();
         foreach (var d in data)
         {
@@ -61,11 +61,11 @@ public class MenuService : IMenuService, ITransientDependency
                 Component = d.Component,
                 Icon = d.Icon,
                 Index = d.Index,
-                Link = d.Path,
+                Path = d.Path,
                 TenantId = d.TenantId,
                 Text = d.Title
             };
-            tree.Items.AddRange(GetRecursionMenu(menus, d.Id));
+            tree.Childrens.AddRange(GetRecursionMenu(menus, d.Id));
             trees.Add(tree);
         }
 

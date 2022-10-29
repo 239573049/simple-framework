@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkCore.Extensions;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Simple.Auth.Application;
@@ -22,6 +23,15 @@ public class SimpleAuthHttpApiHostModule : TokenModule
         services.AddControllers();
 
         services.AddEndpointsApiExplorer();
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy", corsBuilder =>
+            {
+                corsBuilder.SetIsOriginAllowed((string _) => true).AllowAnyMethod().AllowAnyHeader()
+                    .AllowCredentials();
+            });
+        });
 
         // 注入自动事务中间件
         services.AddUnitOfWorkMiddleware();
@@ -73,5 +83,7 @@ public class SimpleAuthHttpApiHostModule : TokenModule
 
         // 注册自动工作单元中间件
         app.UseUnitOfWorkMiddleware();
+
+        app.UseCors("CorsPolicy");
     }
 }

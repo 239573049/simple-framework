@@ -1,0 +1,14 @@
+.login-layout{
+    width: 440px;
+    float: right;
+    margin-right: 100px;
+    margin-top: 100px;
+}
+.layout{
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../static/sharpeye-eagle.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}

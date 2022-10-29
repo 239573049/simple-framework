@@ -1,7 +1,7 @@
 import { SignOnInput } from "../../modules/auth/SignOnInput";
 import api from "../../utils/request/api";
 
-let name = 'auth/'
+let name = 'auth'
 
 class AuthApi {
     /**
@@ -12,4 +12,8 @@ class AuthApi {
     SignOn(input: SignOnInput) {
         return api.post(name + '/api/Auth/sign-on', input)
     }
+
+
 }
+
+export default new AuthApi()
