@@ -1,8 +1,11 @@
 import { Component, ReactNode } from "react";
 import { Outlet } from "react-router-dom";
 import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar, Toast } from '@douyinfe/semi-ui';
-import { IconBell, IconHelpCircle, IconBytedanceLogo, IconHome, IconHistogram, IconLive, IconSetting } from '@douyinfe/semi-icons';
+import { IconBell, IconHelpCircle, IconBytedanceLogo } from '@douyinfe/semi-icons';
 import menuapi from "../../apis/menuapi";
+import icon from "../../utils/icon";
+import Lottie from "lottie-react";
+import logo from "../../static/logo.json";
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -20,10 +23,10 @@ class Admin extends Component {
             Toast.error('请先登录账号')
             window.location.href = "/login"
         }
-        this.get_menu_tree()
+        this.getMenuTree()
     }
 
-    get_menu_tree() {
+    getMenuTree() {
         menuapi.GetMenuTree({ keywords: "" })
             .then((res: any) => {
                 console.log(res);
@@ -36,7 +39,6 @@ class Admin extends Component {
     onSelectNav(value: any) {
         console.log(value.selectedItems[0]);
     }
-
     render(): ReactNode {
         var { menutree } = this.state
 
@@ -48,17 +50,18 @@ class Admin extends Component {
                         defaultSelectedKeys={['Home']}
                         style={{ maxWidth: 220, height: '100%' }}
                     >
-                        <Nav.Header logo={<img src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/webcast_logo.svg" />} text={'Semi 运营后台'} />
-
+                        <Nav.Header
+                            logo={<Lottie animationData={logo} loop={true} />}
+                            text={'Simple后台管理'} />
                         {menutree.map((x: any) => {
                             if (x.childrens.length) {
                                 return <Nav.Sub itemKey={x.itemKey} text={x.text}>
                                     {x.childrens.map((s: any) => {
-                                        <Nav.Item itemKey={s.itemKey} text={s.text} />
+                                        <Nav.Item itemKey={s.itemKey} text={s.text} icon={icon[x.icon]} />
                                     })}
                                 </Nav.Sub>
                             } else {
-                                return <Nav.Item itemKey={x.itemKey} text={x.text} />
+                                return <Nav.Item itemKey={x.itemKey} text={x.text} icon={icon[x.icon]} />
                             }
                         })}
                         <Nav.Footer collapseButton={true} />
@@ -142,6 +145,11 @@ class Admin extends Component {
                             <span>反馈建议</span>
                         </span>
                     </Footer>
+
+
+
+
+
                 </Layout>
             </Layout>
         )

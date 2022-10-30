@@ -46,10 +46,10 @@ public static class DefaultDataExtension
 
         var menus = new List<Menu>()
         {
-            new (Guid.NewGuid(),"首页","HomeOutlined",0,"@/pages/admin/home","/",null,null),
-            new (Guid.NewGuid(),"菜单管理","",1,"@/pages/admin/menu","/menu",null,null),
-            new (Guid.NewGuid(),"字典设置","",1,"@/pages/admin/dictionary-settings","/dictionary-settings",null,null),
-            new (Guid.NewGuid(),"用户管理","",1,"@/pages/admin/user","/user",null,null),
+            new (Guid.NewGuid(),"首页","IconHome",0,"@/pages/admin/home","/",null,null),
+            new (Guid.NewGuid(),"菜单管理","IconMenu",1,"@/pages/admin/menu","/menu",null,null),
+            new (Guid.NewGuid(),"字典设置","IconArticle",2,"@/pages/admin/dictionary-settings","/dictionary-settings",null,null),
+            new (Guid.NewGuid(),"用户管理","IconUser",3,"@/pages/admin/user","/user",null,null),
         };
 
         builder.Entity<Menu>().HasData(menus);
