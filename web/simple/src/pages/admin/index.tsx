@@ -38,6 +38,7 @@ class Admin extends Component {
 
     onSelectNav(value: any) {
         console.log(value.selectedItems[0]);
+
     }
     render(): ReactNode {
         var { menutree } = this.state
