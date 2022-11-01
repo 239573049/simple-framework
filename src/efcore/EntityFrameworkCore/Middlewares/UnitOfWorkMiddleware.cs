@@ -34,11 +34,11 @@ public class UnitOfWorkMiddleware : IMiddleware
         }
         else
         {
-            // »ñÈ¡·şÎñÖĞ¶à¸öDbContext
+            // è·å–æœåŠ¡ä¸­å¤šä¸ªDbContext
             var unitOfWorks = context.RequestServices.GetServices<IUnitOfWork>();
             foreach (var unitOfWork in unitOfWorks)
             {
-                // ¿ªÆôÊÂÎñ
+                // å¼€å¯äº‹åŠ¡
                 await unitOfWork.BeginTransactionAsync();
             }
             try
@@ -47,11 +47,11 @@ public class UnitOfWorkMiddleware : IMiddleware
 
                 foreach (var unitOfWork in unitOfWorks)
                 {
-                    // Ìá½»ÊÂÎñ
+                    // æäº¤äº‹åŠ¡
                     await unitOfWork.CommitTransactionAsync();
                 }
             }
-            finally
+            catch (Exception)
             {
                 foreach (var d in unitOfWorks)
                 {
