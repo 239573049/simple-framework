@@ -18,4 +18,5 @@ public interface IUserInfoService
     /// </summary>
     /// <returns></returns>
     Task<List<UserInfoDto>> GetListAsync();
+
 }

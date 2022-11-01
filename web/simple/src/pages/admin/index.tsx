@@ -1,5 +1,5 @@
 import { Component, ReactNode } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar, Toast } from '@douyinfe/semi-ui';
 import { IconBell, IconHelpCircle, IconBytedanceLogo } from '@douyinfe/semi-icons';
 import menuapi from "../../apis/menuapi";
@@ -36,8 +36,9 @@ class Admin extends Component {
             })
     }
 
-    onSelectNav(value: any) {
-        console.log(value.selectedItems[0]);
+
+    OnMenuClick(value: any) {
+        console.log(value);
 
     }
     render(): ReactNode {
@@ -47,7 +48,6 @@ class Admin extends Component {
             <Layout style={{ border: '1px solid var(--semi-color-border)', height: '100%' }}>
                 <Sider style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
                     <Nav
-                        onSelect={(value) => this.onSelectNav(value)}
                         defaultSelectedKeys={['Home']}
                         style={{ maxWidth: 220, height: '100%' }}
                     >
@@ -58,11 +58,15 @@ class Admin extends Component {
                             if (x.childrens.length) {
                                 return <Nav.Sub itemKey={x.itemKey} text={x.text}>
                                     {x.childrens.map((s: any) => {
-                                        <Nav.Item itemKey={s.itemKey} text={s.text} icon={icon[x.icon]} />
+                                        <Link to={s.path} >
+                                            <Nav.Item itemKey={s.itemKey} text={s.text} icon={icon[x.icon]} onClick={() => this.OnMenuClick(s)} />
+                                        </Link>
                                     })}
                                 </Nav.Sub>
                             } else {
-                                return <Nav.Item itemKey={x.itemKey} text={x.text} icon={icon[x.icon]} />
+                                return <Link to={x.path} >
+                                    <Nav.Item itemKey={x.itemKey} text={x.text} icon={icon[x.icon]} onClick={() => this.OnMenuClick(x)} />
+                                </Link>
                             }
                         })}
                         <Nav.Footer collapseButton={true} />

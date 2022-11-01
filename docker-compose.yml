@@ -1,3 +1,5 @@
+version: '3.4'
+
 services:
   nginx:
     image: nginx:stable-alpine
@@ -9,7 +11,7 @@ services:
       - /etc/localtime:/etc/localtime
     ports:
       - 80:80
-    depends_on: # 依赖顺序等待服务启动完成在启动代理
+    depends_on: 
      - auth
      - simple
 
@@ -43,7 +45,7 @@ services:
     container_name: auth
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
-    depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
+    depends_on: 
      - mssql
      - redis
     networks:
@@ -56,12 +58,20 @@ services:
     container_name: simple
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
-    depends_on: # 依赖顺序等待mssql redis启动完成在启动服务
+    depends_on:
      - mssql
      - redis
     networks:
       - simple
 
+  simple-web:
+    build:
+      context: .
+      dockerfile: ./web/simple/Dockerfile
+    container_name: simple-web
+    networks:
+      - simple
+  
 networks:
   simple:
     driver: bridge

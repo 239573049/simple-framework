@@ -5,8 +5,7 @@ import { LoginLayout } from "../../../components/user/login";
 
 class Login extends Component {
     render(): ReactNode {
-        return (
-            <LoginLayout />)
+        return (<LoginLayout />)
     }
 }
 

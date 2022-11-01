@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Admin.EntityFrameworkCore;
 using Simple.Auth.EntityFrameworkCore;
-using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 using Token.Module;
 using Token.Module.Attributes;
 

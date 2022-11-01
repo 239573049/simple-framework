@@ -1,16 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Simple.Auth.Application.Contract.Auth;
 using Simple.Auth.Application.Contract.Auth.Dtos;
-using Simple.Common.Jwt;
+using Simple.Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
-using Microsoft.Extensions.Options;
-using Simple.Admin.Domain.Shared;
-using Simple.Shared;
 using TokenOptions = Simple.Common.Jwt.TokenOptions;
 
 namespace Simple.Auth.HttpApi.Host.Controllers;
@@ -32,7 +29,7 @@ public class AuthController : ControllerBase
     }
 
     /// <summary>
-    /// 
+    /// 授权
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
