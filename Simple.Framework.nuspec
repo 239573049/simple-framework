@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Simple.Framework</id>
-    <version>0.2.0</version>
+    <version>0.2.2</version>
     <description>Simple framework项目模板</description>
     <authors>Simple</authors>
     <packageTypes>
@@ -10,11 +10,5 @@
     </packageTypes>
     <license type="expression">MIT</license>
   </metadata>
-  
-  <files>
-    <file src="nuget.exe" target="nuget"/> 
-    <file src=".git/*" target="git"/> 
-    <file src="*.dll" target="dll" exclude="src\**.dll" />
-  </files>
 
 </package>
