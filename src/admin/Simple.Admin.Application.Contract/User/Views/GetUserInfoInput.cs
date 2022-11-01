@@ -1,6 +1,6 @@
 ﻿namespace Simple.Admin.Application.Contract.User.Views;
 
-public class GetUserInfoInput
+public class GetUserInfoInput : 
 {
     
 }
