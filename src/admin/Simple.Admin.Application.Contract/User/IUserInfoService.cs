@@ -16,7 +16,8 @@ public interface IUserInfoService
     /// <summary>
     /// 获取所有用户
     /// </summary>
+    /// <param name="input"></param>
     /// <returns></returns>
-    Task<List<UserInfoDto>> GetListAsync();
+    Task<List<UserInfoDto>> GetListAsync(GetUserInfoInput input);
 
 }

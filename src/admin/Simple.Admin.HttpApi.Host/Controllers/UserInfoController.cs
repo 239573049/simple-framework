@@ -39,8 +39,8 @@ public class UserInfoController : ControllerBase
     /// <returns></returns>
     [HttpGet("list")]
     [DisabledUnitOfWork]
-    public async Task<List<UserInfoDto>> GetListAsync()
+    public async Task<List<UserInfoDto>> GetListAsync(GetUserInfoInput input)
     {
-        return await _userInfoService.GetListAsync();
+        return await _userInfoService.GetListAsync(input);
     }
 }

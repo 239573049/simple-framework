@@ -2,6 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Admin.Application.Contract.User;
 using System.Text.Json;
+using Simple.Admin.Application.Contract.User.Views;
 using Token.Module.Extensions;
 
 namespace Test.Simple.HttpApi;
@@ -30,7 +31,7 @@ public class UserInfoTest
     [Test]
     public async Task GetListAsync()
     {
-        var data = await _userInfoService.GetListAsync();
+        var data = await _userInfoService.GetListAsync(new GetUserInfoInput());
         Console.WriteLine(JsonSerializer.Serialize(data));
         Assert.Pass();
     }

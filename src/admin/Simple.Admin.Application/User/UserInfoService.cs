@@ -26,10 +26,11 @@ public class UserInfoService : IUserInfoService, ITransientDependency
         await _userInfoRepository.CreateAsync(data);
     }
 
+    /// <param name="input"></param>
     /// <inheritdoc />
-    public async Task<List<UserInfoDto>> GetListAsync()
+    public async Task<List<UserInfoDto>> GetListAsync(GetUserInfoInput input)
     {
-        var result = await _userInfoRepository.GetListAsync(x => true);
+        var result = await _userInfoRepository.GetListAsync(x => x.Name.Contains(input.Keywords));
 
         return _mapper.Map<List<UserInfoDto>>(result);
     }

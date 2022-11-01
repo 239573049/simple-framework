@@ -5,4 +5,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NSwag.Annotations" Version="13.17.0" />
+  </ItemGroup>
+
 </Project>
