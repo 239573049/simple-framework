@@ -17,7 +17,7 @@ class MenuApi {
      * 删除菜单
      */
     Delete(id: string) {
-        return api.del(name + "/api/Menu", id = id)
+        return api.del(name + "/api/Menu", id)
     }
 
     /**

@@ -1,10 +1,10 @@
 import { Component, ReactNode } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar, Toast, Icon } from '@douyinfe/semi-ui';
-import { IconBell, IconHelpCircle, IconBytedanceLogo } from '@douyinfe/semi-icons';
+import { Layout, Nav, Button, Skeleton, Avatar, Toast, Icon } from '@douyinfe/semi-ui';
+import { IconBell, IconHelpCircle } from '@douyinfe/semi-icons';
 import menuapi from "../../apis/menuapi";
-import icon from "../../utils/icon";
 import Lottie from "lottie-react";
+import icon from "../../utils/icon/index";
 import logo from "../../static/logo.json";
 
 

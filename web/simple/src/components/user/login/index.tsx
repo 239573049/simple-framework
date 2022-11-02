@@ -7,9 +7,6 @@ import { SignOnInput } from "../../../modules/auth/SignOnInput";
 
 export class LoginLayout extends Component {
 
-    constructor(props: any) {
-        super(props)
-    }
 
     handleSubmit(value: SignOnInput) {
         authapi.SignOn(value)
