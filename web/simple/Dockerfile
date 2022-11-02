@@ -16,4 +16,4 @@ RUN npm run build
 FROM base AS final
 WORKDIR /app
 COPY --from=build /src/build /wwwroot/
-COPY web/Simple/conf.d/ /etc/nginx/conf.d/ 
+COPY web/simple/conf.d/ /etc/nginx/conf.d/ 
