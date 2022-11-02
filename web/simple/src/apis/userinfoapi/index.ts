@@ -7,7 +7,7 @@ class UserInfoApi {
     /**
      * 获取所有用户
      */
-    GetListAsync(input: GetUserInfoInput) {
+    GetListAsync(input: GetUserInfoInput | null) {
         return api.get(name + '/api/UserInfo/list', input)
     }
 }

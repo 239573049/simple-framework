@@ -54,7 +54,7 @@ services:
   simple:
     build:
       context: .
-      dockerfile: ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile
+      dockerfile: ./src/admin/Simple.Admin.HttpApi.Host/Dockerfile
     container_name: simple
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
@@ -67,7 +67,7 @@ services:
   simple-web:
     build:
       context: .
-      dockerfile: ./web/simple/Dockerfile
+      dockerfile: ./web/Simple/Dockerfile
     container_name: simple-web
     networks:
       - simple

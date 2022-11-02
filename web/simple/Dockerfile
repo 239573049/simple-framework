@@ -7,7 +7,7 @@ EXPOSE 80
 
 FROM node:lts-alpine3.15 AS build
 WORKDIR /src
-COPY web/simple/ .
+COPY web/Simple/ .
 WORKDIR "/src"
 RUN npm config set registry https://registry.npm.taobao.org
 RUN npm i
@@ -16,4 +16,4 @@ RUN npm run build
 FROM base AS final
 WORKDIR /app
 COPY --from=build /src/build /wwwroot/
-COPY web/simple/conf.d/ /etc/nginx/conf.d/ 
+COPY web/Simple/conf.d/ /etc/nginx/conf.d/ 

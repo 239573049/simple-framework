@@ -20,7 +20,7 @@ public static class DefaultDataExtension
 
         #region  用户默认数据
 
-        var userInfo = new UserInfo(Guid.NewGuid(), "admin", "admin", "admin", "");
+        var userInfo = new UserInfo(Guid.NewGuid(), "admin", "admin", "admin", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/OIP-C.jpg");
 
         builder.Entity<UserInfo>().HasData(userInfo);
 

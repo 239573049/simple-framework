@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Simple.Admin.Application.Contract.User.Views;
+using Simple.Application.Contract;
 using System.Threading.Tasks;
-using Simple.Admin.Application.Contract.User.Views;
 
 namespace Simple.Admin.Application.Contract.User;
 
@@ -18,6 +18,6 @@ public interface IUserInfoService
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    Task<List<UserInfoDto>> GetListAsync(GetUserInfoInput input);
+    Task<PagedResultDto<UserInfoDto>> GetListAsync(GetUserInfoInput input);
 
 }

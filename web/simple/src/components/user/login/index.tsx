@@ -30,7 +30,7 @@ export class LoginLayout extends Component {
                         {({ formState, values, formApi }) => (
                             <>
                                 <Form.Input field='username' label='用户名' style={{ width: '100%' }} placeholder='请输入您的用户名'></Form.Input>
-                                <Form.Input field='password' label='密码' style={{ width: '100%' }} placeholder='请输入您的密码'></Form.Input>
+                                <Form.Input field='password' mode="password" label='密码' style={{ width: '100%' }} placeholder='请输入您的密码'></Form.Input>
                                 <Form.Checkbox field='agree' noLabel>我已阅读并同意服务条款</Form.Checkbox>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <p>

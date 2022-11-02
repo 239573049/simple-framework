@@ -1,6 +1,6 @@
 import { Component, ReactNode } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar, Toast } from '@douyinfe/semi-ui';
+import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar, Toast, Icon } from '@douyinfe/semi-ui';
 import { IconBell, IconHelpCircle, IconBytedanceLogo } from '@douyinfe/semi-icons';
 import menuapi from "../../apis/menuapi";
 import icon from "../../utils/icon";
@@ -36,10 +36,12 @@ class Admin extends Component {
             })
     }
 
+    giteeIcon() {
+        return <svg className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1792" width="16" height="16"><path d="M512 1024C229.222 1024 0 794.778 0 512S229.222 0 512 0s512 229.222 512 512-229.222 512-512 512z m259.149-568.883h-290.74a25.293 25.293 0 0 0-25.292 25.293l-0.026 63.206c0 13.952 11.315 25.293 25.267 25.293h177.024c13.978 0 25.293 11.315 25.293 25.267v12.646a75.853 75.853 0 0 1-75.853 75.853h-240.23a25.293 25.293 0 0 1-25.267-25.293V417.203a75.853 75.853 0 0 1 75.827-75.853h353.946a25.293 25.293 0 0 0 25.267-25.292l0.077-63.207a25.293 25.293 0 0 0-25.268-25.293H417.152a189.62 189.62 0 0 0-189.62 189.645V771.15c0 13.977 11.316 25.293 25.294 25.293h372.94a170.65 170.65 0 0 0 170.65-170.65V480.384a25.293 25.293 0 0 0-25.293-25.267z" fill="#C71D23" p-id="1793"></path></svg>
+    }
 
     OnMenuClick(value: any) {
         console.log(value);
-
     }
     render(): ReactNode {
         var { menutree } = this.state
@@ -108,12 +110,6 @@ class Admin extends Component {
                             backgroundColor: 'var(--semi-color-bg-0)',
                         }}
                     >
-                        <Breadcrumb
-                            style={{
-                                marginBottom: '24px',
-                            }}
-                            routes={['首页', '详情页']}
-                        />
                         <div
                             style={{
                                 borderRadius: '10px',
@@ -142,12 +138,10 @@ class Admin extends Component {
                                 alignItems: 'center',
                             }}
                         >
-                            <IconBytedanceLogo size="large" style={{ marginRight: '8px' }} />
-                            <span>Copyright © 2019 ByteDance. All Rights Reserved. </span>
                         </span>
                         <span>
-                            <span style={{ marginRight: '24px' }}>平台客服</span>
-                            <span>反馈建议</span>
+                            <a href="https://gitee.com/Simple-china/simple-framework" style={{ marginRight: "5px" }}><Icon svg={this.giteeIcon()} /></a>
+                            <a href="https://github.com/239573049/simple-framework">{icon["IconGithubLogo"]}</a>
                         </span>
                     </Footer>
 

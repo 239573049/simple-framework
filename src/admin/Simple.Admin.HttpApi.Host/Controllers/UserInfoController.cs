@@ -1,7 +1,9 @@
 using EntityFrameworkCore.Attributes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Simple.Admin.Application.Contract.User;
 using Simple.Admin.Application.Contract.User.Views;
+using Simple.Application.Contract;
 
 namespace Simple.Admin.HttpApi.Host.Controllers;
 
@@ -10,6 +12,7 @@ namespace Simple.Admin.HttpApi.Host.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
+
 public class UserInfoController : ControllerBase
 {
     private readonly ILogger<UserInfoController> _logger;
@@ -39,7 +42,7 @@ public class UserInfoController : ControllerBase
     /// <returns></returns>
     [HttpGet("list")]
     [DisabledUnitOfWork]
-    public async Task<List<UserInfoDto>> GetListAsync(GetUserInfoInput input)
+    public async Task<PagedResultDto<UserInfoDto>> GetListAsync([FromQuery]GetUserInfoInput input)
     {
         return await _userInfoService.GetListAsync(input);
     }
