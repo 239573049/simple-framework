@@ -67,7 +67,7 @@ services:
   simple-web:
     build:
       context: .
-      dockerfile: ./web/Simple/Dockerfile
+      dockerfile: ./web/simple/Dockerfile
     container_name: simple-web
     networks:
       - simple
