@@ -7,8 +7,8 @@ const header = {
 // axios 实例
 const instance = axios.create({
     timeout: 60000,
+    baseURL: 'http://127.0.0.1',
     responseType: 'json',
-    baseURL: 'http://localhost',
     headers: header,
 });
 

@@ -13,7 +13,7 @@ RUN npm config set registry https://registry.npm.taobao.org
 RUN npm i
 RUN npm run build
 
-FROM base AS final
+FROM base AS simple-web
 WORKDIR /app
 COPY --from=build /src/build /wwwroot/
 COPY web/simple/conf.d/ /etc/nginx/conf.d/ 
