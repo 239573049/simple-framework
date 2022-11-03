@@ -4,7 +4,7 @@ import { Layout, Nav, Button, Skeleton, Avatar, Toast, Icon } from '@douyinfe/se
 import { IconBell, IconHelpCircle } from '@douyinfe/semi-icons';
 import menuapi from "../../apis/menuapi";
 import Lottie from "lottie-react";
-import icon from "../../utils/icon/index";
+import icon from "../../utils/icons/index";
 import logo from "../../static/logo.json";
 
 
