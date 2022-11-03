@@ -35,7 +35,8 @@ const columns = [
 ]
 
 interface IProps {
-    input: GetUserInfoInput | null
+    input: GetUserInfoInput | null;
+    onRef: any
 }
 interface IState {
     data: {
@@ -46,6 +47,8 @@ interface IState {
 }
 
 class TabUserInfo extends Component<IProps, IState>{
+
+
     state: Readonly<IState> = {
         data: {
             items: [],
@@ -56,6 +59,10 @@ class TabUserInfo extends Component<IProps, IState>{
     constructor(props: IProps) {
         super(props);
         this.getUserInfo();
+    }
+
+    componentDidMount(): void {
+        this.props.onRef(this)
     }
 
     getUserInfo() {

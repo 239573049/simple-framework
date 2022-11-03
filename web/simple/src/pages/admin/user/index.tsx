@@ -1,11 +1,13 @@
 import { Component, ReactNode } from "react";
-import userinfoapi from "../../../apis/userinfoapi";
 import { GetUserInfoInput } from "../../../modules/userInfo/GetUserInfoInput";
 import InputUserInfo from "./InputUserInfo";
 import TabUserInfo from "./TabUserInfo";
+import moment from 'moment';
+import React from "react";
 
 interface IState {
-    input: GetUserInfoInput
+    input: GetUserInfoInput;
+    tabUserInfoRef: any
 }
 
 interface IProps {
@@ -20,26 +22,46 @@ class UserLayout extends Component<IProps, IState>{
             endTime: null,
             page: 1,
             pageSize: 20
-        }
+        },
+        tabUserInfoRef: React.createRef()
     }
+    onRef(value: any) {
+        console.log(value);
+
+        this.setState({
+            tabUserInfoRef: value
+        })
+    }
+
+
+
     render(): ReactNode {
         var { input } = this.state
+
+
         return (
             <div>
                 <InputUserInfo
                     keywords={input.keywords}
                     startTime={input.startTime}
-                    keywordsChange={(value: any) => console.log(value)}
-                    timeChange={(value: any) => {
+                    OnClick={() => {
+                        this.state.tabUserInfoRef.getUserInfo();
+                    }}
+                    keywordsChange={(value: any) => {
                         input.keywords = value
-                        console.log(input);
-
+                        this.setState({
+                            input
+                        })
+                    }}
+                    timeChange={(value: any) => {
+                        input.startTime = moment(value[0]).format("YYYY-MM-DD HH:mm:ss")
+                        input.endTime = moment(value[1]).format("YYYY-MM-DD HH:mm:ss")
                         this.setState({
                             input
                         })
                     }}
                     endTime={input.endTime} />
-                <TabUserInfo input={null} />
+                <TabUserInfo input={input} onRef={(value: any) => this.onRef(value)} />
             </div>
         )
     }

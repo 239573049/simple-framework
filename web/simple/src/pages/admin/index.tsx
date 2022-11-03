@@ -60,7 +60,7 @@ class Admin extends Component {
                             if (x.childrens.length) {
                                 return <Nav.Sub itemKey={x.itemKey} text={x.text}>
                                     {x.childrens.map((s: any) => {
-                                        <Link to={s.path} >
+                                        return <Link to={s.path} >
                                             <Nav.Item itemKey={s.itemKey} text={s.text} icon={icon[x.icon]} onClick={() => this.OnMenuClick(s)} />
                                         </Link>
                                     })}
