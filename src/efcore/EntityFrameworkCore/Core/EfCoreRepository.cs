@@ -27,7 +27,7 @@ public abstract class EfCoreRepository<TDbContext, TEntity, TKey> : EfCoreReposi
 
     public async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)
     {
-        var entity = await DbSet.FirstOrDefaultAsync(x => x.Id.Equals(id), cancellationToken: cancellationToken);
+        var entity = await DbSet.FirstOrDefaultAsync(x => x.Id!.Equals(id), cancellationToken: cancellationToken);
         if (entity != null)
         {
             DbSet.Remove(entity);

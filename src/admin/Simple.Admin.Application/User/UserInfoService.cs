@@ -2,10 +2,10 @@
 using Simple.Admin.Application.Contract.User;
 using Simple.Admin.Application.Contract.User.Views;
 using Simple.Admin.Domain.Users;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Simple.Application.Contract;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Simple.Common.Jwt;
 using Token.Module.Dependencys;
 
 namespace Simple.Admin.Application.User;
@@ -14,11 +14,13 @@ public class UserInfoService : IUserInfoService, ITransientDependency
 {
     private readonly IUserInfoRepository _userInfoRepository;
     private readonly IMapper _mapper;
+    private readonly CurrentManage _currentManage;
 
-    public UserInfoService(IUserInfoRepository userInfoRepository, IMapper mapper)
+    public UserInfoService(IUserInfoRepository userInfoRepository, IMapper mapper, CurrentManage currentManage)
     {
         _userInfoRepository = userInfoRepository;
         _mapper = mapper;
+        _currentManage = currentManage;
     }
 
     public async Task CreateAsync(CreateUserInfoDto userInfo)
@@ -39,5 +41,14 @@ public class UserInfoService : IUserInfoService, ITransientDependency
         var dto = _mapper.Map<List<UserInfoDto>>(result);
 
         return new PagedResultDto<UserInfoDto>(count, dto);
+    }
+
+    public async Task<UserInfoDto> GetAsync()
+    {
+        var userInfo = await _userInfoRepository.FirstOrDefaultAsync(x => x.Id == _currentManage.GetUserId());
+
+        var dto = _mapper.Map<UserInfoDto>(userInfo);
+
+        return dto;
     }
 }

@@ -20,4 +20,9 @@ public interface IUserInfoService
     /// <returns></returns>
     Task<PagedResultDto<UserInfoDto>> GetListAsync(GetUserInfoInput input);
 
+    /// <summary>
+    /// 获取当前用户信息详情
+    /// </summary>
+    /// <returns></returns>
+    Task<UserInfoDto> GetAsync();
 }

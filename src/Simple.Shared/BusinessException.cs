@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simple.Admin.Domain.Shared
+namespace Simple.Shared
 {
     public class BusinessException : Exception
     {

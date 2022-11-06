@@ -1,9 +1,9 @@
-﻿using Simple.Admin.Domain.Shared;
-using Simple.Auth.Domain.Roles;
+﻿using Simple.Auth.Domain.Roles;
 using Simple.Shared.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Simple.Shared;
 
 namespace Simple.Auth.Domain.Users
 {

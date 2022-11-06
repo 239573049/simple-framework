@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Simple.Admin.Domain.Shared
+namespace Simple.Shared
 {
     public enum UserInfoStatus
     {

@@ -4,7 +4,7 @@
     <id>Simple.Framework</id>
     <version>0.2.3</version>
     <description>Simple framework项目模板</description>
-    <authors>Simple</authors>
+    <authors>simple</authors>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>

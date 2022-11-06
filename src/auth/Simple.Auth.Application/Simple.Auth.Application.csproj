@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\module\Simple.Common.Infrastructure\Simple.Common.Infrastructure.csproj" />
       <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
       <ProjectReference Include="..\Simple.Auth.Application.Contract\Simple.Auth.Application.Contract.csproj" />
       <ProjectReference Include="..\Simple.Auth.Domain\Simple.Auth.Domain.csproj" />

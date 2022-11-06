@@ -7,6 +7,7 @@ using Simple.Admin.Domain.Users;
 using Simple.Auth.Domain.Roles;
 using System.Xml.Linq;
 using Simple.Auth.Domain.Users;
+using Simple.Common.Infrastructure.Utils;
 
 namespace EntityFrameworkCore.DbMigrations.Extensions;
 
@@ -20,7 +21,7 @@ public static class DefaultDataExtension
 
         #region  用户默认数据
 
-        var userInfo = new UserInfo(Guid.NewGuid(), "admin", "admin", "admin", "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/OIP-C.jpg");
+        var userInfo = new UserInfo(Guid.NewGuid(), "admin", "admin", "admin".DesEncrypt(), "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/OIP-C.jpg");
 
         builder.Entity<UserInfo>().HasData(userInfo);
 
@@ -33,7 +34,31 @@ public static class DefaultDataExtension
             IsPrivate = true,
         };
 
-        builder.Entity<Role>().HasData(role);
+
+        var user = new Role(Guid.NewGuid())
+        {
+            Code = "user",
+            CreationTime = DateTime.Now,
+            Index = 2,
+            Name = "user",
+            IsPrivate = true,
+        };
+
+        builder.Entity<Role>().HasData(role, user);
+
+        var testUsers = new List<UserInfo>();
+
+        for (int i = 0; i < 20; i++)
+        {
+            var testUser = new UserInfo(Guid.NewGuid(), "test" + i, "test" + i, ("test" + i).DesEncrypt(),
+                "https://blog-simple.oss-cn-shenzhen.aliyuncs.com/OIP-C.jpg");
+
+            testUsers.Add(testUser);
+
+            builder.Entity<UserRoleFunction>().HasData(new UserRoleFunction(Guid.NewGuid(), testUser.Id, user.Id));
+        }
+
+        builder.Entity<UserInfo>().HasData(testUsers);
 
         var userRole = new UserRoleFunction(Guid.NewGuid(), userInfo.Id,role.Id);
 

@@ -1,11 +1,9 @@
 ﻿using EntityFrameworkCore.Extensions;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Simple.Auth.Application;
 using Simple.Auth.EntityFrameworkCore;
 using Simple.Auth.HttpApi.Host.Filters;
-using Simple.Common.Jwt;
 using Simple.HttpApi.Host.Filters;
 using Token.Module;
 using Token.Module.Attributes;
@@ -14,8 +12,7 @@ namespace Simple.Auth.HttpApi.Host;
 
 [DependOn(
     typeof(SimpleAuthApplicationModule),
-    typeof(SimpleAuthEntityFrameworkCoreModule),
-    typeof(SimpleCommonJwtModule))]
+    typeof(SimpleAuthEntityFrameworkCoreModule))]
 public class SimpleAuthHttpApiHostModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
@@ -78,8 +75,6 @@ public class SimpleAuthHttpApiHostModule : TokenModule
             app.UseOpenApi();
             app.UseSwaggerUi3();
         }
-
-        app.UseAuthorization();
 
         // 注册自动工作单元中间件
         app.UseUnitOfWorkMiddleware();

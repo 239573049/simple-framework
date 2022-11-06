@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Http;
-using Simple.Admin.Domain.Shared;
 using System.Security.Claims;
 using System.Text.Json;
 using Simple.Shared;
