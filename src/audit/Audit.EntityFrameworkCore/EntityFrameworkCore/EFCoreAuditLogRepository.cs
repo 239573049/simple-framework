@@ -3,9 +3,12 @@ using EntityFrameworkCore.Core;
 
 namespace Audit.EntityFrameworkCore.EntityFrameworkCore;
 
-public class EfCoreAuditLogRepository : EfCoreRepository<AuditDbContext, AuditLog>,IAuditLogRepository
+public class EfCoreAuditLogRepository : EfCoreRepository<AuditDbContext, AuditLog>, IAuditLogRepository
 {
+
     public EfCoreAuditLogRepository(AuditDbContext dbContext) : base(dbContext)
     {
     }
+
+
 }

@@ -39,7 +39,7 @@ public class UserInfoController : ControllerBase
     /// <returns></returns>
     [HttpGet("list")]
     [DisabledUnitOfWork]
-    public async Task<PagedResultDto<UserInfoDto>> GetListAsync([FromQuery]GetUserInfoInput input)
+    public async Task<PagedResultDto<UserInfoDto>> GetListAsync([FromQuery] GetUserInfoInput input)
     {
         return await _userInfoService.GetListAsync(input);
     }

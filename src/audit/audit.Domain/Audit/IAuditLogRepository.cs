@@ -4,5 +4,5 @@ namespace audit.Domain.Audit;
 
 public interface IAuditLogRepository : IRepository<AuditLog>
 {
-    
+
 }

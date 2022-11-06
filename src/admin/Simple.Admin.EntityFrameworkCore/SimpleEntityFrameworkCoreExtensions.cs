@@ -33,5 +33,5 @@ public static class SimpleEntityFrameworkCoreExtensions
 
         return builder;
     }
-    
+
 }

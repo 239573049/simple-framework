@@ -1,7 +1,7 @@
+using Simple.Shared.Base;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Simple.Shared.Base;
 
 namespace Simple.Auth.Domain.Menus
 {

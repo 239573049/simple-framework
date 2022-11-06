@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Simple.Auth.Domain.Menus;
-using System.Collections.Generic;
-using System;
-using System.Linq;
 using Simple.Admin.Domain.Users;
+using Simple.Auth.Domain.Menus;
 using Simple.Auth.Domain.Roles;
-using System.Xml.Linq;
 using Simple.Auth.Domain.Users;
 using Simple.Common.Infrastructure.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EntityFrameworkCore.DbMigrations.Extensions;
 
@@ -60,7 +59,7 @@ public static class DefaultDataExtension
 
         builder.Entity<UserInfo>().HasData(testUsers);
 
-        var userRole = new UserRoleFunction(Guid.NewGuid(), userInfo.Id,role.Id);
+        var userRole = new UserRoleFunction(Guid.NewGuid(), userInfo.Id, role.Id);
 
         builder.Entity<UserRoleFunction>().HasData(userRole);
 

@@ -4,5 +4,5 @@ namespace Audit.EntityFrameworkCore;
 
 public class AuditEntityFrameworkCoreModule : TokenModule
 {
-    
+
 }

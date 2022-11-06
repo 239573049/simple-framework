@@ -11,12 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\efcore\EntityFrameworkCore.SqlServer\EntityFrameworkCore.SqlServer.csproj" />
     <ProjectReference Include="..\audit.Domain\Audit.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EntityFrameworkCore\" />
+    <Folder Include="Options\" />
   </ItemGroup>
 
 </Project>

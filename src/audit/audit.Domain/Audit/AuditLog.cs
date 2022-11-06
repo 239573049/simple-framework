@@ -20,9 +20,9 @@ public class AuditLog : Entity<Guid>
 
     public string Url { get; protected set; }
 
-    public string Exceptions { get; protected set; }
+    public string? Exceptions { get; protected set; }
 
-    public string Comments { get; protected set; }
+    public string? Comments { get; protected set; }
 
     public int? HttpStatusCode { get; set; }
 
@@ -30,4 +30,25 @@ public class AuditLog : Entity<Guid>
     {
 
     }
+
+    public void SetId(Guid id)
+    {
+        Id = id;
+    }
+
+    public AuditLog(Guid id, string applicationName, Guid? userId, string userName, DateTime executionTime, string clientIpAddress, string browserInfo, string httpMethod, string url, string? exceptions, string? comments, int? httpStatusCode) : base(id)
+    {
+        ApplicationName = applicationName;
+        UserId = userId;
+        UserName = userName;
+        ExecutionTime = executionTime;
+        ClientIpAddress = clientIpAddress;
+        BrowserInfo = browserInfo;
+        HttpMethod = httpMethod;
+        Url = url;
+        Exceptions = exceptions;
+        Comments = comments;
+        HttpStatusCode = httpStatusCode;
+    }
+    
 }

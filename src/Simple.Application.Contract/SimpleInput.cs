@@ -2,7 +2,7 @@
 
 namespace Simple.Application.Contract
 {
-    public class SimpleInput :PagedRequestDto
+    public class SimpleInput : PagedRequestDto
     {
         /// <summary>
         /// 关键词
@@ -13,5 +13,5 @@ namespace Simple.Application.Contract
 
         public DateTime? EndTime { get; set; }
     }
-    
+
 }

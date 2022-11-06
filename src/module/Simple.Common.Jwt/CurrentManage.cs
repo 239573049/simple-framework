@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
+using Simple.Shared;
 using System.Security.Claims;
 using System.Text.Json;
-using Simple.Shared;
 using Token.Module.Dependencys;
 
 namespace Simple.Common.Jwt;
