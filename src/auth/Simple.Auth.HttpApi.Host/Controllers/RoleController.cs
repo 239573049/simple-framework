@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Simple.Auth.Application.Contract.Roles;
 
 namespace Simple.Auth.HttpApi.Host.Controllers;
@@ -8,6 +9,7 @@ namespace Simple.Auth.HttpApi.Host.Controllers;
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class RoleController : ControllerBase
 {
     private readonly IRoleService _simpleRoleService;

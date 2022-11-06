@@ -76,8 +76,6 @@ public class SimpleHttpApiHostModule : TokenModule
             app.UseSwaggerUi3();
         }
 
-        app.UseAuthorization();
-
         // 注册自动工作单元中间件
         app.UseUnitOfWorkMiddleware();
 

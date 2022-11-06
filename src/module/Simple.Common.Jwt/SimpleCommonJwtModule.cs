@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Builder;
 using Token.Module;
 using Token.Module.Extensions;
 
@@ -58,5 +59,12 @@ public class SimpleCommonJwtModule : TokenModule
                     }
                 };
             });
+    }
+
+    public override void OnApplicationShutdown(IApplicationBuilder app)
+    {
+
+        app.UseAuthentication();
+        app.UseAuthorization();
     }
 }
