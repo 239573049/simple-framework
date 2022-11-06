@@ -9,7 +9,7 @@ namespace Audit.Application;
 public class AuditMiddleware : IMiddleware
 {
     private readonly IAuditLogRepository _auditLogRepository;
-
+       
     public AuditMiddleware(IAuditLogRepository auditLogRepository)
     {
         _auditLogRepository = auditLogRepository;
@@ -25,6 +25,7 @@ public class AuditMiddleware : IMiddleware
             context.Request.Method, context.Request.QueryString.Value, null, null,null);
 
         await _auditLogRepository.InsertAsync(audit);
+
         await next.Invoke(context);
 
         audit.SetId(Guid.NewGuid()); 
