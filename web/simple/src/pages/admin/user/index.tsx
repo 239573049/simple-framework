@@ -1,15 +1,69 @@
 import { Component, ReactNode } from "react";
-import UserLayout from "../../../components/admin/user";
+import { GetUserInfoInput } from "../../../modules/userInfo/GetUserInfoInput";
+import InputUserInfo from "./InputUserInfo";
+import TabUserInfo from "./TabUserInfo";
+import moment from 'moment';
+import React from "react";
 
+interface IState {
+    input: GetUserInfoInput;
+    tabUserInfoRef: any
+}
 
+interface IProps {
 
-class User extends Component {
+}
+
+class UserLayout extends Component<IProps, IState>{
+    state: Readonly<IState> = {
+        input: {
+            keywords: undefined,
+            startTime: null,
+            endTime: null,
+            page: 1,
+            pageSize: 20
+        },
+        tabUserInfoRef: React.createRef()
+    }
+    onRef(value: any) {
+        console.log(value);
+
+        this.setState({
+            tabUserInfoRef: value
+        })
+    }
 
 
 
     render(): ReactNode {
-        return (<UserLayout />)
+        var { input } = this.state
+
+
+        return (
+            <div>
+                <InputUserInfo
+                    keywords={input.keywords}
+                    startTime={input.startTime}
+                    OnClick={() => {
+                        this.state.tabUserInfoRef.getUserInfo();
+                    }}
+                    keywordsChange={(value: any) => {
+                        input.keywords = value
+                        this.setState({
+                            input
+                        })
+                    }}
+                    timeChange={(value: any) => {
+                        input.startTime = moment(value[0]).format("YYYY-MM-DD HH:mm:ss")
+                        input.endTime = moment(value[1]).format("YYYY-MM-DD HH:mm:ss")
+                        this.setState({
+                            input
+                        })
+                    }}
+                    endTime={input.endTime} />
+                <TabUserInfo input={input} onRef={(value: any) => this.onRef(value)} />
+            </div>
+        )
     }
 }
-
-export default User;
+export default UserLayout
