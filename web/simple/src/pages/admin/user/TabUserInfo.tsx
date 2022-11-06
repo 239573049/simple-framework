@@ -1,4 +1,4 @@
-import { Avatar, Table } from "@douyinfe/semi-ui";
+import { Avatar, Pagination, Table } from "@douyinfe/semi-ui";
 import { Component, ReactNode } from "react";
 import userinfoapi from "../../../apis/userinfoapi";
 import { GetUserInfoInput } from "../../../modules/userInfo/GetUserInfoInput";
@@ -36,7 +36,8 @@ const columns = [
 
 interface IProps {
     input: GetUserInfoInput | null;
-    onRef: any
+    onRef: any,
+    inputonChange: any
 }
 interface IState {
     data: {
@@ -48,7 +49,6 @@ interface IState {
 
 class TabUserInfo extends Component<IProps, IState>{
 
-
     state: Readonly<IState> = {
         data: {
             items: [],
@@ -58,15 +58,15 @@ class TabUserInfo extends Component<IProps, IState>{
 
     constructor(props: IProps) {
         super(props);
-        this.getUserInfo();
+        this.getUserInfo(null);
     }
 
     componentDidMount(): void {
         this.props.onRef(this)
     }
 
-    getUserInfo() {
-        userinfoapi.GetListAsync(this.props.input)
+    getUserInfo(input: null | any) {
+        userinfoapi.GetListAsync(input ?? this.props.input)
             .then((res: any) => {
                 this.setState({
                     data: res.data
@@ -74,9 +74,33 @@ class TabUserInfo extends Component<IProps, IState>{
             })
     }
 
+    paginationChange(value: any) {
+        var input = {
+            page: value,
+            pageSize: this.props.input?.pageSize,
+            keywords: this.props.input?.keywords,
+            startTime: this.props.input?.startTime,
+            endTime: this.props.input?.endTime
+        };
+        this.props.inputonChange(input)
+        this.getUserInfo(input)
+    }
+
     render(): ReactNode {
+        const scroll = { y: 400, x: 1200 }
+
         var { data } = this.state
-        return <Table columns={columns} dataSource={data.items} />
+        return <div>
+            <Table columns={columns} dataSource={data.items} pagination={false} scroll={scroll}>
+            </Table>
+            <Pagination
+                total={data.totalCount}
+                showTotal
+                onChange={(value) => this.paginationChange(value)}
+                style={{ marginBottom: 12 }}
+                pageSize={this.props.input?.pageSize}
+                currentPage={this.props.input?.page}></Pagination>
+        </div>
     }
 }
 

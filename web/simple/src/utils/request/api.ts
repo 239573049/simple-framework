@@ -52,7 +52,7 @@ class Api {
         })
     }
 
-    get(url: string, params: any) {
+    get(url: string, params: any | null) {
         return new Promise((resolve, reject) => {
             instance.get(url, {
                 params: params

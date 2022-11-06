@@ -61,7 +61,11 @@ class UserLayout extends Component<IProps, IState>{
                         })
                     }}
                     endTime={input.endTime} />
-                <TabUserInfo input={input} onRef={(value: any) => this.onRef(value)} />
+                <TabUserInfo input={input} onRef={(value: any) => this.onRef(value)} inputonChange={(value: any) => {
+                    this.setState({
+                        input: value
+                    })
+                }} />
             </div>
         )
     }
