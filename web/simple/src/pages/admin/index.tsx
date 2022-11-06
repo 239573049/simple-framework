@@ -6,14 +6,23 @@ import menuapi from "../../apis/menuapi";
 import Lottie from "lottie-react";
 import icon from "../../utils/icons/index";
 import logo from "../../static/logo.json";
-
+import userinfoapi from "../../apis/userinfoapi";
+import { UserInfoDto } from '../../modules/userInfo/UserInfoDto'
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class Admin extends Component {
+interface IState {
+    menutree: [],
+    userinfo: UserInfoDto | null
+}
 
-    state = {
-        menutree: []
+interface IProps {
+
+}
+class Admin extends Component<IProps, IState> {
+    state: Readonly<IState> = {
+        menutree: [],
+        userinfo: null
     }
 
     constructor(props: any) {
@@ -24,6 +33,16 @@ class Admin extends Component {
             window.location.href = "/login"
         }
         this.getMenuTree()
+        this.getuserinfo()
+    }
+
+    getuserinfo() {
+        userinfoapi.GetAsync()
+            .then((res: any) => {
+                this.setState({
+                    userinfo: res.data
+                })
+            })
     }
 
     getMenuTree() {
@@ -44,7 +63,7 @@ class Admin extends Component {
         console.log(value);
     }
     render(): ReactNode {
-        var { menutree } = this.state
+        var { menutree, userinfo } = this.state
 
         return (
             <Layout style={{ border: '1px solid var(--semi-color-border)', height: '100%' }}>
@@ -97,8 +116,7 @@ class Admin extends Component {
                                             marginRight: '12px',
                                         }}
                                     />
-                                    <Avatar color="orange" size="small">
-                                        YJ
+                                    <Avatar color="orange" src={userinfo?.avatar} size="small">
                                     </Avatar>
                                 </>
                             }
@@ -114,7 +132,6 @@ class Admin extends Component {
                             style={{
                                 borderRadius: '10px',
                                 border: '1px solid var(--semi-color-border)',
-                                height: '376px',
                                 padding: '32px',
                             }}
                         >
