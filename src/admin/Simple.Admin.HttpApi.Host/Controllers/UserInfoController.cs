@@ -1,5 +1,4 @@
 using EntityFrameworkCore.Attributes;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Simple.Admin.Application.Contract.User;
 using Simple.Admin.Application.Contract.User.Views;
@@ -15,11 +14,9 @@ namespace Simple.Admin.HttpApi.Host.Controllers;
 
 public class UserInfoController : ControllerBase
 {
-    private readonly ILogger<UserInfoController> _logger;
     private readonly IUserInfoService _userInfoService;
-    public UserInfoController(ILogger<UserInfoController> logger, IUserInfoService userInfoService)
+    public UserInfoController(IUserInfoService userInfoService)
     {
-        _logger = logger;
         _userInfoService = userInfoService;
     }
 
@@ -45,5 +42,16 @@ public class UserInfoController : ControllerBase
     public async Task<PagedResultDto<UserInfoDto>> GetListAsync([FromQuery]GetUserInfoInput input)
     {
         return await _userInfoService.GetListAsync(input);
+    }
+
+    /// <summary>
+    /// 获取用户详情
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [DisabledUnitOfWork]
+    public async Task<UserInfoDto> GetAsync()
+    {
+        return await _userInfoService.GetAsync();
     }
 }

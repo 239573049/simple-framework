@@ -10,9 +10,9 @@ namespace Simple.Admin.EntityFrameworkCore;
 [ConnectionStringName]
 public class SimpleDbContext : MasterDbContext<SimpleDbContext>
 {
-    public DbSet<UserInfo>? UserInfo { get; set; }
+    public DbSet<UserInfo>? UserInfo { get; set; } = null!;
 
-    public DbSet<DictionarySetting> DictionarySettings { get; set; }
+    public DbSet<DictionarySetting> DictionarySettings { get; set; } = null!;
 
     public SimpleDbContext(DbContextOptions<SimpleDbContext> options) : base(options)
     {

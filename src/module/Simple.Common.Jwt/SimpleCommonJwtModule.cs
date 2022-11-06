@@ -14,7 +14,7 @@ public class SimpleCommonJwtModule : TokenModule
     public override void ConfigureServices(IServiceCollection services)
     {
         services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-        ConfigureAuthentication(services, services.GetConfiguration());
+        ConfigureAuthentication(services, services.GetConfiguration()!);
     }
 
     private void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
@@ -49,7 +49,7 @@ public class SimpleCommonJwtModule : TokenModule
                         var accessToken = context.Request.Query["access_token"];
                         var path = context.HttpContext.Request.Path;
                         if (!string.IsNullOrEmpty(accessToken) &&
-                            tokenOptions.SignalrUrl.Any(x => path.StartsWithSegments(x)))
+                            tokenOptions.SignalRUrl.Any(x => path.StartsWithSegments(x)))
                         {
                             context.Token = accessToken;
                         }

@@ -1,5 +1,5 @@
-﻿using Simple.Admin.Domain.Shared;
-using Simple.Auth.Application.Contract.Roles;
+﻿using Simple.Auth.Application.Contract.Roles;
+using Simple.Shared;
 
 namespace Simple.Auth.Application.Contract.Auth.Dtos;
 

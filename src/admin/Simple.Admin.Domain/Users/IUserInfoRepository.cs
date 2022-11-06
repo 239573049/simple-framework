@@ -6,7 +6,7 @@ public interface IUserInfoRepository : IRepository<UserInfo, Guid>
 {
     Task<UserInfo> CreateAsync(UserInfo userInfo);
 
-    Task<List<UserInfo>> GetListAsync(string keywords, DateTime? startTime, DateTime? endTime, int skipCount, int maxResultCount);
+    Task<List<UserInfo>> GetListAsync(string? keywords, DateTime? startTime, DateTime? endTime, int skipCount, int maxResultCount);
 
-    Task<int> GetCountAsync(string keywords, DateTime? startTime, DateTime? endTime);
+    Task<int> GetCountAsync(string? keywords, DateTime? startTime, DateTime? endTime);
 }

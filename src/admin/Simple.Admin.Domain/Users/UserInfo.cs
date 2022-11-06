@@ -1,5 +1,5 @@
-﻿using Simple.Admin.Domain.Shared;
-using Simple.Domain.Shared;
+﻿using Simple.Domain.Shared;
+using Simple.Shared;
 using Simple.Shared.Base;
 
 namespace Simple.Admin.Domain.Users;

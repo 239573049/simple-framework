@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\module\Simple.Common.Jwt\Simple.Common.Jwt.csproj" />
       <ProjectReference Include="..\Simple.Admin.Application.Contract\Simple.Admin.Application.Contract.csproj" />
       <ProjectReference Include="..\Simple.Admin.Domain\Simple.Admin.Domain.csproj" />
     </ItemGroup>

@@ -1,4 +1,4 @@
-﻿using Simple.Admin.Domain.Shared;
+﻿using Simple.Shared;
 using Simple.Shared.Base;
 
 namespace Simple.Admin.Domain.Systems
