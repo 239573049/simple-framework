@@ -1,7 +1,7 @@
 import { Component, ReactNode } from "react";
 import { GetUserInfoInput } from "../../../modules/userInfo/GetUserInfoInput";
-import InputUserInfo from "./InputUserInfo";
-import TabUserInfo from "./TabUserInfo";
+import InputUserInfo from "../../../components/admin/user/InputUserInfo";
+import TabUserInfo from "../../../components/admin/user/TabUserInfo";
 import moment from 'moment';
 import React from "react";
 
@@ -37,8 +37,6 @@ class UserLayout extends Component<IProps, IState>{
 
     render(): ReactNode {
         var { input } = this.state
-
-
         return (
             <div>
                 <InputUserInfo

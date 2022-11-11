@@ -135,7 +135,7 @@ class Admin extends Component<IProps, IState> {
                                 padding: '32px',
                             }}
                         >
-                            <Skeleton placeholder={<Skeleton.Paragraph rows={2} />} loading={false}>
+                            <Skeleton placeholder={<Skeleton.Paragraph rows={2} />} loading={false} style={{ height: "90%" }}>
                                 <Outlet></Outlet>
                             </Skeleton>
                         </div>
