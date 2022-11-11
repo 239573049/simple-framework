@@ -1,12 +1,11 @@
 using EntityFrameworkCore.Extensions;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using Simple.Admin.HttpApi.Host.Filters;
 using Simple.Admin.Application;
 using Simple.Admin.EntityFrameworkCore;
+using Simple.Admin.HttpApi.Host.Filters;
 using Token.Module;
 using Token.Module.Attributes;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace Simple.Admin.HttpApi.Host;
 

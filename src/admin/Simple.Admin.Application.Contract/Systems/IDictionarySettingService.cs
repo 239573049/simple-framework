@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Simple.Admin.Application.Contract.Systems.Dtos;
+using System;
 using System.Threading.Tasks;
-using Simple.Admin.Application.Contract.Systems.Dtos;
 
 namespace Simple.Admin.Application.Contract.Systems
 {

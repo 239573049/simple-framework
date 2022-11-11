@@ -6,7 +6,7 @@ using Simple.Auth.Domain.Users;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 
-public static class SimpleAuthEntityFrameworkCoreExtensions
+public static class SimpleAuthEntityFrameworkCoreExtension
 {
     public static ModelBuilder ConfigureAuth(this ModelBuilder builder)
     {

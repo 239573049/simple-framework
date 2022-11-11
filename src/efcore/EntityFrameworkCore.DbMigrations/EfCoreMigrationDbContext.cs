@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
+﻿using EntityFrameworkCore.DbMigrations.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Simple.Admin.EntityFrameworkCore;
+using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 using System.Reflection;
-using EntityFrameworkCore.DbMigrations.Extensions;
 
 namespace EntityFrameworkCore.DbMigrations;
 

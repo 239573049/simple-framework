@@ -2,9 +2,9 @@
 using Simple.Admin.Application.Contract.Systems;
 using Simple.Admin.Application.Contract.Systems.Dtos;
 using Simple.Admin.Domain.Systems;
+using Simple.Shared;
 using System;
 using System.Threading.Tasks;
-using Simple.Shared;
 using Token.Module.Dependencys;
 
 namespace Simple.Admin.Application.Systems

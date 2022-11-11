@@ -1,7 +1,7 @@
-﻿using Simple.Shared.Base;
-using System;
-using Simple.Domain.Shared;
+﻿using Simple.Domain.Shared;
 using Simple.Shared;
+using Simple.Shared.Base;
+using System;
 
 namespace Simple.Auth.Domain.Users
 {

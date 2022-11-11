@@ -3,7 +3,7 @@ using Simple.Shared.Base;
 namespace Simple.Auth.Application.Contract.Menus
 {
 
-    public class MenuDto :  ITenant
+    public class MenuDto : ITenant
     {
         public Guid Id { get; set; }
 

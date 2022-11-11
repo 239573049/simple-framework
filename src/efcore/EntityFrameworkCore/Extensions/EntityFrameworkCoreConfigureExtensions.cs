@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Simple.Shared.Base;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using Simple.Shared.Base;
 
 namespace EntityFrameworkCore.Extensions;
 
@@ -18,4 +18,6 @@ public static class EntityFrameworkCoreConfigureExtensions
                 .HasConversion(x => JsonSerializer.Serialize(x, new JsonSerializerOptions()),
                     x => JsonSerializer.Deserialize<Dictionary<string, object>>(x, new JsonSerializerOptions()) ?? new Dictionary<string, object>());
     }
+
+
 }

@@ -11,7 +11,7 @@ public class UserInfoAutoMapperProfile : Profile
     {
         CreateMap<CreateUserInfoDto, UserInfo>();
         CreateMap<UserInfoDto, UserInfo>();
-        CreateMap<UserInfo,UserInfoDto>()
-            .ForMember(options=>options.Status,options=>options.MapFrom(from=>from.Status.GetDescription()));
+        CreateMap<UserInfo, UserInfoDto>()
+            .ForMember(options => options.Status, options => options.MapFrom(from => from.Status.GetDescription()));
     }
 }

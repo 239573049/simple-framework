@@ -50,7 +50,7 @@ public class MenuService : IMenuService, ITransientDependency
     {
         var trees = new List<MenuTreeDto>();
 
-        var data = menus.Where(x => x.ParentId == parentId).OrderBy(x=>x.Index);
+        var data = menus.Where(x => x.ParentId == parentId).OrderBy(x => x.Index);
         menus = menus.Where(x => x.ParentId != parentId).ToList();
         foreach (var d in data)
         {

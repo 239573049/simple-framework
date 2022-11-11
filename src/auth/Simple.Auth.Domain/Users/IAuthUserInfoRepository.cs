@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Simple.Shared.Base;
+using System;
 using System.Threading.Tasks;
-using Simple.Shared.Base;
 
 namespace Simple.Auth.Domain.Users
 {
@@ -13,6 +13,6 @@ namespace Simple.Auth.Domain.Users
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        Task<AuthUserInfoView> GetAuthUserInfoAsync(string username,string password);
+        Task<AuthUserInfoView> GetAuthUserInfoAsync(string username, string password);
     }
 }

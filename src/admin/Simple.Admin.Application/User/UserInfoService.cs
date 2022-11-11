@@ -3,9 +3,9 @@ using Simple.Admin.Application.Contract.User;
 using Simple.Admin.Application.Contract.User.Views;
 using Simple.Admin.Domain.Users;
 using Simple.Application.Contract;
+using Simple.Common.Jwt;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Simple.Common.Jwt;
 using Token.Module.Dependencys;
 
 namespace Simple.Admin.Application.User;
@@ -34,9 +34,9 @@ public class UserInfoService : IUserInfoService, ITransientDependency
     /// <inheritdoc />
     public async Task<PagedResultDto<UserInfoDto>> GetListAsync(GetUserInfoInput input)
     {
-        var result = await _userInfoRepository.GetListAsync(input.Keywords,input.StartTime,input.EndTime,input.SkipCount,input.MaxResultCount);
-        
-        var count = await _userInfoRepository.GetCountAsync(input.Keywords,input.StartTime,input.EndTime);
+        var result = await _userInfoRepository.GetListAsync(input.Keywords, input.StartTime, input.EndTime, input.SkipCount, input.MaxResultCount);
+
+        var count = await _userInfoRepository.GetCountAsync(input.Keywords, input.StartTime, input.EndTime);
 
         var dto = _mapper.Map<List<UserInfoDto>>(result);
 

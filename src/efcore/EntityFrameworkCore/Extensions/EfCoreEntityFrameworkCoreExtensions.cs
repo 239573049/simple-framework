@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using System;
 using Simple.Shared.Base;
+using System;
 
 namespace EntityFrameworkCore.Extensions
 {
@@ -21,7 +21,7 @@ namespace EntityFrameworkCore.Extensions
         /// <param name="lifetime"></param>
         /// <typeparam name="TDbContext"></typeparam>
         /// <returns></returns>
-        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services, Action<DbContextOptionsBuilder>?      optionsAction = null,
+        public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services, Action<DbContextOptionsBuilder>? optionsAction = null,
             ServiceLifetime lifetime = ServiceLifetime.Singleton)
             where TDbContext : DbContext
         {

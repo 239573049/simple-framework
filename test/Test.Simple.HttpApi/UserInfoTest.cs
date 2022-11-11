@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Admin.Application.Contract.User;
-using System.Text.Json;
 using Simple.Admin.Application.Contract.User.Views;
+using System.Text.Json;
 using Token.Module.Extensions;
 
 namespace Test.Simple.HttpApi;
