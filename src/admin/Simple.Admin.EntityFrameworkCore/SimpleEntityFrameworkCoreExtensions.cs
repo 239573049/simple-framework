@@ -28,7 +28,7 @@ public static class SimpleEntityFrameworkCoreExtensions
 
             x.Property(x => x.Value)
                 .HasConversion(x => JsonSerializer.Serialize(x, new JsonSerializerOptions()),
-                    x => JsonSerializer.Deserialize<Dictionary<string, object>>(x, new JsonSerializerOptions()) ?? new Dictionary<string, object>());
+                    x => JsonSerializer.Deserialize<List<string>>(x, new JsonSerializerOptions()) ?? new List<string>());
         });
 
         return builder;

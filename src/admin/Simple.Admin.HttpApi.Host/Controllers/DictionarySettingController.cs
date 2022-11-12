@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Simple.Admin.Application.Contract.Systems;
 using Simple.Admin.Application.Contract.Systems.Dtos;
+using Simple.Application.Contract;
 
 namespace Simple.Admin.HttpApi.Host.Controllers
 {
@@ -21,7 +22,7 @@ namespace Simple.Admin.HttpApi.Host.Controllers
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        [HttpGet("id")]
+        [HttpGet("id:guid")]
         [DisabledUnitOfWork]
         public async Task<DictionarySettingDto> GetAsync(Guid id)
             => await _dictionarySettingService.GetAsync(id);
@@ -31,7 +32,7 @@ namespace Simple.Admin.HttpApi.Host.Controllers
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        [HttpGet("key")]
+        [HttpGet("key:string")]
         [DisabledUnitOfWork]
         public async Task<DictionarySettingDto> GetAsync(string key)
             => await _dictionarySettingService.GetAsync(key);
@@ -44,5 +45,14 @@ namespace Simple.Admin.HttpApi.Host.Controllers
         [HttpPost]
         public async Task SaveAsync(SaveAsyncDictionarySettingDto dto)
             => await _dictionarySettingService.SaveAsync(dto);
+
+        /// <summary>
+        /// 获取字典列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpGet("list")]
+        public async Task<List<DictionarySettingDto>> GetListAsync([FromQuery]SimpleInput input)
+            => await _dictionarySettingService.GetListAsync(input);
     }
 }

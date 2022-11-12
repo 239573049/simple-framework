@@ -2,8 +2,10 @@
 using Simple.Admin.Application.Contract.Systems;
 using Simple.Admin.Application.Contract.Systems.Dtos;
 using Simple.Admin.Domain.Systems;
+using Simple.Application.Contract;
 using Simple.Shared;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Token.Module.Dependencys;
 
@@ -54,6 +56,13 @@ namespace Simple.Admin.Application.Systems
             var dto = _mapper.Map<DictionarySettingDto>(data);
 
             return dto;
+        }
+
+        public async Task<List<DictionarySettingDto>> GetListAsync(SimpleInput input)
+        {
+             var data = await _dictionarySettingRepository.GetListAsync(input.Keywords);
+
+            return _mapper.Map<List<DictionarySettingDto>>(data);
         }
     }
 }

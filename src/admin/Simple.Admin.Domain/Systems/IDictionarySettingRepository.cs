@@ -17,5 +17,12 @@ namespace Simple.Admin.Domain.Systems
         /// <param name="id"></param>
         /// <returns></returns>
         Task DeleteAsync(Guid id);
+
+        /// <summary>
+        /// 获取列表
+        /// </summary>
+        /// <param name="keywords"></param>
+        /// <returns></returns>
+        Task<List<DictionarySetting>> GetListAsync(string? keywords);
     }
 }

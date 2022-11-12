@@ -13,7 +13,7 @@ namespace Simple.Admin.Application.Contract.Systems.Dtos
         /// </summary>
         public string Key { get; set; } = null!;
 
-        public Dictionary<string, object> Value { get; set; }
+        public List<string> Value { get; set; }
 
         /// <summary>
         /// 设置类型
@@ -22,7 +22,7 @@ namespace Simple.Admin.Application.Contract.Systems.Dtos
 
         public DictionarySettingDto()
         {
-            Value = new Dictionary<string, object>();
+            Value = new List<string>();
         }
     }
 }

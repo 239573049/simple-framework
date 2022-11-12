@@ -13,7 +13,7 @@ namespace Simple.Admin.Domain.Systems
         /// </summary>
         public string Key { get; set; } = null!;
 
-        public Dictionary<string, object> Value { get; set; }
+        public List<string> Value { get; set; }
 
         /// <summary>
         /// 设置类型
@@ -22,7 +22,7 @@ namespace Simple.Admin.Domain.Systems
 
         public DictionarySetting()
         {
-            Value = new Dictionary<string, object>();
+            Value = new List<string>();
         }
     }
 }
