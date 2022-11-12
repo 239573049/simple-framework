@@ -1,10 +1,11 @@
-import { Input, List, Tree } from "@douyinfe/semi-ui";
+import { Button, Card, Input, List, Tree } from "@douyinfe/semi-ui";
 import React from "react";
 import { Component, ReactNode } from "react";
 import dictionarysettingapi from "../../../apis/dictionarysetting";
 import { DictionarySettingDto } from "../../../modules/dictionarysetting/DictionarySettingDto";
 import { SimpleInput } from "../../../modules/shareds/SimpleInput";
 import './index.css'
+import { IconSearch } from '@douyinfe/semi-icons';
 
 
 interface IProps {
@@ -55,7 +56,7 @@ class TreeDictionary extends Component<IProps, IState>{
     }
     render(): ReactNode {
         var ref = React.createRef() as any;
-        var { data, value } = this.state;
+        var { data, value, input } = this.state;
         const treeData =
             data.map(x => {
                 return {
@@ -70,21 +71,32 @@ class TreeDictionary extends Component<IProps, IState>{
         return (
             <div style={{ height: "68vh" }}>
                 <div className="dictionary">
-                    <Input aria-label='filter tree' prefix="搜索" showClear onChange={v => ref.current.search(v)} />
-                    <Tree
-                        ref={ref}
-                        filterTreeNode
-                        searchRender={false}
-                        treeData={treeData}
-                        blockNode={false}
-                    />
+                    <Input style={{ margin: '5px', width: "200px" }} value={input.keywords} prefix="搜索字典" showClear onChange={v => {
+                        input.keywords = v
+                        this.setState({ input })
+                    }
+                    } />
+                    <Button icon={<IconSearch />} aria-label="搜索" onClick={() => this.getlist()} />
                 </div>
-                <div className="list">
-                    <List
-                        bordered
-                        dataSource={value}
-                        renderItem={(item: any) => <List.Item>{item}</List.Item>}
-                    />
+                <div>
+                    <Card
+                        className="tree">
+                        <Tree
+                            ref={ref}
+                            filterTreeNode
+                            searchRender={false}
+                            treeData={treeData}
+                            blockNode={false}
+                        />
+                    </Card>
+                    <Card
+                        className="list">
+                        <List
+                            bordered
+                            dataSource={value}
+                            renderItem={(item: any) => <List.Item>{item}</List.Item>}
+                        />
+                    </Card>
                 </div>
             </div>)
     }
