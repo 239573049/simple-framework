@@ -1,10 +1,9 @@
 import { Component, ReactNode } from "react";
+import TreeDictionary from "../../../components/admin/dictionary-settings/TreeDictionary";
 
 class DictionarySettings extends Component {
     render(): ReactNode {
-        return (<div>
-            字典设置
-        </div>)
+        return (<TreeDictionary />)
     }
 }
 
