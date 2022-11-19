@@ -44,7 +44,7 @@ services:
       dockerfile: ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile
     container_name: auth
     environment:
-        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_ENVIRONMENT=Development # 环境变量设置的Development 开发环境请删除
     depends_on: 
      - mssql
      - redis
@@ -57,7 +57,7 @@ services:
       dockerfile: ./src/admin/Simple.Admin.HttpApi.Host/Dockerfile
     container_name: simple
     environment:
-        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_ENVIRONMENT=Development # 环境变量设置的Development 开发环境请删除
     depends_on:
      - mssql
      - redis

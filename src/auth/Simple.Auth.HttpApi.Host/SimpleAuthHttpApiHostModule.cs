@@ -21,6 +21,7 @@ public class SimpleAuthHttpApiHostModule : TokenModule
 
         services.AddEndpointsApiExplorer();
 
+        // 设置跨域策略
         services.AddCors(options =>
         {
             options.AddPolicy("CorsPolicy", corsBuilder =>
@@ -79,6 +80,7 @@ public class SimpleAuthHttpApiHostModule : TokenModule
         // 注册自动工作单元中间件
         app.UseUnitOfWorkMiddleware();
 
+        // 使用跨域策略
         app.UseCors("CorsPolicy");
     }
 }
