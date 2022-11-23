@@ -1,7 +1,6 @@
 ﻿using EntityFrameworkCore.DbMigrations.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Simple.Admin.EntityFrameworkCore;
-using Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 using System.Reflection;
 
 namespace EntityFrameworkCore.DbMigrations;
@@ -21,7 +20,6 @@ public class EfCoreMigrationDbContext : MasterDbContext<EfCoreMigrationDbContext
 
         // 程序的所有Entity配置
         builder.ConfigureSimple();
-        builder.ConfigureAuth();
 
         // 初始化数据
         builder.ConfigureDefaultData();
