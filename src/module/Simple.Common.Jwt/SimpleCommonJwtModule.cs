@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +28,6 @@ public class SimpleCommonJwtModule : TokenModule
         if (string.IsNullOrEmpty(tokenOptions.Issuer))
             throw new Exception("未设置JWT权限配置");
 
-        services.Configure<TokenOptions>(configurationSection);
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
