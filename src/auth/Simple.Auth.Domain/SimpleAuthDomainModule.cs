@@ -1,4 +1,4 @@
-﻿using Token.Module;
+﻿using Token;
 
 namespace Simple.Auth.Domain
 {

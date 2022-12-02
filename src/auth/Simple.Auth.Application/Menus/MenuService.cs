@@ -2,7 +2,7 @@ using AutoMapper;
 using Simple.Auth.Application.Contract.Menus;
 using Simple.Auth.Domain.Menus;
 using Simple.Common.Jwt;
-using Token.Module.Dependencys;
+using Token.Dependency;
 
 namespace Simple.Auth.Application.Menus;
 
@@ -10,13 +10,13 @@ public class MenuService : IMenuService, ITransientDependency
 {
     private readonly IMapper _mapper;
     private readonly IMenuRepository _menuRepository;
-    private readonly CurrentManage _currentManage;
+    private readonly CurrentManager _currentManager;
 
-    public MenuService(IMapper mapper, IMenuRepository menuRepository, CurrentManage currentManage)
+    public MenuService(IMapper mapper, IMenuRepository menuRepository, CurrentManager currentManager)
     {
         _mapper = mapper;
         _menuRepository = menuRepository;
-        _currentManage = currentManage;
+        _currentManager = currentManager;
     }
 
     /// <inheritdoc />
@@ -36,7 +36,7 @@ public class MenuService : IMenuService, ITransientDependency
     /// <inheritdoc />
     public async Task<List<MenuTreeDto>> GetTreeAsync(GetMenuInput input)
     {
-        var roleIds = _currentManage.GetRoles();
+        var roleIds = _currentManager.GetRoles();
 
 
         var menus = await _menuRepository.GetUserMenuAsync(input.Keywords, roleIds);

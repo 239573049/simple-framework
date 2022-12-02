@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Simple.Admin.Application.Contract.User;
 using Simple.Admin.Application.Contract.User.Views;
 using System.Text.Json;
-using Token.Module.Extensions;
+using Token.Extensions;
 
 namespace Test.Simple.HttpApi;
 
@@ -13,7 +13,7 @@ public class UserInfoTest
     private IUserInfoService _userInfoService;
 
     [SetUp]
-    public void Setup()
+    public async Task Setup()
     {
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("./appsettings.json")
@@ -22,7 +22,7 @@ public class UserInfoTest
         var service = new ServiceCollection();
         service.AddSingleton<IConfiguration>(configuration);
 
-        service.AddModuleApplicationAsync<TestSimpleHttpApiModule>();
+        await service.AddModuleApplicationAsync<TestSimpleHttpApiModule>();
         ServiceProvider = service.BuildServiceProvider();
 
         _userInfoService = ServiceProvider.GetRequiredService<IUserInfoService>();

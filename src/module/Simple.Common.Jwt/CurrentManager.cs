@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Http;
 using Simple.Shared;
 using System.Security.Claims;
 using System.Text.Json;
-using Token.Module.Dependencys;
+using Token.Dependency;
 
 namespace Simple.Common.Jwt;
 
-public class CurrentManage : ITransientDependency
+public class CurrentManager : ITransientDependency
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public CurrentManage(IHttpContextAccessor httpContextAccessor)
+    public CurrentManager(IHttpContextAccessor httpContextAccessor)
     {
         _httpContextAccessor = httpContextAccessor;
     }

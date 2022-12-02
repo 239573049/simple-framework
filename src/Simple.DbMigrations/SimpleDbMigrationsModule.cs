@@ -1,7 +1,7 @@
 using EntityFrameworkCore.DbMigrations;
 using Microsoft.Extensions.DependencyInjection;
-using Token.Module;
-using Token.Module.Attributes;
+using Token;
+using Token.Attributes;
 
 namespace Simple.DbMigrations;
 

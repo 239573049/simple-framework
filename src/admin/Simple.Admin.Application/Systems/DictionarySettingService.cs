@@ -4,10 +4,6 @@ using Simple.Admin.Application.Contract.Systems.Dtos;
 using Simple.Admin.Domain.Systems;
 using Simple.Application.Contract;
 using Simple.Shared;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Token.Module.Dependencys;
 
 namespace Simple.Admin.Application.Systems
 {

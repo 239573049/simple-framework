@@ -1,8 +1,7 @@
 using EntityFrameworkCore.SqlServer;
 using EntityFrameworkCore.SqlServer.Extensions;
 using Microsoft.Extensions.DependencyInjection;
-using Token.Module;
-using Token.Module.Attributes;
+using Token;
 
 namespace Simple.Admin.EntityFrameworkCore;
 

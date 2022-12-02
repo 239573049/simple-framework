@@ -2,8 +2,6 @@
 using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Simple.Admin.Domain.Systems;
-using Token.Module.Attributes;
-using Token.Module.Helpers;
 
 namespace Simple.Admin.EntityFrameworkCore.Systems
 {

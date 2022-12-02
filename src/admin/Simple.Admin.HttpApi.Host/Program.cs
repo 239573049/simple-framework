@@ -1,7 +1,7 @@
 using Serilog;
 using Serilog.Events;
 using Simple.Admin.HttpApi.Host;
-using Token.Module.Extensions;
+using Token.Extensions;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()

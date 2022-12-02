@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Simple.Shared;
-using Token.Module.Dependencys;
+using Token.Dependency;
 
 namespace Simple.Common.Jwt;
 

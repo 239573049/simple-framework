@@ -1,6 +1,6 @@
 using EntityFrameworkCore.Core;
 using Simple.Auth.Domain.Roles;
-using Token.Module.Attributes;
+using Token.Attributes;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore;
 

@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Simple.Shared.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
-using Token.Module.Dependencys;
+using Token.Dependency;
 
 namespace EntityFrameworkCore.Core;
 

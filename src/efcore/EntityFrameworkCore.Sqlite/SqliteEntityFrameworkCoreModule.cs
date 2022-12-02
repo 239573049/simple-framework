@@ -1,5 +1,5 @@
-﻿using Token.Module;
-using Token.Module.Attributes;
+﻿using Token;
+using Token.Attributes;
 
 namespace EntityFrameworkCore.Sqlite;
 

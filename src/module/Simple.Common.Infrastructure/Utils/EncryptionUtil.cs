@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using Token.Module.Helpers;
+using Token.Helpers;
 
 namespace Simple.Common.Infrastructure.Utils;
 

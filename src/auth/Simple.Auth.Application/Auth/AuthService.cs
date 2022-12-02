@@ -4,7 +4,7 @@ using Simple.Auth.Application.Contract.Auth.Dtos;
 using Simple.Auth.Domain.Users;
 using Simple.Common.Infrastructure.Utils;
 using Simple.Shared;
-using Token.Module.Dependencys;
+using Token.Dependency;
 
 namespace Simple.Auth.Application.Auth;
 

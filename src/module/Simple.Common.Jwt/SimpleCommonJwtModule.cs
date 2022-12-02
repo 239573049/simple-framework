@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Token.Module;
-using Token.Module.Extensions;
+using Token;
+using Token.Extensions;
 
 namespace Simple.Common.Jwt;
 

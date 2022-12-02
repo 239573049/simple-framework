@@ -1,5 +1,5 @@
 ﻿
-using Token.Module;
+using Token;
 
 namespace Simple.Auth.Application.Contract
 {

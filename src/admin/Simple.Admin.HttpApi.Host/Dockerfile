@@ -1,8 +1,8 @@
-FROM registry.cn-shenzhen.aliyuncs.com/tokengo/dotnet-aspnet:6.0-alpine AS base
+FROM registry.cn-shenzhen.aliyuncs.com/tokengo/dotnet-aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM registry.cn-shenzhen.aliyuncs.com/tokengo/dotnet-sdk:6.0-alpine AS build
+FROM registry.cn-shenzhen.aliyuncs.com/tokengo/dotnet-sdk:7.0 AS build
 WORKDIR /src
 COPY ["src/admin/Simple.Admin.HttpApi.Host/Simple.Admin.HttpApi.Host.csproj", "src/admin/Simple.Admin.HttpApi.Host/"]
 COPY ["src/admin/Simple.Admin.Application/Simple.Admin.Application.csproj", "src/admin/Simple.Admin.Application/"]

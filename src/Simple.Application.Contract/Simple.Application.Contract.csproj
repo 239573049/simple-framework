@@ -1,12 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../../common.props" />
+  
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NSwag.Annotations" Version="13.17.0" />
+    <PackageReference Include="NSwag.Annotations" Version="13.18.0" />
   </ItemGroup>
 
 </Project>

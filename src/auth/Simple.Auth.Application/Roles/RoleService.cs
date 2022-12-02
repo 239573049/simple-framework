@@ -1,7 +1,7 @@
 using AutoMapper;
 using Simple.Auth.Application.Contract.Roles;
 using Simple.Auth.Domain.Roles;
-using Token.Module.Dependencys;
+using Token.Dependency;
 
 namespace Simple.Auth.Application.Roles;
 

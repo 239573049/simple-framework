@@ -4,8 +4,8 @@ using NSwag.Generation.Processors.Security;
 using Simple.Admin.Application;
 using Simple.Admin.EntityFrameworkCore;
 using Simple.Admin.HttpApi.Host.Filters;
-using Token.Module;
-using Token.Module.Attributes;
+using Token;
+using Token.Attributes;
 
 namespace Simple.Admin.HttpApi.Host;
 

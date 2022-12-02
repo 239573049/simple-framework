@@ -2,9 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Admin.EntityFrameworkCore;
 using Simple.Auth.EntityFrameworkCore;
-using Token.Module;
-using Token.Module.Attributes;
-
+using Token;
+using Token.Attributes;
 namespace EntityFrameworkCore.DbMigrations;
 
 [DependOn(typeof(SimpleAdminEntityFrameworkCoreModule),

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Simple.DbMigrations;
-using Token.Module.Extensions;
+using Token.Extensions;
 
 
 IHostBuilder host =

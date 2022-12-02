@@ -1,7 +1,7 @@
 ﻿using EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 using Simple.Auth.Domain.Users;
-using Token.Module.Attributes;
+using Token.Attributes;
 
 namespace Simple.Auth.EntityFrameworkCore.EntityFrameworkCore.Users;
 

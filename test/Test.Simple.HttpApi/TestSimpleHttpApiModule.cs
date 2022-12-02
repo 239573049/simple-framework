@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Simple.Admin.Application;
 using Simple.Admin.EntityFrameworkCore;
-using Token.Module;
-using Token.Module.Attributes;
+using Token;
+using Token.Attributes;
 
 namespace Test.Simple.HttpApi;
 

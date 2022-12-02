@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Token.Module.Extensions;
+using Token.Extensions;
 
 namespace EntityFrameworkCore.Sqlite.Extensions;
 

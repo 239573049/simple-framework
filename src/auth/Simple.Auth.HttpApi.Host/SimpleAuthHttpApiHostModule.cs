@@ -5,8 +5,8 @@ using Simple.Auth.Application;
 using Simple.Auth.EntityFrameworkCore;
 using Simple.Auth.HttpApi.Host.Filters;
 using Simple.HttpApi.Host.Filters;
-using Token.Module;
-using Token.Module.Attributes;
+using Token;
+using Token.Attributes;
 
 namespace Simple.Auth.HttpApi.Host;
 
