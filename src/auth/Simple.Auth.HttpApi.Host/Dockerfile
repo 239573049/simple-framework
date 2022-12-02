@@ -17,7 +17,7 @@ COPY ["src/efcore/EntityFrameworkCore.SqlServer/EntityFrameworkCore.SqlServer.cs
 COPY ["src/efcore/EntityFrameworkCore/EntityFrameworkCore.csproj", "src/efcore/EntityFrameworkCore/"]
 RUN dotnet restore "src/auth/Simple.Auth.HttpApi.Host/Simple.Auth.HttpApi.Host.csproj"
 COPY . .
-WORKDIR "/src/src/auth/Simple.Auth.HttpApi.Host"
+WORKDIR "src/auth/Simple.Auth.HttpApi.Host"
 RUN dotnet build "Simple.Auth.HttpApi.Host.csproj" -c Release -o /app/build
 
 FROM build AS publish
