@@ -2,9 +2,10 @@
 
     <Import Project="../../../common.props" />
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
+	    <TargetFramework>netstandard2.1</TargetFramework>
+	    <Nullable>enable</Nullable>
+	    <ImplicitUsings>enable</ImplicitUsings>
+	    <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
 
@@ -12,10 +13,6 @@
 
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Token.Module" Version="1.3.4" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Simple.Shared\Simple.Shared.csproj" />

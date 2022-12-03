@@ -12,8 +12,7 @@ public static class SimpleAuthEntityFrameworkCoreExtension
     {
         builder.Entity<Role>(x =>
         {
-            x.ToTable("Roles");
-            x.HasComment("角色");
+            x.ToTable("Roles", "角色");
 
             x.AddSimpleConfigure();
 
@@ -25,24 +24,20 @@ public static class SimpleAuthEntityFrameworkCoreExtension
 
         builder.Entity<UserRoleFunction>(x =>
         {
-            x.ToTable("UserRoleFunctions");
-
+            x.ToTable("UserRoleFunctions", "用户角色配置");
             x.HasIndex(x => x.Id);
             x.HasKey(x => x.Id);
 
-            x.HasComment("用户角色配置");
             x.Property(x => x.RoleId).HasComment("角色Id");
             x.Property(x => x.UserId).HasComment("用户id");
         });
 
         builder.Entity<MenuRoleFunction>(x =>
         {
-            x.ToTable("MenuRoleFunctions");
-
+            x.ToTable("MenuRoleFunctions", "菜单角色配置");
             x.HasIndex(x => x.Id);
             x.HasKey(x => x.Id);
 
-            x.HasComment("菜单角色配置");
 
             x.Property(x => x.MenuId).HasComment("菜单Id");
             x.Property(x => x.RoleId).HasComment("角色Id");

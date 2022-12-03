@@ -13,6 +13,6 @@ namespace Simple.Auth.Domain.Users
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        Task<AuthUserInfoView> GetAuthUserInfoAsync(string username, string password);
+        Task<AuthUserInfoView?> GetAuthUserInfoAsync(string username, string password);
     }
 }

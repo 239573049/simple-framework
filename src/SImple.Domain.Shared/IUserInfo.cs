@@ -7,7 +7,7 @@ namespace Simple.Domain.Shared
     /// 定义系统用户基础实体
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
-    public interface IUserInfo<TKey> : IEntity<TKey>
+    public interface IUserInfo<out TKey> : IEntity<TKey>
     {
         /// <summary>
         /// 昵称

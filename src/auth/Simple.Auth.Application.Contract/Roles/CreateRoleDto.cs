@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Simple.Auth.Application.Contract.Roles;
 
 public class CreateRoleDto
@@ -7,13 +5,11 @@ public class CreateRoleDto
     /// <summary>
     /// 角色名称
     /// </summary>
-    [Required(ErrorMessage = "角色名称是必须的")]
     public string? Name { get; set; }
 
     /// <summary>
     /// 角色编号
     /// </summary>
-    [Required(ErrorMessage = "角色编号是必须的")]
     public string? Code { get; set; }
 
     /// <summary>

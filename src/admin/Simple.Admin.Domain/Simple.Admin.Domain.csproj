@@ -2,9 +2,10 @@
 
     <Import Project="../../../common.props" />
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
+	    <TargetFramework>netstandard2.1</TargetFramework>
+	    <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
 

@@ -1,5 +1,8 @@
 namespace Simple.Auth.Application.Contract.Roles;
 
+/// <summary>
+/// 
+/// </summary>
 public class GetRoleInput
 {
     /// <summary>

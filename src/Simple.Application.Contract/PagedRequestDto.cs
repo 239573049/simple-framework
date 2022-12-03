@@ -30,13 +30,13 @@ namespace Simple.Application.Contract
         /// 忽略. 只传 Page 和 PageSize
         /// </summary>
         [OpenApiIgnore]
-        public new int SkipCount => (Page - 1) * MaxResultCount;
+        public int SkipCount => (Page - 1) * MaxResultCount;
 
         /// <summary>
         /// 忽略. 只传 Page 和 PageSize
         /// </summary
         [OpenApiIgnore]
-        public new int MaxResultCount =>
+        public int MaxResultCount =>
             PageSize > 1000
                 ? 1000
                 : PageSize;

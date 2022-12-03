@@ -9,7 +9,7 @@ public static class EncryptionUtil
     /// <summary>
     /// 密钥
     /// </summary>
-    private const string Key = "s!4%s_2,";
+    private const string Key = "s!4%s12,";
     /// <summary>
     /// 加密
     /// </summary>
@@ -20,12 +20,12 @@ public static class EncryptionUtil
         if (pToEncrypt.IsNullOrEmpty())
             return default;
 
-        var des = DES.Create("des");
+        var des = DES.Create();
         byte[] inputByteArray = Encoding.Default.GetBytes(pToEncrypt);
         des!.Key = Encoding.ASCII.GetBytes(Key);
         des.IV = Encoding.ASCII.GetBytes(Key);
-        MemoryStream ms = new MemoryStream();
-        CryptoStream cs = new CryptoStream(ms, des.CreateEncryptor(), CryptoStreamMode.Write);
+        var ms = new MemoryStream();
+        var cs = new CryptoStream(ms, des.CreateEncryptor(), CryptoStreamMode.Write);
         cs.Write(inputByteArray, 0, inputByteArray.Length);
         cs.FlushFinalBlock();
         StringBuilder ret = new StringBuilder();
@@ -45,18 +45,18 @@ public static class EncryptionUtil
         if (pToDecrypt.IsNullOrEmpty())
             return default;
 
-        var des = DES.Create("des");
+        var des = DES.Create();
 
         byte[] inputByteArray = new byte[pToDecrypt.Length / 2];
-        for (int x = 0; x < pToDecrypt.Length / 2; x++)
+        for (var x = 0; x < pToDecrypt.Length / 2; x++)
         {
             int i = (Convert.ToInt32(pToDecrypt.Substring(x * 2, 2), 16));
             inputByteArray[x] = (byte)i;
         }
         des!.Key = Encoding.ASCII.GetBytes(Key);
         des.IV = Encoding.ASCII.GetBytes(Key);
-        MemoryStream ms = new MemoryStream();
-        CryptoStream cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
+        var ms = new MemoryStream();
+        var cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
         cs.Write(inputByteArray, 0, inputByteArray.Length);
         cs.FlushFinalBlock();
         return Encoding.Default.GetString(ms.ToArray());
