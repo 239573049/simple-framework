@@ -16,8 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EntityFrameworkCore\" />
     <Folder Include="Handles\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Options\" />
   </ItemGroup>
 
 </Project>

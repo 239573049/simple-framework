@@ -1,7 +1,6 @@
 ﻿using EntityFrameworkCore.Core;
 using EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Simple.Admin.Domain.Users;
 
 namespace Simple.Admin.EntityFrameworkCore;

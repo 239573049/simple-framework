@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Simple.Shared.Base;
-using System;
 
 namespace EntityFrameworkCore.Extensions
 {
@@ -22,12 +20,12 @@ namespace EntityFrameworkCore.Extensions
         /// <typeparam name="TDbContext"></typeparam>
         /// <returns></returns>
         public static IServiceCollection AddEfCoreEntityFrameworkCore<TDbContext>(this IServiceCollection services, Action<DbContextOptionsBuilder>? optionsAction = null,
-            ServiceLifetime lifetime = ServiceLifetime.Singleton)
-            where TDbContext : DbContext
+            ServiceLifetime lifetime = ServiceLifetime.Scoped)
+            where TDbContext : MasterDbContext<TDbContext>
         {
             ConfigureOptions(services);
             ConfigureDbContext<TDbContext>(services, optionsAction, lifetime);
-
+            
             // 注入工作单元
             services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork<TDbContext>));
 
@@ -42,14 +40,10 @@ namespace EntityFrameworkCore.Extensions
         /// <param name="lifetime"></param>
         /// <typeparam name="TDbContext"></typeparam>
         private static void ConfigureDbContext<TDbContext>(IServiceCollection services, Action<DbContextOptionsBuilder>? optionsAction = null,
-            ServiceLifetime lifetime = ServiceLifetime.Singleton)
+            ServiceLifetime lifetime = ServiceLifetime.Scoped)
             where TDbContext : DbContext
         {
-            var simpleDbContextOptions =
-                services.BuildServiceProvider().GetRequiredService<IOptions<SimpleDbContextOptions>>().Value;
-
             services.AddDbContextFactory<TDbContext>(optionsAction, lifetime);
-
         }
 
         /// <summary>

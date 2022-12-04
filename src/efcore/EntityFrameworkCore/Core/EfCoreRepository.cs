@@ -41,7 +41,7 @@ public abstract class EfCoreRepository<TDbContext, TEntity, TKey> : EfCoreReposi
 
 }
 
-public abstract class EfCoreRepository<TDbContext, TEntity> : IRepository<TEntity>, ITransientDependency
+public abstract class EfCoreRepository<TDbContext, TEntity> : IRepository<TEntity> , ITransientDependency
     where TEntity : class
     where TDbContext : DbContext
 {
@@ -122,5 +122,14 @@ public abstract class EfCoreRepository<TDbContext, TEntity> : IRepository<TEntit
         DbSet.UpdateRange(entities);
 
         return Task.CompletedTask;
+    }
+}
+
+public class Repository<TDbContext, TEntity> : EfCoreRepository<TDbContext, TEntity>
+    where TEntity : class
+    where TDbContext : DbContext
+{
+    public Repository(TDbContext dbContext) : base(dbContext)
+    {
     }
 }

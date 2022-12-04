@@ -1,0 +1,77 @@
+version: '3.4'
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    networks:
+      - simple
+    volumes:
+      - ./stack/conf.d:/etc/nginx/conf.d
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 80:80
+    depends_on: 
+     - auth
+     - simple
+
+  redis:
+    image: redis:alpine3.16
+    container_name: redis
+    networks:
+      - simple
+    ports:
+      - 6379:6379
+  
+  mssql:
+      image: mcr.microsoft.com/mssql/server:2017-latest
+      container_name: mssql
+      volumes:
+        - ./stack/data/mssql:/var/opt/mssql/data
+        - /etc/localtime:/etc/localtime
+      environment:
+        - "MSSQL_SA_PASSWORD=Aa123456."
+        - "ACCEPT_EULA=Y"
+        - "TZ=Asia/Shanghai"
+      ports:
+        - 1433:1433
+      networks:
+      - simple
+
+  auth:
+    build:
+      context: .
+      dockerfile: ./src/auth/Simple.Auth.HttpApi.Host/Dockerfile
+    container_name: auth
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development 
+    depends_on: 
+     - mssql
+     - redis
+    networks:
+      - simple
+
+  simple:
+    build:
+      context: .
+      dockerfile: ./src/admin/Simple.Admin.HttpApi.Host/Dockerfile
+    container_name: simple
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development 
+    depends_on:
+     - mssql
+     - redis
+    networks:
+      - simple
+
+  simple-web:
+    build:
+      context: .
+      dockerfile: ./web/simple/Dockerfile
+    container_name: simple-web
+    networks:
+      - simple
+  
+networks:
+  simple:
+    driver: bridge

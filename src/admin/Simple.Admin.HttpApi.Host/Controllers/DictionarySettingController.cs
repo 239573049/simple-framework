@@ -7,7 +7,7 @@ using Simple.Application.Contract;
 namespace Simple.Admin.HttpApi.Host.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     public class DictionarySettingController : ControllerBase
     {
         private readonly IDictionarySettingService _dictionarySettingService;
