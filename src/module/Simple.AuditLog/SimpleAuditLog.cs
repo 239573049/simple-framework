@@ -12,15 +12,20 @@ public class SimpleAuditLog : AggregateRoot<Guid>
     /// <summary>
     /// 
     /// </summary>
-    public string Path { get; set; }
+    public string? Path { get; set; }
 
-    public string Query { get; set; }
+    public string? Query { get; set; }
 
     public Guid? UserId { get; set; }
 
     public int Code { get; set; }
 
-    public string Message { get; set; }
-    
-    
+    public string? Message { get; set; }
+
+    public string? Ip { get; set; }
+
+    /// <summary>
+    /// 是否成功
+    /// </summary>
+    public bool Succeed { get; set; }
 }

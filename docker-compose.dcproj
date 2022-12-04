@@ -9,7 +9,6 @@
     <DockerServiceName>simple.admin.httpapi.host</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace EntityFrameworkCore.Extensions;
 
@@ -11,7 +9,7 @@ public static class QueryableExtensions
         int skipCount,
         int maxResultCount)
     {
-        return Queryable.Take<T>(Queryable.Skip<T>(query, skipCount), maxResultCount);
+        return query.Skip(skipCount).Take(maxResultCount);
     }
 
     public static TQueryable PageBy<T, TQueryable>(
@@ -20,7 +18,7 @@ public static class QueryableExtensions
         int maxResultCount)
         where TQueryable : IQueryable<T>
     {
-        return (TQueryable)Queryable.Take<T>(Queryable.Skip<T>(query, skipCount), maxResultCount);
+        return (TQueryable)query.Skip(skipCount).Take(maxResultCount);
     }
 
     public static IQueryable<T> WhereIf<T>(
@@ -28,7 +26,7 @@ public static class QueryableExtensions
         bool condition,
         Expression<Func<T, bool>> predicate)
     {
-        return !condition ? query : query.Where<T>(predicate);
+        return !condition ? query : query.Where(predicate);
     }
 
     public static TQueryable WhereIf<T, TQueryable>(
@@ -45,7 +43,7 @@ public static class QueryableExtensions
         bool condition,
         Expression<Func<T, int, bool>> predicate)
     {
-        return !condition ? query : query.Where<T>(predicate);
+        return !condition ? query : query.Where(predicate);
     }
 
     public static TQueryable WhereIf<T, TQueryable>(
