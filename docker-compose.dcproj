@@ -11,4 +11,7 @@
   <ItemGroup>
     <None Include=".dockerignore" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="docker-compose.yml" />
+  </ItemGroup>
 </Project>
