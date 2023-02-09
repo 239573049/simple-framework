@@ -43,10 +43,16 @@ namespace EntityFrameworkCore.Core
             }
 
             IsCompleted = true;
+            
+            // TODO: 如果未存在修改实体不进行事务提交
+            if (!_dbContext.ChangeTracker.Entries().Any())
+            {
+                return;
+            }
             ApplyChangeConventions();
             try
             {
-                // 提交事务
+                // 使用EntityFrameworkCore的事务提交
                 await _dbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
                 await _dbContext.Database.CommitTransactionAsync(cancellationToken).ConfigureAwait(false);
             }

@@ -2,7 +2,7 @@
 
 ---
 
-The document language: [[English](README.en.md)] | [[简体中文](README.md)]
+The document language: English | [[简体中文](README.md)]
 
 ## 🎈 is introduced
 
