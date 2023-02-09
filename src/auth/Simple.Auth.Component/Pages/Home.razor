@@ -1,12 +1,12 @@
-﻿@page "/Authorize"
+﻿@page "/"
 
 <div class="jumbotron">
     <h1>Authorization</h1>
 
-    @* <p class="lead text-left">你想同意吗 <strong>@Model.ApplicationName</strong> access to your data? (scopes requested: @Model.Scope)</p> *@
+     <p class="lead text-left">你想同意吗 <strong>@ApplicationName</strong>访问您的数据?(请求范围:@Scope)</p> 
 
     <form asp-controller="Authorization" asp-action="Authorize" method="post">
-        @* Flow the request parameters so they can be received by the Accept/Reject actions: *@
+        @* 流请求参数，以便它们可以被接受/拒绝操作接收: *@
         @* @foreach (var parameter in Context.Request.HasFormContentType ? *@
         @*     (IEnumerable<KeyValuePair<string, StringValues>>) Context.Request.Form : Context.Request.Query) *@
         @* { *@
@@ -21,9 +21,9 @@
 @code{
     [Parameter]
     [SupplyParameterFromQuery]
-    public string ApplicationName { get; set; }
+    public string? ApplicationName { get; set; }
 
     [Parameter]
     [SupplyParameterFromQuery]
-    public string Scope { get; set; }
+    public string? Scope { get; set; }
 }

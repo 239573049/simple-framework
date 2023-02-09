@@ -21,6 +21,7 @@ app.UseRouting();
 app.UseSimpleAuthComponent();
 
 app.MapBlazorHub();
+
 app.MapFallbackToPage("/_Host");
 
 app.Run();

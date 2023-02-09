@@ -60,9 +60,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resource", "resource", "{19
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.AuditLog", "src\module\Simple.AuditLog\Simple.AuditLog.csproj", "{BB362562-C1A7-4DBC-ACFE-37F0E7532BEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Auth.Component", "src\auth\Simple.Auth.Component\Simple.Auth.Component.csproj", "{A6B93286-1643-41CA-97E9-158BEEE79062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.Auth.Component", "src\auth\Simple.Auth.Component\Simple.Auth.Component.csproj", "{A6B93286-1643-41CA-97E9-158BEEE79062}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.AuthServer", "src\auth\Simple.AuthServer\Simple.AuthServer.csproj", "{5837CF59-289A-4766-8B8C-E9A84F0BB5DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.AuthServer", "src\auth\Simple.AuthServer\Simple.AuthServer.csproj", "{5837CF59-289A-4766-8B8C-E9A84F0BB5DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{B05028CA-0F24-43BA-AA7B-7C5917C4CE90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -154,6 +156,10 @@ Global
 		{5837CF59-289A-4766-8B8C-E9A84F0BB5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5837CF59-289A-4766-8B8C-E9A84F0BB5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5837CF59-289A-4766-8B8C-E9A84F0BB5DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B05028CA-0F24-43BA-AA7B-7C5917C4CE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05028CA-0F24-43BA-AA7B-7C5917C4CE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05028CA-0F24-43BA-AA7B-7C5917C4CE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05028CA-0F24-43BA-AA7B-7C5917C4CE90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,6 +189,7 @@ Global
 		{BB362562-C1A7-4DBC-ACFE-37F0E7532BEE} = {F643F3E1-A9CB-438C-B1AF-434FA0240CFE}
 		{A6B93286-1643-41CA-97E9-158BEEE79062} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 		{5837CF59-289A-4766-8B8C-E9A84F0BB5DE} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
+		{B05028CA-0F24-43BA-AA7B-7C5917C4CE90} = {ED8B1A67-8F0E-47DF-B961-347E57458B5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61CAEE30-44D2-4CAD-B360-EB438F1E24A2}
